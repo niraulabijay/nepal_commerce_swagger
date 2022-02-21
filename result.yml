@@ -16,8 +16,35 @@ info:
     name: MIT
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
-  - url: http://localhost:8080
+  - url: http://{{auth_url}}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: No Auth
 paths:
+  /:
+    get:
+      tags:
+        - No Auth
+      summary: require Login in
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTFkNzgxNjJlMjNlMjUzOTQ3ZmZmMWYiLCJpYXQiOjE1NzkwODUyOTd9._5acKZ6EuThhuWoYsN-4hj335TBvzGt2_4-ciAO37mg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /create_post:
     post:
       tags:
@@ -90,24 +117,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /:
-    get:
-      tags:
-        - default
-      summary: require Login in
-      parameters:
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: >-
-            Bearer
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTFkNzgxNjJlMjNlMjUzOTQ3ZmZmMWYiLCJpYXQiOjE1NzkwODUyOTd9._5acKZ6EuThhuWoYsN-4hj335TBvzGt2_4-ciAO37mg
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /create_post/5e1d78162e23e253947fff1f:
     post:
       tags:
@@ -124,6 +133,8 @@ paths:
                 title:
                   type: string
                   example: x form
+      security:
+        - bearerAuth: []
       parameters:
         - name: Content-Type
           in: header

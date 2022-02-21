@@ -2,9 +2,43 @@
   "info": {
     "_postman_id": "403cc2c8-b6d7-4102-bf18-c8c3a480855c",
     "name": "node tutorial",
-    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
+    {
+      "name": "No Auth",
+      "item": [
+        {
+          "name": "require Login in",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTFkNzgxNjJlMjNlMjUzOTQ3ZmZmMWYiLCJpYXQiOjE1NzkwODUyOTd9._5acKZ6EuThhuWoYsN-4hj335TBvzGt2_4-ciAO37mg",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{auth_url}}/",
+              "host": ["{{auth_url}}"],
+              "path": [""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
     {
       "name": "http://localhost:8080/create_post",
       "request": {
@@ -21,7 +55,11 @@
           "mode": "raw",
           "raw": "{\n\t\n\t\"body\":\"d\"\n}"
         },
-        "url": "http://localhost:8080/create_post"
+        "url": {
+          "raw": "{{auth_url}}/create_post",
+          "host": ["{{auth_url}}"],
+          "path": ["create_post"]
+        }
       },
       "response": []
     },
@@ -41,7 +79,11 @@
           "mode": "raw",
           "raw": "{\n\t\"name\":\"bijay\",\n\t\"email\":\"user@gmail.com\",\n\t\"password\":\"abcdefff\"\n}"
         },
-        "url": "http://localhost:8080/signup"
+        "url": {
+          "raw": "{{auth_url}}/signup",
+          "host": ["{{auth_url}}"],
+          "path": ["signup"]
+        }
       },
       "response": []
     },
@@ -61,28 +103,27 @@
           "mode": "raw",
           "raw": "{\n\t\"email\":\"bijay@gmail.com\",\n\t\"password\":\"pasword\"\n}"
         },
-        "url": "http://localhost:8080/login"
-      },
-      "response": []
-    },
-    {
-      "name": "require Login in",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTFkNzgxNjJlMjNlMjUzOTQ3ZmZmMWYiLCJpYXQiOjE1NzkwODUyOTd9._5acKZ6EuThhuWoYsN-4hj335TBvzGt2_4-ciAO37mg",
-            "type": "text"
-          }
-        ],
-        "url": "http://localhost:8080/"
+        "url": {
+          "raw": "{{auth_url}}/login",
+          "host": ["{{auth_url}}"],
+          "path": ["login"]
+        }
       },
       "response": []
     },
     {
       "name": "create_post",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
         "method": "POST",
         "header": [
           {
@@ -112,7 +153,11 @@
             }
           ]
         },
-        "url": "http://localhost:8080/create_post/5e1d78162e23e253947fff1f"
+        "url": {
+          "raw": "{{auth_url}}/create_post/5e1d78162e23e253947fff1f",
+          "host": ["{{auth_url}}"],
+          "path": ["create_post", "5e1d78162e23e253947fff1f"]
+        }
       },
       "response": []
     }

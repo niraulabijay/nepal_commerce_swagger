@@ -8,4 +8,6 @@
 
 3. Run `make doc` in terminal to generate openApi.
 
+4. View Api in : https://niraulabijay.github.io/nepal_commerce_swagger/
+
 #### Reference `https://joolfe.github.io/postman-to-openapi/`

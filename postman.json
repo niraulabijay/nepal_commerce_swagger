@@ -26,7 +26,8 @@
               {
                 "key": "Authorization",
                 "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTFkNzgxNjJlMjNlMjUzOTQ3ZmZmMWYiLCJpYXQiOjE1NzkwODUyOTd9._5acKZ6EuThhuWoYsN-4hj335TBvzGt2_4-ciAO37mg",
-                "type": "text"
+                "type": "text",
+                "disabled": true
               }
             ],
             "url": {
@@ -135,7 +136,8 @@
           {
             "key": "Authorization",
             "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTFkNzgxNjJlMjNlMjUzOTQ3ZmZmMWYiLCJpYXQiOjE1NzkyNTE5NTJ9.KrV-wrJLrZaNQDgN9_8XpV6LAnWpCOpPMHmFe6WvJHk",
-            "type": "text"
+            "type": "text",
+            "disabled": true
           }
         ],
         "body": {

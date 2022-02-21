@@ -1,0 +1,120 @@
+{
+  "info": {
+    "_postman_id": "403cc2c8-b6d7-4102-bf18-c8c3a480855c",
+    "name": "node tutorial",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8080/create_post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\n\t\"body\":\"d\"\n}"
+        },
+        "url": "http://localhost:8080/create_post"
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/signup",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\":\"bijay\",\n\t\"email\":\"user@gmail.com\",\n\t\"password\":\"abcdefff\"\n}"
+        },
+        "url": "http://localhost:8080/signup"
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"email\":\"bijay@gmail.com\",\n\t\"password\":\"pasword\"\n}"
+        },
+        "url": "http://localhost:8080/login"
+      },
+      "response": []
+    },
+    {
+      "name": "require Login in",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTFkNzgxNjJlMjNlMjUzOTQ3ZmZmMWYiLCJpYXQiOjE1NzkwODUyOTd9._5acKZ6EuThhuWoYsN-4hj335TBvzGt2_4-ciAO37mg",
+            "type": "text"
+          }
+        ],
+        "url": "http://localhost:8080/"
+      },
+      "response": []
+    },
+    {
+      "name": "create_post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTFkNzgxNjJlMjNlMjUzOTQ3ZmZmMWYiLCJpYXQiOjE1NzkyNTE5NTJ9.KrV-wrJLrZaNQDgN9_8XpV6LAnWpCOpPMHmFe6WvJHk",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "body",
+              "value": "form ",
+              "type": "text"
+            },
+            {
+              "key": "title",
+              "value": "x form",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "http://localhost:8080/create_post/5e1d78162e23e253947fff1f"
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+openapi: 3.0.0
+info:
+  title: Nepal Commerce API
+  description: Ecommerce Multi-Vendor
+  version: '1.0'
+  x-logo:
+    url: https://github.com/joolfe/logoBanner.png
+    backgroundColor: '#FFFFFF'
+    altText: logo
+  termsOfService: '#'
+  contact:
+    name: Scodus
+    url: https://scodus.com
+    email: scodusnp@gmail.com
+  license:
+    name: MIT
+    url: https://es.wikipedia.org/wiki/Licencia_MIT
+servers:
+  - url: http://localhost:8080
+paths:
+  /create_post:
+    post:
+      tags:
+        - default
+      summary: http://localhost:8080/create_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                body: d
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /signup:
+    post:
+      tags:
+        - default
+      summary: http://localhost:8080/signup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: bijay
+                email: user@gmail.com
+                password: abcdefff
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /login:
+    post:
+      tags:
+        - default
+      summary: http://localhost:8080/login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: bijay@gmail.com
+                password: pasword
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /:
+    get:
+      tags:
+        - default
+      summary: require Login in
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTFkNzgxNjJlMjNlMjUzOTQ3ZmZmMWYiLCJpYXQiOjE1NzkwODUyOTd9._5acKZ6EuThhuWoYsN-4hj335TBvzGt2_4-ciAO37mg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /create_post/5e1d78162e23e253947fff1f:
+    post:
+      tags:
+        - default
+      summary: create_post
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                body:
+                  type: string
+                  example: 'form '
+                title:
+                  type: string
+                  example: x form
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTFkNzgxNjJlMjNlMjUzOTQ3ZmZmMWYiLCJpYXQiOjE1NzkyNTE5NTJ9.KrV-wrJLrZaNQDgN9_8XpV6LAnWpCOpPMHmFe6WvJHk
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

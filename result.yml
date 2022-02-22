@@ -47,3 +47,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /vendor/user/login:
+    post:
+      tags:
+        - user
+      summary: login
+      requestBody:
+        content: {}
+      parameters:
+        - name: email
+          in: query
+          schema:
+            type: string
+        - name: password
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

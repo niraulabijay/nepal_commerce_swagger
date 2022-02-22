@@ -56,6 +56,35 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vendor/user/login?email&password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": null
+								},
+								{
+									"key": "password",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

@@ -9,7 +9,7 @@
 			"name": "user",
 			"item": [
 				{
-					"name": "{{url}}/api/user/register",
+					"name": "user register",
 					"request": {
 						"method": "POST",
 						"header": [],

@@ -24,7 +24,7 @@ paths:
     post:
       tags:
         - user
-      summary: '{{url}}/api/user/register'
+      summary: user register
       requestBody:
         content:
           application/x-www-form-urlencoded:

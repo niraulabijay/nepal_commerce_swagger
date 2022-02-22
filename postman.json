@@ -23,17 +23,17 @@
 								},
 								{
 									"key": "email",
-									"value": "customer@email.com",
+									"value": "customer@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "password",
+									"value": "P@ssw0rd",
 									"type": "text"
 								},
 								{
 									"key": "password_confirmation",
-									"value": "password",
+									"value": "P@ssw0rd",
 									"type": "text"
 								}
 							],
@@ -62,8 +62,167 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "vendor@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "{{url}}/vendor/user/login?email&password",
+							"raw": "{{url}}/api/user/login?name&password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null
+								},
+								{
+									"key": "password",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vendor",
+			"item": [
+				{
+					"name": "vendor registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "vendor",
+									"contentType": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "vendor@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "registration_certificate",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "vat_number",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "contact_number",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "company_name",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "bank",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "cheque_photo",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vendor/user/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "vendor@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vendor/user/login",
 							"host": [
 								"{{url}}"
 							],
@@ -71,16 +230,167 @@
 								"vendor",
 								"user",
 								"login"
-							],
-							"query": [
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Brand",
+			"item": [
+				{
+					"name": "get all brands",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "email",
-									"value": null
-								},
-								{
-									"key": "password",
-									"value": null
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
 								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/brand/brand",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"brand",
+								"brand"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "get all categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/category/category",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"category",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get parent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/category/category-parent",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"category",
+								"category-parent"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attribute",
+			"item": [
+				{
+					"name": "get all attributes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/attribute/attribute",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"attribute",
+								"attribute"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get category by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/attribute/category/id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"attribute",
+								"category",
+								"id"
 							]
 						}
 					},

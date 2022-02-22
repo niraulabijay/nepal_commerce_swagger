@@ -17,8 +17,17 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
 tags:
   - name: user
+  - name: vendor
+  - name: Brand
+  - name: Category
+  - name: Attribute
 paths:
   /api/user/register:
     post:
@@ -35,13 +44,98 @@ paths:
                   example: customer
                 email:
                   type: string
-                  example: customer@email.com
+                  example: customer@gmail.com
                 password:
                   type: string
-                  example: password
+                  example: P@ssw0rd
                 password_confirmation:
                   type: string
-                  example: password
+                  example: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user/login:
+    post:
+      tags:
+        - user
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: vendor@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      parameters:
+        - name: name
+          in: query
+          schema:
+            type: string
+        - name: password
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /vendor/user/register:
+    post:
+      tags:
+        - vendor
+      summary: vendor registration
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: vendor
+                email:
+                  type: string
+                  example: vendor@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+                registration_certificate:
+                  type: string
+                  format: binary
+                vat_number:
+                  type: integer
+                  example: '1234'
+                contact_number:
+                  type: integer
+                  example: '1234'
+                company_name:
+                  type: integer
+                  example: '1234'
+                phone:
+                  type: string
+                logo:
+                  type: string
+                  format: binary
+                address:
+                  type: string
+                bank:
+                  type: string
+                account_number:
+                  type: string
+                cheque_photo:
+                  type: string
+                  format: binary
       responses:
         '200':
           description: Successful response
@@ -50,19 +144,80 @@ paths:
   /vendor/user/login:
     post:
       tags:
-        - user
+        - vendor
       summary: login
       requestBody:
-        content: {}
-      parameters:
-        - name: email
-          in: query
-          schema:
-            type: string
-        - name: password
-          in: query
-          schema:
-            type: string
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: vendor@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/brand/brand:
+    get:
+      tags:
+        - Brand
+      summary: get all brands
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/category/category:
+    get:
+      tags:
+        - Category
+      summary: get all categories
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/category/category-parent:
+    get:
+      tags:
+        - Category
+      summary: get parent
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attribute/attribute:
+    get:
+      tags:
+        - Attribute
+      summary: get all attributes
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attribute/category/id:
+    get:
+      tags:
+        - Attribute
+      summary: get category by id
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response

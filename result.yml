@@ -110,32 +110,6 @@ paths:
                 password_confirmation:
                   type: string
                   example: P@ssw0rd
-                registration_certificate:
-                  type: string
-                  format: binary
-                vat_number:
-                  type: integer
-                  example: '1234'
-                contact_number:
-                  type: integer
-                  example: '1234'
-                company_name:
-                  type: integer
-                  example: '1234'
-                phone:
-                  type: string
-                logo:
-                  type: string
-                  format: binary
-                address:
-                  type: string
-                bank:
-                  type: string
-                account_number:
-                  type: string
-                cheque_photo:
-                  type: string
-                  format: binary
       responses:
         '200':
           description: Successful response
@@ -158,6 +132,57 @@ paths:
                 password:
                   type: string
                   example: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /vendor/user/save-detail:
+    post:
+      tags:
+        - vendor
+      summary: store vendor detail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                registration_certificate:
+                  type: string
+                  format: binary
+                vat_number:
+                  type: string
+                  example: aaasda
+                contact_number:
+                  type: string
+                  example: aasdas
+                company_name:
+                  type: string
+                  example: aa2341qwer
+                phone:
+                  type: string
+                  example: asdfasdf
+                logo:
+                  type: string
+                  format: binary
+                email:
+                  type: string
+                  example: asdf
+                address:
+                  type: string
+                  example: asss
+                bank:
+                  type: string
+                  example: aasd
+                account_number:
+                  type: string
+                  example: asd
+                cheque_photo:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response

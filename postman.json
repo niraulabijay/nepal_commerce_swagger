@@ -134,56 +134,6 @@
 									"key": "password_confirmation",
 									"value": "P@ssw0rd",
 									"type": "text"
-								},
-								{
-									"key": "registration_certificate",
-									"type": "file",
-									"src": []
-								},
-								{
-									"key": "vat_number",
-									"value": "1234",
-									"type": "text"
-								},
-								{
-									"key": "contact_number",
-									"value": "1234",
-									"type": "text"
-								},
-								{
-									"key": "company_name",
-									"value": "1234",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "logo",
-									"type": "file",
-									"src": []
-								},
-								{
-									"key": "address",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "bank",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "account_number",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "cheque_photo",
-									"type": "file",
-									"src": []
 								}
 							]
 						},
@@ -230,6 +180,95 @@
 								"vendor",
 								"user",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store vendor detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "registration_certificate",
+									"type": "file",
+									"src": "/home/user--49/Pictures/dodge.png"
+								},
+								{
+									"key": "vat_number",
+									"value": "aaasda",
+									"type": "text"
+								},
+								{
+									"key": "contact_number",
+									"value": "aasdas",
+									"type": "text"
+								},
+								{
+									"key": "company_name",
+									"value": "aa2341qwer",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "asdfasdf",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/home/user--49/Pictures/chicks.jpg"
+								},
+								{
+									"key": "email",
+									"value": "asdf",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "asss",
+									"type": "text"
+								},
+								{
+									"key": "bank",
+									"value": "aasd",
+									"type": "text"
+								},
+								{
+									"key": "account_number",
+									"value": "asd",
+									"type": "text"
+								},
+								{
+									"key": "cheque_photo",
+									"type": "file",
+									"src": "/home/user--49/Pictures/dream-theater.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vendor/user/save-detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"save-detail"
 							]
 						}
 					},

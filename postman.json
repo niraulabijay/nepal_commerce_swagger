@@ -9,7 +9,7 @@
 			"name": "user",
 			"item": [
 				{
-					"name": "user register",
+					"name": "registration",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -107,7 +107,7 @@
 			"name": "vendor",
 			"item": [
 				{
-					"name": "vendor registration",
+					"name": "vendorRegistration",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -152,7 +152,7 @@
 					"response": []
 				},
 				{
-					"name": "login",
+					"name": "vendorLogin",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -186,7 +186,7 @@
 					"response": []
 				},
 				{
-					"name": "store vendor detail",
+					"name": "storeVendorDetail",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -210,7 +210,7 @@
 								},
 								{
 									"key": "vat_number",
-									"value": "aaasda",
+									"value": "aaasda1234",
 									"type": "text"
 								},
 								{
@@ -225,7 +225,7 @@
 								},
 								{
 									"key": "phone",
-									"value": "asdfasdf",
+									"value": "asdfasdfasdas",
 									"type": "text"
 								},
 								{
@@ -273,6 +273,188 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getVendorDetail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vendor/user/vendor-detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"vendor-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "storeProfile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullname",
+									"value": "seller edit",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "seller@email.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0123456789 edit",
+									"type": "text"
+								},
+								{
+									"key": "shop_name",
+									"value": "seller shop",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/user--49/Pictures/dream-theater.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vendor/user/profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "storeAdministrativeDetail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "legal_business_owner_name",
+									"value": "seller bussiness owner edit",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "seller address edit",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "city edit",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "country edit",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "1234567890 edit",
+									"type": "text"
+								},
+								{
+									"key": "account_holder_name",
+									"value": "seller account  edit",
+									"type": "text"
+								},
+								{
+									"key": "account_number",
+									"value": "0987654321 edit",
+									"type": "text"
+								},
+								{
+									"key": "bank",
+									"value": "seller bank edit",
+									"type": "text"
+								},
+								{
+									"key": "branch_name",
+									"value": "seller branch edit",
+									"type": "text"
+								},
+								{
+									"key": "citizenship",
+									"type": "file",
+									"src": "/home/user--49/Pictures/1554105.jpg"
+								},
+								{
+									"key": "pan",
+									"type": "file",
+									"src": "/home/user--49/Pictures/imperium-vorago.jpg"
+								},
+								{
+									"key": "signature",
+									"type": "file",
+									"src": "/home/user--49/Pictures/chicks.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vendor/user/administration",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"administration"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -314,7 +496,7 @@
 			"name": "Category",
 			"item": [
 				{
-					"name": "get all categories",
+					"name": "getAllCategories",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -343,7 +525,37 @@
 					"response": []
 				},
 				{
-					"name": "get parent",
+					"name": "getCategoryById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/category/category/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"category",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getParent",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -430,6 +642,342 @@
 								"attribute",
 								"category",
 								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "storeProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"product1edit\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"video_url\": \"video_url1edit\",\n    \"description\": \"description1edit\",\n    \"seo_title\": \"seo_title1edit\",\n    \"seo_description\": \"seo_description1edit\",\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": {\n        \"title\": {\n            \"1\": \"specification1 edit\",\n            \"2\": \"specification2 edit\",\n            \"3\": \"specification3\"\n        },\n        \"description\": {\n            \"1\": \"specification description1 edit\",\n            \"2\": \"specification description2 edit\",\n            \"3\": \"specification description3\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"product1edit\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"video_url\": \"video_url1edit\",\n    \"description\": \"description1edit\",\n    \"seo_title\": \"seo_title1edit\",\n    \"seo_description\": \"seo_description1edit\",\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": {\n        \"title\": {\n            \"1\": \"specification1 edit\",\n            \"2\": \"specification2 edit\",\n            \"3\": \"specification3\"\n        },\n        \"description\": {\n            \"1\": \"specification description1 edit\",\n            \"2\": \"specification description2 edit\",\n            \"3\": \"specification description3\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/product/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllProducts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/product/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/product/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/product/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveImage",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/user--49/Pictures/dream-theater.jpg"
+								},
+								{
+									"key": "type",
+									"value": "featured_image",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/save-image",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"save-image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tryStoreVariation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "availability[]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "sku[]",
+									"value": "sku",
+									"type": "text"
+								},
+								{
+									"key": "stock[]",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "base_price[]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "attribute[color][]",
+									"value": "red",
+									"type": "text"
+								},
+								{
+									"key": "attribute[size][]",
+									"value": "43",
+									"type": "text"
+								},
+								{
+									"key": "attribute[color][]",
+									"value": "yellow",
+									"type": "text"
+								},
+								{
+									"key": "attribute[size][]",
+									"value": "42",
+									"type": "text"
+								},
+								{
+									"key": "attribute[weight]",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "selected_attribute[color][]",
+									"value": "red",
+									"type": "text"
+								},
+								{
+									"key": "selected_attribute[weight][]",
+									"value": "42",
+									"type": "text"
+								},
+								{
+									"key": "selected_attribute[1-10][]",
+									"value": "90",
+									"type": "text"
+								},
+								{
+									"key": "selected_attribute[10-20][]",
+									"value": "80",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/store-variation/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"store-variation",
+								"1"
 							]
 						}
 					},

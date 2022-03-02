@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cfdabadc-cb9f-4094-b19c-6963095ebaa6",
+		"_postman_id": "d2a10b51-8002-4b4f-a2c8-a3a65fb27d9f",
 		"name": "Nepal Commerce",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -36,12 +36,7 @@
 									"value": "P@ssw0rd",
 									"type": "text"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/api/user/register",
@@ -90,11 +85,11 @@
 							"query": [
 								{
 									"key": "name",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "password",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -669,7 +664,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product1edit\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"video_url\": \"video_url1edit\",\n    \"description\": \"description1edit\",\n    \"seo_title\": \"seo_title1edit\",\n    \"seo_description\": \"seo_description1edit\",\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": {\n        \"title\": {\n            \"1\": \"specification1 edit\",\n            \"2\": \"specification2 edit\",\n            \"3\": \"specification3\"\n        },\n        \"description\": {\n            \"1\": \"specification description1 edit\",\n            \"2\": \"specification description2 edit\",\n            \"3\": \"specification description3\"\n        }\n    }\n}",
+							"raw": "{\n    \"title\": \"product1\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"video_url\": \"video_url1\",\n    \"description\": \"description1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": {\n        \"title\": {\n            \"1\": \"specification1\",\n            \"2\": \"specification2\",\n            \"3\": \"specification3\"\n        },\n        \"description\": {\n            \"1\": \"specification description1\",\n            \"2\": \"specification description2\",\n            \"3\": \"specification description3\"\n        }\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -778,12 +773,7 @@
 						"header": [],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"urlencoded": []
 						},
 						"url": {
 							"raw": "{{url}}/api/product/product/1",
@@ -884,7 +874,120 @@
 					"response": []
 				},
 				{
-					"name": "tryStoreVariation",
+					"name": "storeCombination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"id\": \"\",\n        \"availability\": 1,\n        \"sku\": \"sku1\",\n        \"stock\": 50,\n        \"base_price\": 100,\n        \"selected_attribute\": {\n            \"1\": \"red\",\n            \"2\": 42\n        },\n        \"quantity\": {\n            \"1-10\": 100,\n            \"11-22\": 50\n        }\n    },\n    {\n        \"id\": \"\",\n        \"availability\": 1,\n        \"sku\": \"sku2\",\n        \"stock\": 100,\n        \"base_price\": 200,\n        \"selected_attribute\": {\n            \"1\": \"blue\",\n            \"2\": 43\n        },\n        \"quantity\": {\n            \"1-10\": 200,\n            \"11-22\": 150\n        }\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/store-combination/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"store-combination",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductCombination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/product/get-combination/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"get-combination",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateOrCreateCombination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"id\": 1,\n        \"availability\": 1,\n        \"sku\": \"sku1-edit\",\n        \"stock\": 51,\n        \"base_price\": 101,\n        \"selected_attribute\": {\n            \"1\": \"red-edit\",\n            \"2\": 49\n        },\n        \"quantity\": {\n            \"1-10\": 101,\n            \"11-22\": 51\n        }\n    },\n    {\n        \"id\": 2,\n        \"availability\": 1,\n        \"sku\": \"sku2-edit\",\n        \"stock\": 101,\n        \"base_price\": 201,\n        \"selected_attribute\": {\n            \"1\": \"blue-edit\",\n            \"2\": 49\n        },\n        \"quantity\": {\n            \"1-10\": 201,\n            \"11-22\": 151\n        }\n    },\n    {\n        \"id\": \"\",\n        \"availability\": 1,\n        \"sku\": \"new\",\n        \"stock\": 100,\n        \"base_price\": 200,\n        \"selected_attribute\": {\n            \"1\": \"yellow\",\n            \"2\": 41\n        },\n        \"quantity\": {\n            \"1-10\": 200,\n            \"11-22\": 150\n        }\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/store-combination/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"store-combination",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Banner",
+			"item": [
+				{
+					"name": "store",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -902,82 +1005,405 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "availability[]",
-									"value": "1",
+									"key": "key",
+									"value": "promotional-banner",
 									"type": "text"
 								},
 								{
-									"key": "sku[]",
-									"value": "sku",
+									"key": "description",
+									"value": "asldjwklawda",
 									"type": "text"
 								},
 								{
-									"key": "stock[]",
-									"value": "500",
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Pictures/Brock Lesnar Sparta Kicks Elimination Chamber Glass.mp4_snapshot_00.18_[2022.02.20_20.58.16].jpg"
+								},
+								{
+									"key": "link",
+									"value": "https://google.com",
 									"type": "text"
 								},
 								{
-									"key": "base_price[]",
-									"value": "100",
-									"type": "text"
-								},
-								{
-									"key": "attribute[color][]",
-									"value": "red",
-									"type": "text"
-								},
-								{
-									"key": "attribute[size][]",
-									"value": "43",
-									"type": "text"
-								},
-								{
-									"key": "attribute[color][]",
-									"value": "yellow",
-									"type": "text"
-								},
-								{
-									"key": "attribute[size][]",
-									"value": "42",
-									"type": "text"
-								},
-								{
-									"key": "attribute[weight]",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "selected_attribute[color][]",
-									"value": "red",
-									"type": "text"
-								},
-								{
-									"key": "selected_attribute[weight][]",
-									"value": "42",
-									"type": "text"
-								},
-								{
-									"key": "selected_attribute[1-10][]",
-									"value": "90",
-									"type": "text"
-								},
-								{
-									"key": "selected_attribute[10-20][]",
-									"value": "80",
+									"key": "vendor_id",
+									"value": "2",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/product/store-variation/1",
+							"raw": "localhost:8000/api/vendor/banner",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"product",
-								"store-variation",
-								"1"
+								"vendor",
+								"banner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/api/vendor/banner/2/promotional-banner",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"vendor",
+								"banner",
+								"2",
+								"promotional-banner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/api/vendor/banner?vendor_id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"vendor",
+								"banner"
+							],
+							"query": [
+								{
+									"key": "vendor_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "key",
+									"value": "main-banner",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "asldjwkla",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Pictures/Brock Lesnar Sparta Kicks Elimination Chamber Glass.mp4_snapshot_00.18_[2022.02.20_20.58.16].jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/vendor/banner/1/promotional-banner",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"vendor",
+								"banner",
+								"1",
+								"promotional-banner"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "from_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "to_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "text",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "Tmro ni",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/message",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/api/message/1/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"message",
+								"1",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chat-list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/api/message/2/chat-list",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"message",
+								"2",
+								"chat-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/api/message/6/read",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"message",
+								"6",
+								"read"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "received",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8000/api/message/6/received",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"message",
+								"6",
+								"received"
 							]
 						}
 					},

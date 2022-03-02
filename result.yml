@@ -17,6 +17,7 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
+  - url: localhost://
 components:
   securitySchemes:
     bearerAuth:
@@ -29,6 +30,8 @@ tags:
   - name: Category
   - name: Attribute
   - name: Product
+  - name: Banner
+  - name: Message
 paths:
   /api/user/register:
     post:
@@ -371,13 +374,13 @@ paths:
             schema:
               type: object
               example:
-                title: product1edit
+                title: product1
                 category_id: '1'
                 sub_category_id: '1'
-                video_url: video_url1edit
-                description: description1edit
-                seo_title: seo_title1edit
-                seo_description: seo_description1edit
+                video_url: video_url1
+                description: description1
+                seo_title: seo_title1
+                seo_description: seo_description1
                 base_price: '444'
                 tag:
                   - tag1
@@ -385,12 +388,12 @@ paths:
                   - tag3
                 specification:
                   title:
-                    '1': specification1 edit
-                    '2': specification2 edit
+                    '1': specification1
+                    '2': specification2
                     '3': specification3
                   description:
-                    '1': specification description1 edit
-                    '2': specification description2 edit
+                    '1': specification description1
+                    '2': specification description2
                     '3': specification description3
       security:
         - bearerAuth: []
@@ -495,49 +498,230 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/store-variation/1:
+  /api/product/store-combination/1:
     post:
       tags:
         - Product
-      summary: tryStoreVariation
+      summary: updateOrCreateCombination
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                - id: 1
+                  availability: 1
+                  sku: sku1-edit
+                  stock: 51
+                  base_price: 101
+                  selected_attribute:
+                    '1': red-edit
+                    '2': 49
+                  quantity:
+                    1-10: 101
+                    11-22: 51
+                - id: 2
+                  availability: 1
+                  sku: sku2-edit
+                  stock: 101
+                  base_price: 201
+                  selected_attribute:
+                    '1': blue-edit
+                    '2': 49
+                  quantity:
+                    1-10: 201
+                    11-22: 151
+                - id: ''
+                  availability: 1
+                  sku: new
+                  stock: 100
+                  base_price: 200
+                  selected_attribute:
+                    '1': yellow
+                    '2': 41
+                  quantity:
+                    1-10: 200
+                    11-22: 150
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/get-combination/1:
+    get:
+      tags:
+        - Product
+      summary: getProductCombination
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /000/api/vendor/banner:
+    post:
+      tags:
+        - Banner
+      summary: store
       requestBody:
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
-                availability[]:
+                key:
+                  type: string
+                  example: promotional-banner
+                description:
+                  type: string
+                  example: asldjwklawda
+                image:
+                  type: string
+                  format: binary
+                link:
+                  type: string
+                  example: https://google.com
+                vendor_id:
+                  type: integer
+                  example: '2'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Banner
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: vendor_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /000/api/vendor/banner/2/promotional-banner:
+    get:
+      tags:
+        - Banner
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /000/api/vendor/banner/1/promotional-banner:
+    delete:
+      tags:
+        - Banner
+      summary: delete
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /000/api/message:
+    post:
+      tags:
+        - Message
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                from_id:
                   type: integer
                   example: '1'
-                sku[]:
+                to_id:
+                  type: integer
+                  example: '2'
+                type:
                   type: string
-                  example: sku
-                stock[]:
-                  type: integer
-                  example: '500'
-                base_price[]:
-                  type: integer
-                  example: '100'
-                attribute[color][]:
+                  example: text
+                message:
                   type: string
-                  example: yellow
-                attribute[size][]:
-                  type: integer
-                  example: '42'
-                attribute[weight]:
-                  type: string
-                selected_attribute[color][]:
-                  type: string
-                  example: red
-                selected_attribute[weight][]:
-                  type: integer
-                  example: '42'
-                selected_attribute[1-10][]:
-                  type: integer
-                  example: '90'
-                selected_attribute[10-20][]:
-                  type: integer
-                  example: '80'
+                  example: Tmro ni
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /000/api/message/1/2:
+    get:
+      tags:
+        - Message
+      summary: get
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /000/api/message/2/chat-list:
+    get:
+      tags:
+        - Message
+      summary: chat-list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /000/api/message/6/read:
+    get:
+      tags:
+        - Message
+      summary: read
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: ''
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /000/api/message/6/received:
+    get:
+      tags:
+        - Message
+      summary: received
       security:
         - bearerAuth: []
       responses:

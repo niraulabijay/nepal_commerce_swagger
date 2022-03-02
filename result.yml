@@ -32,6 +32,7 @@ tags:
   - name: Product
   - name: Banner
   - name: Message
+  - name: PackageSubscription
 paths:
   /api/user/register:
     post:
@@ -95,7 +96,7 @@ paths:
     post:
       tags:
         - vendor
-      summary: vendorRegistration
+      summary: vendor registration
       requestBody:
         content:
           multipart/form-data:
@@ -123,7 +124,7 @@ paths:
     post:
       tags:
         - vendor
-      summary: vendorLogin
+      summary: vendor login
       requestBody:
         content:
           multipart/form-data:
@@ -141,11 +142,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /vendor/user/save-detail:
+  /vendor/user/confidential:
     post:
       tags:
         - vendor
-      summary: storeVendorDetail
+      summary: store vendor confidential
       requestBody:
         content:
           multipart/form-data:
@@ -167,7 +168,7 @@ paths:
                 phone:
                   type: string
                   example: asdfasdfasdas
-                logo:
+                citizenship:
                   type: string
                   format: binary
                 email:
@@ -196,7 +197,7 @@ paths:
     get:
       tags:
         - vendor
-      summary: getVendorDetail
+      summary: get vendor detail
       security:
         - bearerAuth: []
       responses:
@@ -377,24 +378,25 @@ paths:
                 title: product1
                 category_id: '1'
                 sub_category_id: '1'
+                sub_sub_category_id: '1'
                 video_url: video_url1
                 description: description1
                 seo_title: seo_title1
                 seo_description: seo_description1
+                seo_keyword:
+                  - keyword1
+                  - keyword2
+                  - keyword3
                 base_price: '444'
                 tag:
                   - tag1
                   - tag2
                   - tag3
                 specification:
-                  title:
-                    '1': specification1
-                    '2': specification2
-                    '3': specification3
-                  description:
-                    '1': specification description1
-                    '2': specification description2
-                    '3': specification description3
+                  - title: title 1
+                    description: description 1
+                  - title: title 2
+                    description: description 2
       security:
         - bearerAuth: []
       responses:
@@ -427,24 +429,29 @@ paths:
                 title: product1edit
                 category_id: '1'
                 sub_category_id: '1'
+                sub_sub_category_id: '1'
                 video_url: video_url1edit
                 description: description1edit
                 seo_title: seo_title1edit
                 seo_description: seo_description1edit
-                base_price: '444'
+                seo_keyword:
+                  - keywordedit1
+                  - keywordedit2
+                  - keywordedit3
+                  - keywordedit4
+                base_price: '333'
                 tag:
                   - tag1
                   - tag2
                   - tag3
+                  - tag4
                 specification:
-                  title:
-                    '1': specification1 edit
-                    '2': specification2 edit
-                    '3': specification3
-                  description:
-                    '1': specification description1 edit
-                    '2': specification description2 edit
-                    '3': specification description3
+                  - title: title 1edit
+                    description: description 1edit
+                  - title: title 2edit
+                    description: description 2edit
+                  - title: title 3edit
+                    description: description 3edit
       security:
         - bearerAuth: []
       responses:
@@ -509,39 +516,42 @@ paths:
             schema:
               type: object
               example:
-                - id: 1
-                  availability: 1
-                  sku: sku1-edit
-                  stock: 51
-                  base_price: 101
-                  selected_attribute:
-                    '1': red-edit
-                    '2': 49
-                  quantity:
-                    1-10: 101
-                    11-22: 51
-                - id: 2
-                  availability: 1
-                  sku: sku2-edit
-                  stock: 101
-                  base_price: 201
-                  selected_attribute:
-                    '1': blue-edit
-                    '2': 49
-                  quantity:
-                    1-10: 201
-                    11-22: 151
-                - id: ''
-                  availability: 1
-                  sku: new
-                  stock: 100
-                  base_price: 200
-                  selected_attribute:
-                    '1': yellow
-                    '2': 41
-                  quantity:
-                    1-10: 200
-                    11-22: 150
+                combination:
+                  - id: ''
+                    availability: 1
+                    sku: sku3-edit
+                    stock: 51
+                    base_price: 101
+                    selected_attribute:
+                      '1': red-edit
+                      '2': 49
+                    quantity:
+                      1-10: 101
+                      11-22: 51
+                  - id: 2
+                    availability: 1
+                    sku: sku2-edit
+                    stock: 101
+                    base_price: 201
+                    selected_attribute:
+                      '1': blue-edit
+                      '2': 49
+                    quantity:
+                      1-10: 201
+                      11-22: 151
+                  - id: ''
+                    availability: 1
+                    sku: new-from-updateOrCreate
+                    stock: 100
+                    base_price: 200
+                    selected_attribute:
+                      '1': yellow
+                      '2': 41
+                    quantity:
+                      1-10: 200
+                      11-22: 150
+                delete_id:
+                  - 1
       security:
         - bearerAuth: []
       responses:
@@ -561,7 +571,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /000/api/vendor/banner:
+  /api/vendor/banner:
     post:
       tags:
         - Banner
@@ -610,13 +620,13 @@ paths:
           in: query
           schema:
             type: integer
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /000/api/vendor/banner/2/promotional-banner:
+  /api/vendor/banner/2/promotional-banner:
     get:
       tags:
         - Banner
@@ -634,7 +644,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /000/api/vendor/banner/1/promotional-banner:
+  /api/vendor/banner/1/promotional-banner:
     delete:
       tags:
         - Banner
@@ -646,7 +656,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /000/api/message:
+  /api/message:
     post:
       tags:
         - Message
@@ -700,7 +710,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /000/api/message/6/read:
+  /api/message/6/read:
     get:
       tags:
         - Message
@@ -717,11 +727,59 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /000/api/message/6/received:
+  /api/message/6/received:
     get:
       tags:
         - Message
       summary: received
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/package-subscription:
+    post:
+      tags:
+        - PackageSubscription
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: integer
+                  example: '1'
+                user_id:
+                  type: integer
+                  example: '7'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /vendor/user/package/:
+    get:
+      tags:
+        - PackageSubscription
+      summary: vendor list with package detail
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /vendor/user/package/7:
+    get:
+      tags:
+        - PackageSubscription
+      summary: show vendor with package detail
       security:
         - bearerAuth: []
       responses:

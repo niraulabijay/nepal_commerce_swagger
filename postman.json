@@ -102,7 +102,7 @@
 			"name": "vendor",
 			"item": [
 				{
-					"name": "vendorRegistration",
+					"name": "vendor registration",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -147,7 +147,7 @@
 					"response": []
 				},
 				{
-					"name": "vendorLogin",
+					"name": "vendor login",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -181,7 +181,7 @@
 					"response": []
 				},
 				{
-					"name": "storeVendorDetail",
+					"name": "store vendor confidential",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -224,7 +224,7 @@
 									"type": "text"
 								},
 								{
-									"key": "logo",
+									"key": "citizenship",
 									"type": "file",
 									"src": "/home/user--49/Pictures/chicks.jpg"
 								},
@@ -256,21 +256,21 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/vendor/user/save-detail",
+							"raw": "{{url}}/vendor/user/confidential",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"vendor",
 								"user",
-								"save-detail"
+								"confidential"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "getVendorDetail",
+					"name": "get vendor detail",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -664,7 +664,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product1\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"video_url\": \"video_url1\",\n    \"description\": \"description1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": {\n        \"title\": {\n            \"1\": \"specification1\",\n            \"2\": \"specification2\",\n            \"3\": \"specification3\"\n        },\n        \"description\": {\n            \"1\": \"specification description1\",\n            \"2\": \"specification description2\",\n            \"3\": \"specification description3\"\n        }\n    }\n}",
+							"raw": "{\n    \"title\": \"product1\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"sub_sub_category_id\": \"1\",\n    \"video_url\": \"video_url1\",\n    \"description\": \"description1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -702,7 +702,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product1edit\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"video_url\": \"video_url1edit\",\n    \"description\": \"description1edit\",\n    \"seo_title\": \"seo_title1edit\",\n    \"seo_description\": \"seo_description1edit\",\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": {\n        \"title\": {\n            \"1\": \"specification1 edit\",\n            \"2\": \"specification2 edit\",\n            \"3\": \"specification3\"\n        },\n        \"description\": {\n            \"1\": \"specification description1 edit\",\n            \"2\": \"specification description2 edit\",\n            \"3\": \"specification description3\"\n        }\n    }\n}",
+							"raw": "{\n    \"title\": \"product1edit\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"sub_sub_category_id\": \"1\",\n    \"video_url\": \"video_url1edit\",\n    \"description\": \"description1edit\",\n    \"seo_title\": \"seo_title1edit\",\n    \"seo_description\": \"seo_description1edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"base_price\": \"333\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -772,8 +772,8 @@
 						"method": "GET",
 						"header": [],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": []
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/api/product/product/1",
@@ -890,7 +890,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"id\": \"\",\n        \"availability\": 1,\n        \"sku\": \"sku1\",\n        \"stock\": 50,\n        \"base_price\": 100,\n        \"selected_attribute\": {\n            \"1\": \"red\",\n            \"2\": 42\n        },\n        \"quantity\": {\n            \"1-10\": 100,\n            \"11-22\": 50\n        }\n    },\n    {\n        \"id\": \"\",\n        \"availability\": 1,\n        \"sku\": \"sku2\",\n        \"stock\": 100,\n        \"base_price\": 200,\n        \"selected_attribute\": {\n            \"1\": \"blue\",\n            \"2\": 43\n        },\n        \"quantity\": {\n            \"1-10\": 200,\n            \"11-22\": 150\n        }\n    }\n]",
+							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku1\",\n            \"stock\": 50,\n            \"base_price\": 100,\n            \"selected_attribute\": {\n                \"1\": \"red\",\n                \"2\": 42\n            },\n            \"quantity\": {\n                \"1-10\": 100,\n                \"11-22\": 50\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2\",\n            \"stock\": 100,\n            \"base_price\": 200,\n            \"selected_attribute\": {\n                \"1\": \"blue\",\n                \"2\": 43\n            },\n            \"quantity\": {\n                \"1-10\": 200,\n                \"11-22\": 150\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -914,6 +914,9 @@
 				},
 				{
 					"name": "getProductCombination",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -927,6 +930,10 @@
 						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{url}}/api/product/get-combination/1",
 							"host": [
@@ -959,7 +966,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"id\": 1,\n        \"availability\": 1,\n        \"sku\": \"sku1-edit\",\n        \"stock\": 51,\n        \"base_price\": 101,\n        \"selected_attribute\": {\n            \"1\": \"red-edit\",\n            \"2\": 49\n        },\n        \"quantity\": {\n            \"1-10\": 101,\n            \"11-22\": 51\n        }\n    },\n    {\n        \"id\": 2,\n        \"availability\": 1,\n        \"sku\": \"sku2-edit\",\n        \"stock\": 101,\n        \"base_price\": 201,\n        \"selected_attribute\": {\n            \"1\": \"blue-edit\",\n            \"2\": 49\n        },\n        \"quantity\": {\n            \"1-10\": 201,\n            \"11-22\": 151\n        }\n    },\n    {\n        \"id\": \"\",\n        \"availability\": 1,\n        \"sku\": \"new\",\n        \"stock\": 100,\n        \"base_price\": 200,\n        \"selected_attribute\": {\n            \"1\": \"yellow\",\n            \"2\": 41\n        },\n        \"quantity\": {\n            \"1-10\": 200,\n            \"11-22\": 150\n        }\n    }\n]",
+							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku3-edit\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": {\n                \"1\": \"red-edit\",\n                \"2\": 49\n            },\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": 2,\n            \"availability\": 1,\n            \"sku\": \"sku2-edit\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": {\n                \"1\": \"blue-edit\",\n                \"2\": 49\n            },\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"new-from-updateOrCreate\",\n            \"stock\": 100,\n            \"base_price\": 200,\n            \"selected_attribute\": {\n                \"1\": \"yellow\",\n                \"2\": 41\n            },\n            \"quantity\": {\n                \"1-10\": 200,\n                \"11-22\": 150\n            }\n        }\n    ],\n    \"delete_id\": [1]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1017,7 +1024,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Pictures/Brock Lesnar Sparta Kicks Elimination Chamber Glass.mp4_snapshot_00.18_[2022.02.20_20.58.16].jpg"
+									"src": "/C:/Users/Leon Schiffer/Pictures/Brock Lesnar's weird dance steps after winning xD.mp4_snapshot_00.03_[2022.02.21_21.12.17].jpg"
 								},
 								{
 									"key": "link",
@@ -1032,11 +1039,10 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:8000/api/vendor/banner",
+							"raw": "{{url}}/api/vendor/banner",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"vendor",
@@ -1075,11 +1081,10 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8000/api/vendor/banner/2/promotional-banner",
+							"raw": "{{url}}/api/vendor/banner/2/promotional-banner",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"vendor",
@@ -1120,11 +1125,10 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8000/api/vendor/banner?vendor_id=1",
+							"raw": "{{url}}/api/vendor/banner?vendor_id=2",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"vendor",
@@ -1133,7 +1137,7 @@
 							"query": [
 								{
 									"key": "vendor_id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -1176,11 +1180,10 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:8000/api/vendor/banner/1/promotional-banner",
+							"raw": "{{url}}/api/vendor/banner/1/promotional-banner",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"vendor",
@@ -1238,11 +1241,10 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:8000/api/message",
+							"raw": "{{url}}/api/message",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"message"
@@ -1356,11 +1358,10 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8000/api/message/6/read",
+							"raw": "{{url}}/api/message/6/read",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"message",
@@ -1394,16 +1395,123 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8000/api/message/6/received",
+							"raw": "{{url}}/api/message/6/received",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"message",
 								"6",
 								"received"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PackageSubscription",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "package_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/package-subscription",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"package-subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vendor list with package detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vendor/user/package/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"package",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show vendor with package detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vendor/user/package/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"package",
+								"7"
 							]
 						}
 					},

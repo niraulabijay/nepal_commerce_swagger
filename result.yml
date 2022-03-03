@@ -74,19 +74,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: vendor@gmail.com
+                  example: admin@admin.com
                 password:
-                  type: string
-                  example: P@ssw0rd
-      parameters:
-        - name: name
-          in: query
-          schema:
-            type: string
-        - name: password
-          in: query
-          schema:
-            type: string
+                  type: integer
+                  example: '1234'
       responses:
         '200':
           description: Successful response
@@ -143,6 +134,17 @@ paths:
           content:
             application/json: {}
   /vendor/user/confidential:
+    get:
+      tags:
+        - vendor
+      summary: get vendor detail
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     post:
       tags:
         - vendor
@@ -157,132 +159,36 @@ paths:
                   type: string
                   format: binary
                 vat_number:
-                  type: string
-                  example: aaasda1234
+                  type: integer
+                  example: '12453674897'
                 contact_number:
-                  type: string
-                  example: aasdas
+                  type: integer
+                  example: '132467980'
                 company_name:
                   type: string
-                  example: aa2341qwer
+                  example: vendor company
                 phone:
-                  type: string
-                  example: asdfasdfasdas
-                citizenship:
-                  type: string
-                  format: binary
-                email:
-                  type: string
-                  example: asdf
+                  type: integer
+                  example: '412357869'
                 address:
                   type: string
-                  example: asss
+                  example: vendor address
                 bank:
                   type: string
-                  example: aasd
-                account_number:
+                  example: vendor bank
+                branch:
                   type: string
-                  example: asd
-                cheque_photo:
-                  type: string
-                  format: binary
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /vendor/user/vendor-detail:
-    get:
-      tags:
-        - vendor
-      summary: get vendor detail
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /vendor/user/profile:
-    post:
-      tags:
-        - vendor
-      summary: storeProfile
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                fullname:
-                  type: string
-                  example: seller edit
-                email:
-                  type: string
-                  example: seller@email.com
-                phone:
-                  type: string
-                  example: 0123456789 edit
-                shop_name:
-                  type: string
-                  example: seller shop
-                image:
-                  type: string
-                  format: binary
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /vendor/user/administration:
-    post:
-      tags:
-        - vendor
-      summary: storeAdministrativeDetail
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                legal_business_owner_name:
-                  type: string
-                  example: seller bussiness owner edit
-                address:
-                  type: string
-                  example: seller address edit
-                city:
-                  type: string
-                  example: city edit
-                country:
-                  type: string
-                  example: country edit
-                pan_number:
-                  type: string
-                  example: 1234567890 edit
+                  example: vendor branch
                 account_holder_name:
                   type: string
-                  example: seller account  edit
+                  example: vendor account
                 account_number:
-                  type: string
-                  example: 0987654321 edit
-                bank:
-                  type: string
-                  example: seller bank edit
-                branch_name:
-                  type: string
-                  example: seller branch edit
+                  type: integer
+                  example: '123423452345'
                 citizenship:
                   type: string
                   format: binary
-                pan:
-                  type: string
-                  format: binary
-                signature:
+                cheque_photo:
                   type: string
                   format: binary
       security:
@@ -594,9 +500,6 @@ paths:
                 link:
                   type: string
                   example: https://google.com
-                vendor_id:
-                  type: integer
-                  example: '2'
       security:
         - bearerAuth: []
       responses:
@@ -616,17 +519,12 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: vendor_id
-          in: query
-          schema:
-            type: integer
-          example: '2'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/vendor/banner/2/promotional-banner:
+  /api/vendor/banner/promotional-banner:
     get:
       tags:
         - Banner
@@ -644,7 +542,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/vendor/banner/1/promotional-banner:
     delete:
       tags:
         - Banner
@@ -686,7 +583,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /000/api/message/1/2:
+  /000/api/message/2:
     get:
       tags:
         - Message
@@ -698,7 +595,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /000/api/message/2/chat-list:
+  /000/api/message/chat-list:
     get:
       tags:
         - Message

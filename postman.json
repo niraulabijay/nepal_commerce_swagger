@@ -62,18 +62,18 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "vendor@gmail.com",
+									"value": "admin@admin.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "P@ssw0rd",
+									"value": "1234",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/user/login?name&password",
+							"raw": "{{url}}/api/user/login",
 							"host": [
 								"{{url}}"
 							],
@@ -81,16 +81,6 @@
 								"api",
 								"user",
 								"login"
-							],
-							"query": [
-								{
-									"key": "name",
-									"value": ""
-								},
-								{
-									"key": "password",
-									"value": ""
-								}
 							]
 						}
 					},
@@ -181,6 +171,35 @@
 					"response": []
 				},
 				{
+					"name": "get vendor detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vendor/user/confidential",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"confidential"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "store vendor confidential",
 					"request": {
 						"auth": {
@@ -205,48 +224,53 @@
 								},
 								{
 									"key": "vat_number",
-									"value": "aaasda1234",
+									"value": "12453674897",
 									"type": "text"
 								},
 								{
 									"key": "contact_number",
-									"value": "aasdas",
+									"value": "132467980",
 									"type": "text"
 								},
 								{
 									"key": "company_name",
-									"value": "aa2341qwer",
+									"value": "vendor company",
 									"type": "text"
 								},
 								{
 									"key": "phone",
-									"value": "asdfasdfasdas",
+									"value": "412357869",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "vendor address",
+									"type": "text"
+								},
+								{
+									"key": "bank",
+									"value": "vendor bank",
+									"type": "text"
+								},
+								{
+									"key": "branch",
+									"value": "vendor branch",
+									"type": "text"
+								},
+								{
+									"key": "account_holder_name",
+									"value": "vendor account",
+									"type": "text"
+								},
+								{
+									"key": "account_number",
+									"value": "123423452345",
 									"type": "text"
 								},
 								{
 									"key": "citizenship",
 									"type": "file",
-									"src": "/home/user--49/Pictures/chicks.jpg"
-								},
-								{
-									"key": "email",
-									"value": "asdf",
-									"type": "text"
-								},
-								{
-									"key": "address",
-									"value": "asss",
-									"type": "text"
-								},
-								{
-									"key": "bank",
-									"value": "aasd",
-									"type": "text"
-								},
-								{
-									"key": "account_number",
-									"value": "asd",
-									"type": "text"
+									"src": "/home/user--49/Pictures/imperium-vorago.jpg"
 								},
 								{
 									"key": "cheque_photo",
@@ -264,188 +288,6 @@
 								"vendor",
 								"user",
 								"confidential"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get vendor detail",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/vendor/user/vendor-detail",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"vendor",
-								"user",
-								"vendor-detail"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "storeProfile",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "fullname",
-									"value": "seller edit",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "seller@email.com",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "0123456789 edit",
-									"type": "text"
-								},
-								{
-									"key": "shop_name",
-									"value": "seller shop",
-									"type": "text"
-								},
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/home/user--49/Pictures/dream-theater.jpg"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/vendor/user/profile",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"vendor",
-								"user",
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "storeAdministrativeDetail",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "legal_business_owner_name",
-									"value": "seller bussiness owner edit",
-									"type": "text"
-								},
-								{
-									"key": "address",
-									"value": "seller address edit",
-									"type": "text"
-								},
-								{
-									"key": "city",
-									"value": "city edit",
-									"type": "text"
-								},
-								{
-									"key": "country",
-									"value": "country edit",
-									"type": "text"
-								},
-								{
-									"key": "pan_number",
-									"value": "1234567890 edit",
-									"type": "text"
-								},
-								{
-									"key": "account_holder_name",
-									"value": "seller account  edit",
-									"type": "text"
-								},
-								{
-									"key": "account_number",
-									"value": "0987654321 edit",
-									"type": "text"
-								},
-								{
-									"key": "bank",
-									"value": "seller bank edit",
-									"type": "text"
-								},
-								{
-									"key": "branch_name",
-									"value": "seller branch edit",
-									"type": "text"
-								},
-								{
-									"key": "citizenship",
-									"type": "file",
-									"src": "/home/user--49/Pictures/1554105.jpg"
-								},
-								{
-									"key": "pan",
-									"type": "file",
-									"src": "/home/user--49/Pictures/imperium-vorago.jpg"
-								},
-								{
-									"key": "signature",
-									"type": "file",
-									"src": "/home/user--49/Pictures/chicks.jpg"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/vendor/user/administration",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"vendor",
-								"user",
-								"administration"
 							]
 						}
 					},
@@ -1030,11 +872,6 @@
 									"key": "link",
 									"value": "https://google.com",
 									"type": "text"
-								},
-								{
-									"key": "vendor_id",
-									"value": "2",
-									"type": "text"
 								}
 							]
 						},
@@ -1081,7 +918,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor/banner/2/promotional-banner",
+							"raw": "{{url}}/api/vendor/banner/promotional-banner",
 							"host": [
 								"{{url}}"
 							],
@@ -1089,7 +926,6 @@
 								"api",
 								"vendor",
 								"banner",
-								"2",
 								"promotional-banner"
 							]
 						}
@@ -1125,7 +961,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor/banner?vendor_id=2",
+							"raw": "{{url}}/api/vendor/banner",
 							"host": [
 								"{{url}}"
 							],
@@ -1133,12 +969,6 @@
 								"api",
 								"vendor",
 								"banner"
-							],
-							"query": [
-								{
-									"key": "vendor_id",
-									"value": "2"
-								}
 							]
 						}
 					},
@@ -1180,7 +1010,7 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor/banner/1/promotional-banner",
+							"raw": "{{url}}/api/vendor/banner/promotional-banner",
 							"host": [
 								"{{url}}"
 							],
@@ -1188,7 +1018,6 @@
 								"api",
 								"vendor",
 								"banner",
-								"1",
 								"promotional-banner"
 							]
 						}
@@ -1276,7 +1105,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8000/api/message/1/2",
+							"raw": "localhost:8000/api/message/2",
 							"host": [
 								"localhost"
 							],
@@ -1284,7 +1113,6 @@
 							"path": [
 								"api",
 								"message",
-								"1",
 								"2"
 							]
 						}
@@ -1314,7 +1142,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8000/api/message/2/chat-list",
+							"raw": "localhost:8000/api/message/chat-list",
 							"host": [
 								"localhost"
 							],
@@ -1322,7 +1150,6 @@
 							"path": [
 								"api",
 								"message",
-								"2",
 								"chat-list"
 							]
 						}

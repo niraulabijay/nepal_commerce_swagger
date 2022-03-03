@@ -220,7 +220,7 @@
 								{
 									"key": "registration_certificate",
 									"type": "file",
-									"src": "/home/user--49/Pictures/dodge.png"
+									"src": "/home/user--49/Pictures/imperium-vorago.jpg"
 								},
 								{
 									"key": "vat_number",
@@ -270,12 +270,12 @@
 								{
 									"key": "citizenship",
 									"type": "file",
-									"src": "/home/user--49/Pictures/imperium-vorago.jpg"
+									"src": []
 								},
 								{
 									"key": "cheque_photo",
 									"type": "file",
-									"src": "/home/user--49/Pictures/dream-theater.jpg"
+									"src": "/home/user--49/Pictures/imperium-vorago.jpg"
 								}
 							]
 						},
@@ -506,7 +506,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product1\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"sub_sub_category_id\": \"1\",\n    \"video_url\": \"video_url1\",\n    \"description\": \"description1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"title1\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"sub_sub_category_id\": \"1\",\n    \"video_url\": \"video_url1\",\n    \"description\": \"description1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -732,7 +732,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku1\",\n            \"stock\": 50,\n            \"base_price\": 100,\n            \"selected_attribute\": {\n                \"1\": \"red\",\n                \"2\": 42\n            },\n            \"quantity\": {\n                \"1-10\": 100,\n                \"11-22\": 50\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2\",\n            \"stock\": 100,\n            \"base_price\": 200,\n            \"selected_attribute\": {\n                \"1\": \"blue\",\n                \"2\": 43\n            },\n            \"quantity\": {\n                \"1-10\": 200,\n                \"11-22\": 150\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
+							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku1\",\n            \"stock\": 50,\n            \"base_price\": 100,\n            \"selected_attribute\": [\n                {\n                    \"attribute_id\": 1,\n                    \"attribute_value\": \"red\"\n                },\n                {\n                    \"attribute_id\": 2,\n                    \"attribute_value\": 42\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 100,\n                \"11-22\": 50\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2\",\n            \"stock\": 100,\n            \"base_price\": 200,\n            \"selected_attribute\": [\n                {\n                    \"attribute_id\": 1,\n                    \"attribute_value\": \"blue\"\n                },\n                {\n                    \"attribute_id\": 2,\n                    \"attribute_value\": 43\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 200,\n                \"11-22\": 150\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -829,6 +829,65 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get status list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/product/get-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"get-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product status update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "Published",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/change-status/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"change-status",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -866,7 +925,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Pictures/Brock Lesnar's weird dance steps after winning xD.mp4_snapshot_00.03_[2022.02.21_21.12.17].jpg"
+									"src": "/C:/Users/Leon Schiffer/Pictures/Destroyer Bad Bunny.mp4_snapshot_00.07_[2022.02.01_11.32.12].jpg"
 								},
 								{
 									"key": "link",
@@ -1048,19 +1107,15 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "from_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
 									"key": "to_id",
 									"value": "2",
 									"type": "text"
 								},
 								{
 									"key": "type",
-									"value": "text",
-									"type": "text"
+									"value": "",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "message",
@@ -1222,14 +1277,14 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/message/6/received",
+							"raw": "{{url}}/api/message/16/received",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"message",
-								"6",
+								"16",
 								"received"
 							]
 						}
@@ -1339,6 +1394,215 @@
 								"user",
 								"package",
 								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PasswordReset",
+			"item": [
+				{
+					"name": "request- vendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "vendor@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor/password-reset/request",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor",
+								"password-reset",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset- vendor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "new_password",
+									"value": "hello",
+									"type": "text"
+								},
+								{
+									"key": "new_password_confirmation",
+									"value": "hello",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor/password-reset?token=zN9yqKm03i342vviyYfD",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor",
+								"password-reset"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "zN9yqKm03i342vviyYfD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "request-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "vendor@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor/password-reset/request",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor",
+								"password-reset",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset- user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "new_password",
+									"value": "what",
+									"type": "text"
+								},
+								{
+									"key": "new_password_confirmation",
+									"value": "what",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user/password-reset?token=GsBlQVWnZCz8fz6kb9mp ",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"password-reset"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "GsBlQVWnZCz8fz6kb9mp "
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BlockedChat",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/block/:to_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"block",
+								":to_id"
+							],
+							"variable": [
+								{
+									"key": "to_id",
+									"value": "6"
+								}
 							]
 						}
 					},

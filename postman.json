@@ -62,12 +62,12 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "admin@admin.com",
+									"value": "customer@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "1234",
+									"value": "P@ssw0rd",
 									"type": "text"
 								}
 							]
@@ -808,7 +808,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku3-edit\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": {\n                \"1\": \"red-edit\",\n                \"2\": 49\n            },\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": 2,\n            \"availability\": 1,\n            \"sku\": \"sku2-edit\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": {\n                \"1\": \"blue-edit\",\n                \"2\": 49\n            },\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"new-from-updateOrCreate\",\n            \"stock\": 100,\n            \"base_price\": 200,\n            \"selected_attribute\": {\n                \"1\": \"yellow\",\n                \"2\": 41\n            },\n            \"quantity\": {\n                \"1-10\": 200,\n                \"11-22\": 150\n            }\n        }\n    ],\n    \"delete_id\": [1]\n}",
+							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku3-edit\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": [\n                {\n                    \"attribute_id\": 1,\n                    \"attribute_value\": \"red-edit\"\n                },\n                {\n                    \"attribute_id\": 2,\n                    \"attribute_value\": 49\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": 2,\n            \"availability\": 1,\n            \"sku\": \"sku2-edit\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": [\n                {\n                    \"attribute_id\": 1,\n                    \"attribute_value\": \"blue-edit\"\n                },\n                {\n                    \"attribute_id\": 2,\n                    \"attribute_value\": 49\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"new-from-updateOrCreate\",\n            \"stock\": 100,\n            \"base_price\": 200,\n            \"selected_attribute\": {\n                \"1\": \"yellow\",\n                \"2\": 41\n            },\n            \"quantity\": {\n                \"1-10\": 200,\n                \"11-22\": 150\n            }\n        }\n    ],\n    \"delete_id\": [1]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -884,6 +884,167 @@
 								"product",
 								"change-status",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product by category(user)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/product?search_value=&category=1&sub_category&sub_sub_category&limit=10&status=draft",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"product"
+							],
+							"query": [
+								{
+									"key": "search_value",
+									"value": ""
+								},
+								{
+									"key": "category",
+									"value": "1"
+								},
+								{
+									"key": "sub_category",
+									"value": null
+								},
+								{
+									"key": "sub_sub_category",
+									"value": null
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "status",
+									"value": "draft"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product review(user)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "star",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "pehele istamal karo phir biswas karo",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user/review",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single product(user)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "store wishlist (user)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user/wishlist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get wishlist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/wishlist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"wishlist"
 							]
 						}
 					},
@@ -977,7 +1138,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor/banner/promotional-banner",
+							"raw": "{{url}}/api/vendor/banner/promotional-bannerasd",
 							"host": [
 								"{{url}}"
 							],
@@ -985,7 +1146,7 @@
 								"api",
 								"vendor",
 								"banner",
-								"promotional-banner"
+								"promotional-bannerasd"
 							]
 						}
 					},
@@ -1108,7 +1269,7 @@
 							"formdata": [
 								{
 									"key": "to_id",
-									"value": "2",
+									"value": "3",
 									"type": "text"
 								},
 								{
@@ -1277,15 +1438,21 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/message/16/received",
+							"raw": "{{url}}/api/message/:message_id/received",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"message",
-								"16",
+								":message_id",
 								"received"
+							],
+							"variable": [
+								{
+									"key": "message_id",
+									"value": "11"
+								}
 							]
 						}
 					},
@@ -1334,36 +1501,6 @@
 							"path": [
 								"api",
 								"package-subscription"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "vendor list with package detail",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/vendor/user/package/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"vendor",
-								"user",
-								"package",
-								""
 							]
 						}
 					},
@@ -1601,7 +1738,515 @@
 							"variable": [
 								{
 									"key": "to_id",
-									"value": "6"
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unblock",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/unblock/:to_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unblock",
+								":to_id"
+							],
+							"variable": [
+								{
+									"key": "to_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProductQuestion",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "What is your store located?!",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/question",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"question"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "What is your store located?",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "put",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/question/:question_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"question",
+								":question_id"
+							],
+							"variable": [
+								{
+									"key": "question_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/question/:question_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"question",
+								":question_id"
+							],
+							"variable": [
+								{
+									"key": "question_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/question/?product_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"question",
+								""
+							],
+							"query": [
+								{
+									"key": "product_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/question/:question_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"question",
+								":question_id"
+							],
+							"variable": [
+								{
+									"key": "question_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProductAnswer",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "New Baneshwor",
+									"type": "text"
+								},
+								{
+									"key": "question_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/answer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "Very Old Baneshwor",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "put",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/answer/:answer_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"answer",
+								":answer_id"
+							],
+							"variable": [
+								{
+									"key": "answer_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/answer/:answer_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"answer",
+								":answer_id"
+							],
+							"variable": [
+								{
+									"key": "answer_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/answer?question_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"answer"
+							],
+							"query": [
+								{
+									"key": "question_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/answer/:answer_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"answer",
+								":answer_id"
+							],
+							"variable": [
+								{
+									"key": "answer_id",
+									"value": "5"
 								}
 							]
 						}

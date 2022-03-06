@@ -490,6 +490,219 @@
 			"name": "Product",
 			"item": [
 				{
+					"name": "review",
+					"item": [
+						{
+							"name": "store review(user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "star",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "pehele istamal karo phir biswas karo",
+											"type": "text"
+										},
+										{
+											"key": "product_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/user/review",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"review"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "store review reply(vendor)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "reply",
+											"value": "ok",
+											"type": "text"
+										},
+										{
+											"key": "product_review_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/vendor/user/reply",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"vendor",
+										"user",
+										"reply"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get review",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/vendor/user/review",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"vendor",
+										"user",
+										"review"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "wishlist",
+					"item": [
+						{
+							"name": "store wishlist(user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/user/wishlist",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"wishlist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get wishlist(user)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/user/wishlist",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"wishlist"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "storeProduct",
 					"request": {
 						"auth": {
@@ -506,7 +719,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"title1\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"sub_sub_category_id\": \"1\",\n    \"video_url\": \"video_url1\",\n    \"description\": \"description1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"title1\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"1\",\n    \"sub_sub_category_id\": \"1\",\n    \"video_url\": \"video_url1\",\n    \"description\": \"description1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -935,116 +1148,27 @@
 					"response": []
 				},
 				{
-					"name": "product review(user)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "star",
-									"value": "2",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "pehele istamal karo phir biswas karo",
-									"type": "text"
-								},
-								{
-									"key": "product_id",
-									"value": "1",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/user/review",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"review"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "single product(user)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
-					},
-					"response": []
-				},
-				{
-					"name": "store wishlist (user)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "product_id",
-									"value": "1",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/user/wishlist",
+							"raw": "{{url}}/api/user/product/title1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user",
-								"wishlist"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get wishlist",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/user/wishlist",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"wishlist"
+								"product",
+								"title1"
 							]
 						}
 					},
@@ -2247,6 +2371,691 @@
 								{
 									"key": "answer_id",
 									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VendorShipping",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "district_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "shipping_price",
+									"value": "222",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor-shipping",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor-shipping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "district_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "shipping_price",
+									"value": "2222",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "put",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor-shipping/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor-shipping",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor-shipping",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor-shipping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor-shipping/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor-shipping",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor-shipping/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor-shipping",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserAddress",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "BIshal GUrung",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "123122131",
+									"type": "text"
+								},
+								{
+									"key": "district_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "province_id",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "full_address",
+									"value": "kathmandu",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "home",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "is_primary",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user-address",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "BIshal GUrung",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "123122131",
+									"type": "text"
+								},
+								{
+									"key": "district_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "province_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "full_address",
+									"value": "Mahadevsthan, Srinkhalla GAlli, Kathmandu",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "home",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "put",
+									"type": "text"
+								},
+								{
+									"key": "is_primary",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user-address/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-address",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/user-address/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-address",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/user-address",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/user-address/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-address",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserProfile",
+			"item": [
+				{
+					"name": "store/update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Vendor",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "vendor@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "dob",
+									"value": "1997/06/05",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "female",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "98989898",
+									"type": "text"
+								},
+								{
+									"key": "profile_pic",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Pictures/Desktop Screenshot 2022.02.18 - 14.53.10.37.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user-profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "BIshal GUrung",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "123122131",
+									"type": "text"
+								},
+								{
+									"key": "district_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "province_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "full_address",
+									"value": "Pokhara",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "home",
+									"type": "text"
+								},
+								{
+									"key": "is_primary",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user-profile/:user_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-profile",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete profile pic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "BIshal GUrung",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "123122131",
+									"type": "text"
+								},
+								{
+									"key": "district_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "province_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "full_address",
+									"value": "Pokhara",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "home",
+									"type": "text"
+								},
+								{
+									"key": "is_primary",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user-profile/:user_id/profile-pic",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-profile",
+								":user_id",
+								"profile-pic"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "6"
 								}
 							]
 						}

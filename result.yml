@@ -42,6 +42,9 @@ tags:
   - name: VendorShipping
   - name: UserAddress
   - name: UserProfile
+  - name: EmailVerification
+  - name: Notification
+  - name: cart
 paths:
   /api/user/register:
     post:
@@ -386,8 +389,8 @@ paths:
               example:
                 title: title1
                 category_id: 1
-                sub_category_id: '1'
-                sub_sub_category_id: '1'
+                sub_category_id: ''
+                sub_sub_category_id: ''
                 video_url: video_url1
                 description: description1
                 seo_title: seo_title1
@@ -417,6 +420,52 @@ paths:
       tags:
         - Product
       summary: getAllProducts
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/store-attribute:
+    post:
+      tags:
+        - Product
+      summary: store attribute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                product_id: 1
+                attribute:
+                  id: 1
+                  value: blue
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/delete-attribute/1:
+    delete:
+      tags:
+        - Product
+      summary: delete attribute
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/product-attribute/1:
+    get:
+      tags:
+        - Product
+      summary: get product attribute
       security:
         - bearerAuth: []
       responses:
@@ -490,7 +539,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/save-image:
+  /api/product/save-image/{product_id}:
     post:
       tags:
         - Product
@@ -506,7 +555,25 @@ paths:
                   format: binary
                 type:
                   type: string
-                  example: featured_image
+                  example: gallary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: product_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/get-combination/1:
+    get:
+      tags:
+        - Product
+      summary: getProductCombination
       security:
         - bearerAuth: []
       responses:
@@ -518,7 +585,7 @@ paths:
     post:
       tags:
         - Product
-      summary: updateOrCreateCombination
+      summary: update or create combination
       requestBody:
         content:
           application/json:
@@ -532,10 +599,8 @@ paths:
                     stock: 51
                     base_price: 101
                     selected_attribute:
-                      - attribute_id: 1
-                        attribute_value: red-edit
-                      - attribute_id: 2
-                        attribute_value: 49
+                      - 1
+                      - 3
                     quantity:
                       1-10: 101
                       11-22: 51
@@ -545,10 +610,8 @@ paths:
                     stock: 101
                     base_price: 201
                     selected_attribute:
-                      - attribute_id: 1
-                        attribute_value: blue-edit
-                      - attribute_id: 2
-                        attribute_value: 49
+                      - 1
+                      - 3
                     quantity:
                       1-10: 201
                       11-22: 151
@@ -558,27 +621,12 @@ paths:
                     stock: 100
                     base_price: 200
                     selected_attribute:
-                      - attribute_id: 1
-                        attribute_value: yellow
-                      - attribute_id: 2
-                        attribute_value: 42
+                      - 1
+                      - 4
                     quantity:
                       1-10: 200
                       11-22: 150
-                delete_id:
-                  - 1
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/product/get-combination/1:
-    get:
-      tags:
-        - Product
-      summary: getProductCombination
+                delete_id: []
       security:
         - bearerAuth: []
       responses:
@@ -612,6 +660,8 @@ paths:
                 status:
                   type: string
                   example: Published
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -632,14 +682,6 @@ paths:
           schema:
             type: integer
           example: '1'
-        - name: sub_category
-          in: query
-          schema:
-            type: string
-        - name: sub_sub_category
-          in: query
-          schema:
-            type: string
         - name: limit
           in: query
           schema:
@@ -844,7 +886,7 @@ paths:
                   example: '1'
                 user_id:
                   type: integer
-                  example: '7'
+                  example: '6'
       security:
         - bearerAuth: []
       responses:
@@ -987,7 +1029,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/question:
+  /api/product/question/:
     post:
       tags:
         - ProductQuestion
@@ -1000,7 +1042,7 @@ paths:
               properties:
                 content:
                   type: string
-                  example: What is your store located?!
+                  example: Where is your store located?!
                 user_id:
                   type: integer
                   example: '6'
@@ -1009,6 +1051,23 @@ paths:
                   example: '1'
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - ProductQuestion
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: product_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1081,24 +1140,6 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/product/question/:
-    get:
-      tags:
-        - ProductQuestion
-      summary: index
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: product_id
-          in: query
-          schema:
-            type: integer
           example: '1'
       responses:
         '200':
@@ -1207,7 +1248,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '5'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -1488,6 +1529,112 @@ paths:
             type: integer
           required: true
           example: '6'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/send-verification-email:
+    post:
+      tags:
+        - EmailVerification
+      summary: send email verification
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: vendor@gmail.com
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/verify-email:
+    post:
+      tags:
+        - EmailVerification
+      summary: verify email
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: zXsLhDQ6nCSWpxSimoFgLzVtaMzmBV3ab3ztqUrQ72dTYWd7IU
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/notification:
+    get:
+      tags:
+        - Notification
+      summary: index
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/notification/3b4f6754-193d-4b3a-bf34-9a7766f1c379/read:
+    get:
+      tags:
+        - Notification
+      summary: read-at
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cart/cart:
+    get:
+      tags:
+        - cart
+      summary: store cart
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /000/api/test:
+    post:
+      tags:
+        - default
+      summary: test
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: ad22
+                roll_no:
+                  type: integer
+                  example: '123'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response

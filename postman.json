@@ -200,6 +200,41 @@
 					"response": []
 				},
 				{
+					"name": "homepage",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vendor/user/home-page?product_limit=5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"home-page"
+							],
+							"query": [
+								{
+									"key": "product_limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "store vendor confidential",
 					"request": {
 						"auth": {
@@ -703,44 +738,6 @@
 					]
 				},
 				{
-					"name": "storeProduct",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"title1\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video_url1\",\n    \"description\": \"description1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/product/product",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"product",
-								"product"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "store attribute",
 					"request": {
 						"auth": {
@@ -757,7 +754,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"product_id\": 1,\n    \"attribute\": {\n        \"id\": 1,\n        \"value\": \"blue\"\n    }\n}",
+							"raw": "{\n    \"product_id\": 1,\n    \"attribute\": {\n        \"id\": 1,\n        \"value\": \"red\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -842,6 +839,44 @@
 								"product",
 								"product-attribute",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "storeProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"title1\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video_url1\",\n    \"description\": \"description1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"product"
 							]
 						}
 					},
@@ -1012,11 +1047,11 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/user--49/Pictures/dream-theater.jpg"
+									"src": "/home/user--49/Pictures/dodge.png"
 								},
 								{
 									"key": "type",
-									"value": "gallary",
+									"value": "featured_image",
 									"type": "text"
 								}
 							]
@@ -1035,7 +1070,7 @@
 							"variable": [
 								{
 									"key": "product_id",
-									"value": null
+									"value": "1"
 								}
 							]
 						}
@@ -1096,7 +1131,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku3-edit\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": [1, 3],\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": 2,\n            \"availability\": 1,\n            \"sku\": \"sku2-edit\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": [1, 3],\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"new-from-updateOrCreate\",\n            \"stock\": 100,\n            \"base_price\": 200,\n            \"selected_attribute\": [1, 4],\n            \"quantity\": {\n                \"1-10\": 200,\n                \"11-22\": 150\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
+							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku3-edit\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": [\n                {\n                    \"attribute_id\": 1,\n                    \"value_id\": 2\n                },\n                {\n                    \"attribute_id\": 2,\n                    \"value_id\": 6\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2-edit\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": [\n                {\n                    \"attribute_id\": 1,\n                    \"value_id\": 1\n                },\n                {\n                    \"attribute_id\": 2,\n                    \"value_id\": 5\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1188,46 +1223,38 @@
 					"response": []
 				},
 				{
-					"name": "get product by category(user)",
+					"name": "get product by category(filters)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/user/product?search_value=&category=1&limit=10&status=draft",
+							"raw": "{{url}}/api/product/filter?category=1&limit=10",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"user",
-								"product"
+								"product",
+								"filter"
 							],
 							"query": [
-								{
-									"key": "search_value",
-									"value": ""
-								},
 								{
 									"key": "category",
 									"value": "1"
 								},
 								{
 									"key": "sub_category",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "sub_sub_category",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "10"
-								},
-								{
-									"key": "status",
-									"value": "draft"
 								}
 							]
 						}
@@ -1235,7 +1262,7 @@
 					"response": []
 				},
 				{
-					"name": "single product(user)",
+					"name": "single product",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1247,13 +1274,12 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/user/product/title1",
+							"raw": "{{url}}/api/product/title1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"user",
 								"product",
 								"title1"
 							]
@@ -1286,7 +1312,7 @@
 							"formdata": [
 								{
 									"key": "key",
-									"value": "promotional-banner",
+									"value": "main-banner",
 									"type": "text"
 								},
 								{
@@ -1297,7 +1323,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Pictures/Destroyer Bad Bunny.mp4_snapshot_00.07_[2022.02.01_11.32.12].jpg"
+									"src": "/C:/Users/Leon Schiffer/Pictures/Destroyer Bad Bunny.mp4_snapshot_00.09_[2022.02.01_11.31.24].jpg"
 								},
 								{
 									"key": "link",
@@ -1349,7 +1375,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor/banner/promotional-bannerasd",
+							"raw": "{{url}}/api/vendor/banner/promotional-banner",
 							"host": [
 								"{{url}}"
 							],
@@ -1357,7 +1383,7 @@
 								"api",
 								"vendor",
 								"banner",
-								"promotional-bannerasd"
+								"promotional-banner"
 							]
 						}
 					},
@@ -1694,12 +1720,7 @@
 							"formdata": [
 								{
 									"key": "package_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "user_id",
-									"value": "6",
+									"value": "3",
 									"type": "text"
 								}
 							]
@@ -1733,7 +1754,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/vendor/user/package/7",
+							"raw": "{{url}}/vendor/user/package/:user_id",
 							"host": [
 								"{{url}}"
 							],
@@ -1741,7 +1762,13 @@
 								"vendor",
 								"user",
 								"package",
-								"7"
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "6"
+								}
 							]
 						}
 					},
@@ -2150,7 +2177,7 @@
 							"variable": [
 								{
 									"key": "question_id",
-									"value": "1"
+									"value": "5"
 								}
 							]
 						}
@@ -2270,7 +2297,7 @@
 								},
 								{
 									"key": "question_id",
-									"value": "3",
+									"value": "1",
 									"type": "text"
 								}
 							]
@@ -3309,17 +3336,39 @@
 				{
 					"name": "store cart",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "product_combination",
+									"value": "",
+									"description": "nullable",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "{{url}}/api/cart/cart",
+							"raw": "{{url}}/api/cart/cart/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"cart",
-								"cart"
+								"cart",
+								""
 							]
 						}
 					},

@@ -1175,7 +1175,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku3-edit\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": [\n                {\n                    \"attribute_id\": 1,\n                    \"value_id\": 2\n                },\n                {\n                    \"attribute_id\": 2,\n                    \"value_id\": 6\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2-edit\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": [\n                {\n                    \"attribute_id\": 1,\n                    \"value_id\": 1\n                },\n                {\n                    \"attribute_id\": 2,\n                    \"value_id\": 5\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
+							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku1\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 1,\n                    \"value_id\": 3\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 2,\n                    \"value_id\": 5\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 1,\n                    \"value_id\": 2\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 2,\n                    \"value_id\": 7\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1318,13 +1318,14 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/product/title1",
+							"raw": "{{url}}/api/product/single/title1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"product",
+								"single",
 								"title1"
 							]
 						}
@@ -3378,7 +3379,7 @@
 			"name": "cart",
 			"item": [
 				{
-					"name": "store cart",
+					"name": "add to cart",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -3387,18 +3388,18 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "product_combination",
-									"value": "",
-									"description": "nullable",
+									"value": "2",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
 									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "product_combination_id",
+									"value": "",
+									"description": "nullable",
 									"type": "text"
 								}
 							]
@@ -3415,15 +3416,6 @@
 								""
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "get cart",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
 					},
 					"response": []
 				}

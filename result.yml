@@ -753,15 +753,9 @@ paths:
                 key:
                   type: string
                   example: main-banner
-                description:
-                  type: string
-                  example: asldjwklawda
                 image:
                   type: string
                   format: binary
-                link:
-                  type: string
-                  example: https://google.com
       security:
         - bearerAuth: []
       responses:
@@ -1157,7 +1151,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '5'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -1197,7 +1191,7 @@ paths:
                   example: New Baneshwor
                 question_id:
                   type: integer
-                  example: '1'
+                  example: '4'
       security:
         - bearerAuth: []
       responses:
@@ -1635,7 +1629,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/cart/cart/:
+  /api/cart/:
     post:
       tags:
         - cart
@@ -1648,23 +1642,49 @@ paths:
               properties:
                 product_id:
                   type: integer
-                  example: '2'
+                  example: '1'
                 quantity:
                   type: integer
-                  example: '2'
+                  example: '1'
                 product_combination_id:
-                  type: string
+                  type: integer
                   description: nullable
+                  example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cart/user/1:
+    get:
+      tags:
+        - cart
+      summary: get cart
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
   /api/order:
-    get:
+    post:
       tags:
         - order
       summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                sub_total:
+                  type: integer
+                  example: '123'
+                grand_total:
+                  type: integer
+                  example: '123'
+                payment_type:
+                  type: string
+                  example: cash_on_delivery
       responses:
         '200':
           description: Successful response

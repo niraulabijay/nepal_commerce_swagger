@@ -1361,19 +1361,9 @@
 									"type": "text"
 								},
 								{
-									"key": "description",
-									"value": "asldjwklawda",
-									"type": "text"
-								},
-								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Pictures/Destroyer Bad Bunny.mp4_snapshot_00.09_[2022.02.01_11.31.24].jpg"
-								},
-								{
-									"key": "link",
-									"value": "https://google.com",
-									"type": "text"
+									"src": "/C:/Users/Leon Schiffer/Pictures/Brock Lesnar Sparta Kicks Elimination Chamber Glass.mp4_snapshot_00.18_[2022.02.20_20.58.16].jpg"
 								}
 							]
 						},
@@ -2222,7 +2212,7 @@
 							"variable": [
 								{
 									"key": "question_id",
-									"value": "5"
+									"value": "2"
 								}
 							]
 						}
@@ -2342,7 +2332,7 @@
 								},
 								{
 									"key": "question_id",
-									"value": "1",
+									"value": "4",
 									"type": "text"
 								}
 							]
@@ -3388,32 +3378,51 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "2",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "2",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "product_combination_id",
-									"value": "",
+									"value": "5",
 									"description": "nullable",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/cart/cart/",
+							"raw": "{{url}}/api/cart/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"cart",
-								"cart",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cart/user/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"user",
+								"1"
 							]
 						}
 					},
@@ -3427,8 +3436,28 @@
 				{
 					"name": "store",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sub_total",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "grand_total",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "payment_type",
+									"value": "cash_on_delivery",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
 							"raw": "{{url}}/api/order",
 							"host": [

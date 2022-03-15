@@ -6,6 +6,96 @@
 	},
 	"item": [
 		{
+			"name": "wishlist",
+			"item": [
+				{
+					"name": "store wishlist(user)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/wishlist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get wishlist(user)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/wishlist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove wishlist",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/wishlist/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"wishlist",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "user",
 			"item": [
 				{
@@ -131,40 +221,6 @@
 								"vendor",
 								"user",
 								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "vendor login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "email",
-									"value": "vendor@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "P@ssw0rd",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/vendor/user/login",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"vendor",
-								"user",
-								"login"
 							]
 						}
 					},
@@ -323,6 +379,40 @@
 								"vendor",
 								"user",
 								"confidential"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vendor login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "vendor@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vendor/user/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"login"
 							]
 						}
 					},
@@ -557,19 +647,19 @@
 										},
 										{
 											"key": "product_id",
-											"value": "1",
+											"value": "3",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/user/review",
+									"raw": "{{url}}/api/product/review",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"user",
+										"product",
 										"review"
 									]
 								}
@@ -607,13 +697,13 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/vendor/user/reply",
+									"raw": "{{url}}/api/product/reply",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"vendor",
-										"user",
+										"api",
+										"product",
 										"reply"
 									]
 								}
@@ -649,87 +739,14 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/vendor/user/review",
+									"raw": "{{url}}/api/product/review",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"vendor",
-										"user",
+										"api",
+										"product",
 										"review"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "wishlist",
-					"item": [
-						{
-							"name": "store wishlist(user)",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "product_id",
-											"value": "1",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/user/wishlist",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"user",
-										"wishlist"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "get wishlist(user)",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/api/user/wishlist",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"user",
-										"wishlist"
 									]
 								}
 							},
@@ -1070,7 +1087,7 @@
 							"variable": [
 								{
 									"key": "product_id",
-									"value": "1"
+									"value": "3"
 								}
 							]
 						}
@@ -1285,16 +1302,6 @@
 								{
 									"key": "category",
 									"value": "1"
-								},
-								{
-									"key": "sub_category",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "sub_sub_category",
-									"value": "",
-									"disabled": true
 								},
 								{
 									"key": "limit",
@@ -1733,6 +1740,92 @@
 			]
 		},
 		{
+			"name": "BlockedChat",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/block/:to_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"block",
+								":to_id"
+							],
+							"variable": [
+								{
+									"key": "to_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unblock",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/unblock/:to_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unblock",
+								":to_id"
+							],
+							"variable": [
+								{
+									"key": "to_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "PackageSubscription",
 			"item": [
 				{
@@ -1968,92 +2061,6 @@
 								{
 									"key": "token",
 									"value": "GsBlQVWnZCz8fz6kb9mp "
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "BlockedChat",
-			"item": [
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/block/:to_id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"block",
-								":to_id"
-							],
-							"variable": [
-								{
-									"key": "to_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "unblock",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/unblock/:to_id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"unblock",
-								":to_id"
-							],
-							"variable": [
-								{
-									"key": "to_id",
-									"value": "1"
 								}
 							]
 						}
@@ -2923,6 +2930,76 @@
 					"response": []
 				},
 				{
+					"name": "district",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/district",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"district"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "province",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/province",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"province"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "index",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -3366,6 +3443,172 @@
 			]
 		},
 		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "store payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"title1\",\n    \"key\": [\n        {\n            \"name\": \"public_key\",\n            \"value\": \"340192386456\"\n        },\n        {\n            \"name\": \"private_key\",\n            \"value\": \"134526587662\"\n        }\n    ],\n    \"status\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all payments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get payment by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/payment/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"title1edit\",\n    \"key\": [\n        {\n            \"name\": \"public_key\",\n            \"value\": \"340192386456-edit\"\n        },\n        {\n            \"name\": \"private_key\",\n            \"value\": \"134526587662-edit\"\n        }\n    ],\n    \"status\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/payment/10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/payment/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "cart",
 			"item": [
 				{
@@ -3434,7 +3677,7 @@
 			"name": "order",
 			"item": [
 				{
-					"name": "store",
+					"name": "checkout",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -3454,10 +3697,30 @@
 								{
 									"key": "payment_type",
 									"value": "cash_on_delivery",
+									"description": " ",
 									"type": "text"
 								}
 							]
 						},
+						"url": {
+							"raw": "{{url}}/api/order/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all order (vendor)",
+					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
 							"raw": "{{url}}/api/order",
 							"host": [
@@ -3470,58 +3733,295 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get order filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/order/filter?search_value&status=asd&limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "search_value",
+									"value": null,
+									"description": "nullable"
+								},
+								{
+									"key": "status",
+									"value": "asd"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "nullable"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/order/status/000000001",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"status",
+								"000000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/order/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "test",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "ad22",
-							"type": "text"
+			"name": "Ticket",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "roll_no",
-							"value": "123",
-							"type": "text"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "subject",
+									"value": "aldjwklajlwkdj",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "alsjdlaksjdaklsjdaklsjdaslk",
+									"type": "text"
+								},
+								{
+									"key": "to_ids[]",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "to_ids[]",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/ticket/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ticket",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:8000/api/test",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"test"
-					]
+				{
+					"name": "ticket message store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ticket_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "alsjdwajljd\nasldjwalkjlsdjalkjd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/ticket-message/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ticket-message",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/ticket",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ticket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/ticket/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ticket",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "close",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/ticket/3/close",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ticket",
+								"3",
+								"close"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

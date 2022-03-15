@@ -24,6 +24,7 @@ components:
       type: http
       scheme: bearer
 tags:
+  - name: wishlist
   - name: user
   - name: vendor
   - name: Brand
@@ -31,12 +32,11 @@ tags:
   - name: Attribute
   - name: Product
   - name: Product > review
-  - name: Product > wishlist
   - name: Banner
   - name: Message
+  - name: BlockedChat
   - name: PackageSubscription
   - name: PasswordReset
-  - name: BlockedChat
   - name: ProductQuestion
   - name: ProductAnswer
   - name: VendorShipping
@@ -44,9 +44,53 @@ tags:
   - name: UserProfile
   - name: EmailVerification
   - name: Notification
+  - name: payment
   - name: cart
   - name: order
+  - name: Ticket
 paths:
+  /api/wishlist:
+    post:
+      tags:
+        - wishlist
+      summary: store wishlist(user)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+                  example: '3'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - wishlist
+      summary: get wishlist(user)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/wishlist/2:
+    delete:
+      tags:
+        - wishlist
+      summary: remove wishlist
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/user/register:
     post:
       tags:
@@ -117,28 +161,6 @@ paths:
                   type: string
                   example: P@ssw0rd
                 password_confirmation:
-                  type: string
-                  example: P@ssw0rd
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /vendor/user/login:
-    post:
-      tags:
-        - vendor
-      summary: vendor login
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: vendor@gmail.com
-                password:
                   type: string
                   example: P@ssw0rd
       responses:
@@ -229,6 +251,28 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /vendor/user/login:
+    post:
+      tags:
+        - vendor
+      summary: vendor login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: vendor@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/brand/brand:
     get:
       tags:
@@ -301,7 +345,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/user/review:
+  /api/product/review:
     post:
       tags:
         - Product > review
@@ -319,7 +363,7 @@ paths:
                   example: pehele istamal karo phir biswas karo
                 product_id:
                   type: integer
-                  example: '1'
+                  example: '3'
       security:
         - bearerAuth: []
       responses:
@@ -327,7 +371,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /vendor/user/reply:
+    get:
+      tags:
+        - Product > review
+      summary: get review
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/reply:
     post:
       tags:
         - Product > review
@@ -344,50 +399,6 @@ paths:
                 product_review_id:
                   type: integer
                   example: '1'
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /vendor/user/review:
-    get:
-      tags:
-        - Product > review
-      summary: get review
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/user/wishlist:
-    post:
-      tags:
-        - Product > wishlist
-      summary: store wishlist(user)
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                product_id:
-                  type: integer
-                  example: '1'
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Product > wishlist
-      summary: get wishlist(user)
       security:
         - bearerAuth: []
       responses:
@@ -583,7 +594,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -895,6 +906,50 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/block/{to_id}:
+    post:
+      tags:
+        - BlockedChat
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: to_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/unblock/{to_id}:
+    get:
+      tags:
+        - BlockedChat
+      summary: unblock
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: to_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/package-subscription:
     post:
       tags:
@@ -1009,50 +1064,6 @@ paths:
           schema:
             type: string
           example: GsBlQVWnZCz8fz6kb9mp
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/block/{to_id}:
-    post:
-      tags:
-        - BlockedChat
-      summary: store
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties: {}
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: to_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/unblock/{to_id}:
-    get:
-      tags:
-        - BlockedChat
-      summary: unblock
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: to_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1477,6 +1488,30 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/district:
+    get:
+      tags:
+        - UserAddress
+      summary: district
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/province:
+    get:
+      tags:
+        - UserAddress
+      summary: province
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/user-address/4:
     delete:
       tags:
@@ -1629,6 +1664,90 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/payment:
+    post:
+      tags:
+        - payment
+      summary: store payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: title1
+                key:
+                  - name: public_key
+                    value: '340192386456'
+                  - name: private_key
+                    value: '134526587662'
+                status: 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - payment
+      summary: get all payments
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/payment/3:
+    get:
+      tags:
+        - payment
+      summary: get payment by id
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - payment
+      summary: delete payment
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/payment/10:
+    patch:
+      tags:
+        - payment
+      summary: update payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: title1edit
+                key:
+                  - name: public_key
+                    value: 340192386456-edit
+                  - name: private_key
+                    value: 134526587662-edit
+                status: 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/cart/:
     post:
       tags:
@@ -1665,11 +1784,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order:
+  /api/order/store:
     post:
       tags:
         - order
-      summary: store
+      summary: checkout
       requestBody:
         content:
           multipart/form-data:
@@ -1684,37 +1803,154 @@ paths:
                   example: '123'
                 payment_type:
                   type: string
+                  description: ' '
                   example: cash_on_delivery
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /000/api/test:
+  /api/order:
+    get:
+      tags:
+        - order
+      summary: get all order (vendor)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/filter:
+    get:
+      tags:
+        - order
+      summary: get order filter
+      parameters:
+        - name: search_value
+          in: query
+          schema:
+            type: string
+          description: nullable
+        - name: status
+          in: query
+          schema:
+            type: string
+          example: asd
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: nullable
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/status/000000001:
+    get:
+      tags:
+        - order
+      summary: get order status
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/1:
+    get:
+      tags:
+        - order
+      summary: get order by id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/ticket/:
     post:
       tags:
-        - default
-      summary: test
+        - Ticket
+      summary: store
       requestBody:
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
-                name:
+                subject:
                   type: string
-                  example: ad22
-                roll_no:
+                  example: aldjwklajlwkdj
+                description:
+                  type: string
+                  example: alsjdlaksjdaklsjdaklsjdaslk
+                to_ids[]:
                   type: integer
-                  example: '123'
+                  example: '2'
       security:
         - bearerAuth: []
-      parameters:
-        - name: accept
-          in: header
-          schema:
-            type: string
-          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/ticket-message/:
+    post:
+      tags:
+        - Ticket
+      summary: ticket message store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                ticket_id:
+                  type: integer
+                  example: '3'
+                message:
+                  type: string
+                  example: |-
+                    alsjdwajljd
+                    asldjwalkjlsdjalkjd
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/ticket:
+    get:
+      tags:
+        - Ticket
+      summary: index
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/ticket/3:
+    get:
+      tags:
+        - Ticket
+      summary: show
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/ticket/3/close:
+    get:
+      tags:
+        - Ticket
+      summary: close
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response

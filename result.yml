@@ -735,6 +735,11 @@ paths:
           schema:
             type: integer
           example: '10'
+        - name: slug
+          in: query
+          schema:
+            type: string
+          example: title2
       responses:
         '200':
           description: Successful response
@@ -1761,24 +1766,26 @@ paths:
               properties:
                 product_id:
                   type: integer
-                  example: '1'
+                  example: '3'
                 quantity:
                   type: integer
                   example: '1'
                 product_combination_id:
                   type: integer
-                  description: nullable
-                  example: '5'
+                  example: '7'
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/cart/user/1:
     get:
       tags:
         - cart
       summary: get cart
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response

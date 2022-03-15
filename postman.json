@@ -1289,7 +1289,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?category=1&limit=10",
+							"raw": "{{url}}/api/product/filter?category=1&limit=10&slug=title2",
 							"host": [
 								"{{url}}"
 							],
@@ -1306,6 +1306,10 @@
 								{
 									"key": "limit",
 									"value": "10"
+								},
+								{
+									"key": "slug",
+									"value": "title2"
 								}
 							]
 						}
@@ -3614,6 +3618,16 @@
 				{
 					"name": "add to cart",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -3621,7 +3635,7 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "1",
+									"value": "3",
 									"type": "text"
 								},
 								{
@@ -3631,8 +3645,7 @@
 								},
 								{
 									"key": "product_combination_id",
-									"value": "5",
-									"description": "nullable",
+									"value": "7",
 									"type": "text"
 								}
 							]
@@ -3654,18 +3667,27 @@
 				{
 					"name": "get cart",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/cart/user/1",
+							"raw": "{{url}}/api/cart/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"cart",
-								"user",
-								"1"
+								""
 							]
 						}
 					},

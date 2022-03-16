@@ -227,6 +227,40 @@
 					"response": []
 				},
 				{
+					"name": "vendor login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "vendor@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vendor/user/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "get vendor detail",
 					"request": {
 						"auth": {
@@ -379,40 +413,6 @@
 								"vendor",
 								"user",
 								"confidential"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "vendor login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "email",
-									"value": "vendor@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "P@ssw0rd",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/vendor/user/login",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"vendor",
-								"user",
-								"login"
 							]
 						}
 					},
@@ -793,6 +793,57 @@
 					"response": []
 				},
 				{
+					"name": "update attribute",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "value",
+									"value": "reqwedasd",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/update-attribute/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"update-attribute",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "delete attribute",
 					"request": {
 						"auth": {
@@ -878,7 +929,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"title1\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video_url1\",\n    \"description\": \"description1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"title3\",\n    \"category_id\": 3,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video_url3\",\n    \"description\": \"description3\",\n    \"seo_title\": \"seo_title3\",\n    \"seo_description\": \"seo_description3\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -916,7 +967,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product1edit\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"1\",\n    \"sub_sub_category_id\": \"1\",\n    \"video_url\": \"video_url1edit\",\n    \"description\": \"description1edit\",\n    \"seo_title\": \"seo_title1edit\",\n    \"seo_description\": \"seo_description1edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"base_price\": \"333\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"product3edit\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"3\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video_url3edit\",\n    \"description\": \"description3edit\",\n    \"seo_title\": \"seo_title3edit\",\n    \"seo_description\": \"seo_description3edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"base_price\": \"333\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -924,7 +975,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product/product/1",
+							"raw": "{{url}}/api/product/product/3",
 							"host": [
 								"{{url}}"
 							],
@@ -932,7 +983,7 @@
 								"api",
 								"product",
 								"product",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -990,7 +1041,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/product/product/1",
+							"raw": "{{url}}/api/product/product/3",
 							"host": [
 								"{{url}}"
 							],
@@ -998,7 +1049,7 @@
 								"api",
 								"product",
 								"product",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -1161,7 +1212,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/product/get-combination/1",
+							"raw": "{{url}}/api/product/get-combination/3",
 							"host": [
 								"{{url}}"
 							],
@@ -1169,7 +1220,7 @@
 								"api",
 								"product",
 								"get-combination",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -1200,7 +1251,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product/store-combination/1",
+							"raw": "{{url}}/api/product/store-combination/3",
 							"host": [
 								"{{url}}"
 							],
@@ -1208,7 +1259,7 @@
 								"api",
 								"product",
 								"store-combination",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -1289,7 +1340,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?category=1&limit=10&slug=title2",
+							"raw": "{{url}}/api/product/filter?category=&limit=10&slug=",
 							"host": [
 								"{{url}}"
 							],
@@ -1301,15 +1352,18 @@
 							"query": [
 								{
 									"key": "category",
-									"value": "1"
+									"value": "",
+									"description": "nullable"
 								},
 								{
 									"key": "limit",
-									"value": "10"
+									"value": "10",
+									"description": "nullable"
 								},
 								{
 									"key": "slug",
-									"value": "title2"
+									"value": "",
+									"description": "nullable"
 								}
 							]
 						}
@@ -1342,6 +1396,45 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "delete attribute Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/delete-attribute/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"delete-attribute",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1356,7 +1449,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1399,14 +1492,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [
@@ -1421,14 +1507,14 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor/banner/promotional-banner",
+							"raw": "{{url}}/api/banner/6/promotional-banner",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"vendor",
 								"banner",
+								"6",
 								"promotional-banner"
 							]
 						}
@@ -1442,14 +1528,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [
@@ -1464,14 +1543,15 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor/banner",
+							"raw": "{{url}}/api/banner/6/vendor",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"vendor",
-								"banner"
+								"banner",
+								"6",
+								"vendor"
 							]
 						}
 					},
@@ -1485,7 +1565,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1754,7 +1834,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -1796,7 +1876,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -1840,7 +1920,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1878,7 +1958,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -1886,21 +1966,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/vendor/user/package/:user_id",
+							"raw": "{{url}}/vendor/user/package",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"vendor",
 								"user",
-								"package",
-								":user_id"
-							],
-							"variable": [
-								{
-									"key": "user_id",
-									"value": "6"
-								}
+								"package"
 							]
 						}
 					},
@@ -1945,14 +2018,7 @@
 					"name": "reset- vendor",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [],
@@ -2025,14 +2091,7 @@
 					"name": "reset- user",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [],
@@ -2052,7 +2111,7 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/user/password-reset?token=GsBlQVWnZCz8fz6kb9mp ",
+							"raw": "{{url}}/api/user/password-reset?token=GsBlQVWnZCz8fz6kb9mp",
 							"host": [
 								"{{url}}"
 							],
@@ -2064,7 +2123,7 @@
 							"query": [
 								{
 									"key": "token",
-									"value": "GsBlQVWnZCz8fz6kb9mp "
+									"value": "GsBlQVWnZCz8fz6kb9mp"
 								}
 							]
 						}
@@ -2084,7 +2143,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -2097,11 +2156,6 @@
 								{
 									"key": "content",
 									"value": "Where is your store located?!",
-									"type": "text"
-								},
-								{
-									"key": "user_id",
-									"value": "6",
 									"type": "text"
 								},
 								{
@@ -2134,7 +2188,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -2146,7 +2200,7 @@
 							"formdata": [
 								{
 									"key": "content",
-									"value": "What is your store located?",
+									"value": "What is your store located?asdjakld",
 									"type": "text"
 								},
 								{
@@ -2180,7 +2234,7 @@
 							"variable": [
 								{
 									"key": "question_id",
-									"value": "1"
+									"value": "7"
 								}
 							]
 						}
@@ -2194,14 +2248,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -2223,7 +2270,7 @@
 							"variable": [
 								{
 									"key": "question_id",
-									"value": "2"
+									"value": "7"
 								}
 							]
 						}
@@ -2237,14 +2284,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -2281,7 +2321,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -2306,7 +2346,7 @@
 							"variable": [
 								{
 									"key": "question_id",
-									"value": "1"
+									"value": "7"
 								}
 							]
 						}
@@ -2326,7 +2366,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -2370,7 +2410,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -2406,7 +2446,7 @@
 							"variable": [
 								{
 									"key": "answer_id",
-									"value": "5"
+									"value": "1"
 								}
 							]
 						}
@@ -2420,14 +2460,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -2449,7 +2482,7 @@
 							"variable": [
 								{
 									"key": "answer_id",
-									"value": "5"
+									"value": "1"
 								}
 							]
 						}
@@ -2463,14 +2496,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -2479,7 +2505,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/product/answer?question_id=1",
+							"raw": "{{url}}/api/product/answer?question_id=4",
 							"host": [
 								"{{url}}"
 							],
@@ -2491,7 +2517,7 @@
 							"query": [
 								{
 									"key": "question_id",
-									"value": "1"
+									"value": "4"
 								}
 							]
 						}
@@ -2506,7 +2532,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -2531,7 +2557,7 @@
 							"variable": [
 								{
 									"key": "answer_id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -2551,7 +2577,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -3635,7 +3661,7 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "3",
+									"value": "4",
 									"type": "text"
 								},
 								{
@@ -3645,7 +3671,7 @@
 								},
 								{
 									"key": "product_combination_id",
-									"value": "7",
+									"value": "4",
 									"type": "text"
 								}
 							]

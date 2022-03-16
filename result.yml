@@ -23,6 +23,9 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth
 tags:
   - name: wishlist
   - name: user
@@ -168,6 +171,28 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /vendor/user/login:
+    post:
+      tags:
+        - vendor
+      summary: vendor login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: vendor@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /vendor/user/confidential:
     get:
       tags:
@@ -246,28 +271,6 @@ paths:
           schema:
             type: integer
           example: '5'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /vendor/user/login:
-    post:
-      tags:
-        - vendor
-      summary: vendor login
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: vendor@gmail.com
-                password:
-                  type: string
-                  example: P@ssw0rd
       responses:
         '200':
           description: Successful response
@@ -428,11 +431,35 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/product/update-attribute/1:
+    post:
+      tags:
+        - Product
+      summary: update attribute
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  example: reqwedasd
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/product/delete-attribute/1:
     delete:
       tags:
         - Product
-      summary: delete attribute
+      summary: delete attribute Copy
       security:
         - bearerAuth: []
       responses:
@@ -463,14 +490,14 @@ paths:
             schema:
               type: object
               example:
-                title: title1
-                category_id: 1
+                title: title3
+                category_id: 3
                 sub_category_id: ''
                 sub_sub_category_id: ''
-                video_url: video_url1
-                description: description1
-                seo_title: seo_title1
-                seo_description: seo_description1
+                video_url: video_url3
+                description: description3
+                seo_title: seo_title3
+                seo_description: seo_description3
                 seo_keyword:
                   - keyword1
                   - keyword2
@@ -503,7 +530,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/product/1:
+  /api/product/product/3:
     patch:
       tags:
         - Product
@@ -514,14 +541,14 @@ paths:
             schema:
               type: object
               example:
-                title: product1edit
+                title: product3edit
                 category_id: '1'
-                sub_category_id: '1'
-                sub_sub_category_id: '1'
-                video_url: video_url1edit
-                description: description1edit
-                seo_title: seo_title1edit
-                seo_description: seo_description1edit
+                sub_category_id: '3'
+                sub_sub_category_id: ''
+                video_url: video_url3edit
+                description: description3edit
+                seo_title: seo_title3edit
+                seo_description: seo_description3edit
                 seo_keyword:
                   - keywordedit1
                   - keywordedit2
@@ -558,6 +585,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/product/product/1:
     delete:
       tags:
         - Product
@@ -624,7 +652,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/get-combination/1:
+  /api/product/get-combination/3:
     get:
       tags:
         - Product
@@ -636,7 +664,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/store-combination/1:
+  /api/product/store-combination/3:
     post:
       tags:
         - Product
@@ -728,18 +756,19 @@ paths:
         - name: category
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
+          description: nullable
         - name: limit
           in: query
           schema:
             type: integer
+          description: nullable
           example: '10'
         - name: slug
           in: query
           schema:
             type: string
-          example: title2
+          description: nullable
       responses:
         '200':
           description: Successful response
@@ -779,12 +808,31 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/banner/6/promotional-banner:
+    get:
+      tags:
+        - Banner
+      summary: show
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/banner/6/vendor:
     get:
       tags:
         - Banner
       summary: index
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       parameters:
         - name: Accept
           in: header
@@ -797,23 +845,6 @@ paths:
           content:
             application/json: {}
   /api/vendor/banner/promotional-banner:
-    get:
-      tags:
-        - Banner
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
     delete:
       tags:
         - Banner
@@ -976,20 +1007,13 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /vendor/user/package/{user_id}:
+  /vendor/user/package:
     get:
       tags:
         - PackageSubscription
       summary: show vendor with package detail
       security:
         - bearerAuth: []
-      parameters:
-        - name: user_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '6'
       responses:
         '200':
           description: Successful response
@@ -1032,7 +1056,7 @@ paths:
                   type: string
                   example: hello
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       parameters:
         - name: token
           in: query
@@ -1062,7 +1086,7 @@ paths:
                   type: string
                   example: what
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       parameters:
         - name: token
           in: query
@@ -1088,9 +1112,6 @@ paths:
                 content:
                   type: string
                   example: Where is your store located?!
-                user_id:
-                  type: integer
-                  example: '6'
                 product_id:
                   type: integer
                   example: '1'
@@ -1106,7 +1127,7 @@ paths:
         - ProductQuestion
       summary: index
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       parameters:
         - name: product_id
           in: query
@@ -1131,7 +1152,7 @@ paths:
               properties:
                 content:
                   type: string
-                  example: What is your store located?
+                  example: What is your store located?asdjakld
                 user_id:
                   type: integer
                   example: '7'
@@ -1149,7 +1170,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -1160,14 +1181,14 @@ paths:
         - ProductQuestion
       summary: show
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       parameters:
         - name: question_id
           in: path
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -1185,7 +1206,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -1220,13 +1241,13 @@ paths:
         - ProductAnswer
       summary: index
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       parameters:
         - name: question_id
           in: query
           schema:
             type: integer
-          example: '1'
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -1257,7 +1278,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '5'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1268,14 +1289,14 @@ paths:
         - ProductAnswer
       summary: show
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       parameters:
         - name: answer_id
           in: path
           schema:
             type: integer
           required: true
-          example: '5'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1293,7 +1314,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1766,13 +1787,13 @@ paths:
               properties:
                 product_id:
                   type: integer
-                  example: '3'
+                  example: '4'
                 quantity:
                   type: integer
                   example: '1'
                 product_combination_id:
                   type: integer
-                  example: '7'
+                  example: '4'
       security:
         - bearerAuth: []
       responses:

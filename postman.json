@@ -2326,6 +2326,43 @@
 					"response": []
 				},
 				{
+					"name": "all vendor questions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/questions/vendor",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"questions",
+								"vendor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "index",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -2435,7 +2472,7 @@
 								},
 								{
 									"key": "question_id",
-									"value": "4",
+									"value": "9",
 									"type": "text"
 								}
 							]
@@ -3935,6 +3972,48 @@
 								"api",
 								"order",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get vendor order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "limit",
+									"value": "",
+									"description": "nullable",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/order",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order"
 							]
 						}
 					},

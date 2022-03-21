@@ -691,7 +691,7 @@
 										},
 										{
 											"key": "product_review_id",
-											"value": "1",
+											"value": "6",
 											"type": "text"
 										}
 									]
@@ -755,6 +755,30 @@
 					]
 				},
 				{
+					"name": "vendor",
+					"item": [
+						{
+							"name": "find vendor",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/vendor/user/vendor-shop",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"vendor",
+										"user",
+										"vendor-shop"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "store attribute",
 					"request": {
 						"auth": {
@@ -762,7 +786,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -771,7 +795,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"product_id\": 1,\n    \"attribute\": {\n        \"id\": 1,\n        \"value\": \"red\"\n    }\n}",
+							"raw": "{\n    \"product_id\": 3,\n    \"attribute\": {\n        \"id\": 1,\n        \"value\": \"red\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -800,7 +824,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -812,7 +836,7 @@
 							"formdata": [
 								{
 									"key": "value",
-									"value": "reqwedasd",
+									"value": "red",
 									"type": "text"
 								},
 								{
@@ -821,12 +845,7 @@
 									"type": "text",
 									"disabled": true
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/api/product/update-attribute/1",
@@ -851,7 +870,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -890,7 +909,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -920,7 +939,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -929,7 +948,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"title3\",\n    \"category_id\": 3,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video_url3\",\n    \"description\": \"description3\",\n    \"seo_title\": \"seo_title3\",\n    \"seo_description\": \"seo_description3\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"title3\",\n    \"category_id\": 1,\n    \"video_url\": \"video_url3\",\n    \"description\": \"description3\",\n    \"seo_title\": \"seo_title3\",\n    \"seo_description\": \"seo_description3\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -958,7 +977,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -967,7 +986,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product3edit\",\n    \"category_id\": \"1\",\n    \"sub_category_id\": \"3\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video_url3edit\",\n    \"description\": \"description3edit\",\n    \"seo_title\": \"seo_title3edit\",\n    \"seo_description\": \"seo_description3edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"base_price\": \"333\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"product3edit\",\n    \"category_id\": \"4\",\n    \"video_url\": \"video_url3edit\",\n    \"description\": \"description3edit\",\n    \"seo_title\": \"seo_title3edit\",\n    \"seo_description\": \"seo_description3edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"base_price\": \"333\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -997,7 +1016,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1029,7 +1048,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1063,7 +1082,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1102,7 +1121,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1115,7 +1134,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/user--49/Pictures/dodge.png"
+									"src": "/home/user--49/Pictures/dream-theater.jpg"
 								},
 								{
 									"key": "type",
@@ -1190,6 +1209,45 @@
 					"response": []
 				},
 				{
+					"name": "update or create combination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku1\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 4,\n                    \"value_id\": 14\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 5,\n                    \"value_id\": 18\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 4,\n                    \"value_id\": 15\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 5,\n                    \"value_id\": 19\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product/store-combination/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"store-combination",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "getProductCombination",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1220,45 +1278,6 @@
 								"api",
 								"product",
 								"get-combination",
-								"3"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update or create combination",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku1\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 1,\n                    \"value_id\": 3\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 2,\n                    \"value_id\": 5\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 1,\n                    \"value_id\": 2\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 2,\n                    \"value_id\": 7\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/product/store-combination/3",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"product",
-								"store-combination",
 								"3"
 							]
 						}
@@ -1340,7 +1359,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?category=&limit=10&slug=",
+							"raw": "{{url}}/api/product/filter?rating=&highest_rated&most_order",
 							"host": [
 								"{{url}}"
 							],
@@ -1351,19 +1370,49 @@
 							],
 							"query": [
 								{
+									"key": "search_word",
+									"value": "",
+									"description": "nullable",
+									"disabled": true
+								},
+								{
 									"key": "category",
 									"value": "",
-									"description": "nullable"
+									"description": "nullable",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "10",
+									"value": "",
+									"description": "nulllable",
+									"disabled": true
+								},
+								{
+									"key": "price_range",
+									"value": "",
+									"description": "format: 100-800  (nullable) ",
+									"disabled": true
+								},
+								{
+									"key": "rating",
+									"value": "",
 									"description": "nullable"
 								},
 								{
-									"key": "slug",
+									"key": "recent",
 									"value": "",
-									"description": "nullable"
+									"description": "boolean, nullable",
+									"disabled": true
+								},
+								{
+									"key": "highest_rated",
+									"value": null,
+									"description": "boolean, nullable"
+								},
+								{
+									"key": "most_order",
+									"value": null,
+									"description": "boolean, nullable"
 								}
 							]
 						}
@@ -1383,7 +1432,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/product/single/title1",
+							"raw": "{{url}}/api/product/single/title3",
 							"host": [
 								"{{url}}"
 							],
@@ -1391,14 +1440,14 @@
 								"api",
 								"product",
 								"single",
-								"title1"
+								"title3"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "delete attribute Copy",
+					"name": "is combination unique",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1410,11 +1459,11 @@
 								}
 							]
 						},
-						"method": "DELETE",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\n    \"product_id\": 1,\n    \"attribute_value_ids\": [5, 3]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1422,15 +1471,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product/delete-attribute/1",
+							"raw": "{{url}}/api/product/is-combo-unique",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"product",
-								"delete-attribute",
-								"1"
+								"is-combo-unique"
 							]
 						}
 					},
@@ -2160,7 +2208,7 @@
 								},
 								{
 									"key": "product_id",
-									"value": "1",
+									"value": "3",
 									"type": "text"
 								}
 							]
@@ -2293,7 +2341,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/product/question/?product_id=1",
+							"raw": "{{url}}/api/product/question/?product_id=3&limit=2",
 							"host": [
 								"{{url}}"
 							],
@@ -2306,7 +2354,11 @@
 							"query": [
 								{
 									"key": "product_id",
-									"value": "1"
+									"value": "3"
+								},
+								{
+									"key": "limit",
+									"value": "2"
 								}
 							]
 						}
@@ -2589,7 +2641,7 @@
 							"formdata": [
 								{
 									"key": "district_id",
-									"value": "2",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -2600,7 +2652,8 @@
 								{
 									"key": "active",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -2678,14 +2731,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -2694,13 +2740,21 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor-shipping",
+							"raw": "{{url}}/api/vendor-shipping/:vendor_id/all",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"vendor-shipping"
+								"vendor-shipping",
+								":vendor_id",
+								"all"
+							],
+							"variable": [
+								{
+									"key": "vendor_id",
+									"value": "6"
+								}
 							]
 						}
 					},
@@ -2729,14 +2783,20 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor-shipping/2",
+							"raw": "{{url}}/api/vendor-shipping/:vendor_shipping_id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"vendor-shipping",
-								"2"
+								":vendor_shipping_id"
+							],
+							"variable": [
+								{
+									"key": "vendor_shipping_id",
+									"value": "2"
+								}
 							]
 						}
 					},
@@ -2750,7 +2810,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -2762,14 +2822,20 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor-shipping/1",
+							"raw": "{{url}}/api/vendor-shipping/:vendor_shipping_id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"vendor-shipping",
-								"1"
+								":vendor_shipping_id"
+							],
+							"variable": [
+								{
+									"key": "vendor_shipping_id",
+									"value": "2"
+								}
 							]
 						}
 					},
@@ -2788,7 +2854,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -2826,8 +2892,7 @@
 								{
 									"key": "type",
 									"value": "home",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "is_primary",
@@ -2857,7 +2922,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -2889,7 +2954,7 @@
 								},
 								{
 									"key": "full_address",
-									"value": "Mahadevsthan, Srinkhalla GAlli, Kathmandu",
+									"value": "Mahadevsthan, Srinkhalla GAlli, Kathman",
 									"type": "text"
 								},
 								{
@@ -2910,14 +2975,14 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/user-address/2",
+							"raw": "{{url}}/api/user-address/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user-address",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -2930,14 +2995,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -2946,14 +3004,14 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/user-address/2",
+							"raw": "{{url}}/api/user-address/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user-address",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -2966,14 +3024,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -3001,14 +3052,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -3040,7 +3084,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -3072,7 +3116,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -3084,14 +3128,14 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/user-address/4",
+							"raw": "{{url}}/api/user-address/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user-address",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -3110,7 +3154,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -3172,14 +3216,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -3251,7 +3288,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -3328,14 +3365,7 @@
 					"name": "send email verification",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [],
@@ -3366,14 +3396,7 @@
 					"name": "verify email",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [],
@@ -3483,7 +3506,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -3520,7 +3543,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -3542,28 +3565,35 @@
 				},
 				{
 					"name": "get payment by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
 						"url": {
-							"raw": "{{url}}/api/payment/3",
+							"raw": "{{url}}/api/payment/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"payment",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -3649,7 +3679,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -3661,7 +3691,7 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "4",
+									"value": "3",
 									"type": "text"
 								},
 								{
@@ -3671,7 +3701,7 @@
 								},
 								{
 									"key": "product_combination_id",
-									"value": "4",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -3698,7 +3728,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -3727,6 +3757,16 @@
 				{
 					"name": "checkout",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -3842,6 +3882,50 @@
 					"request": {
 						"method": "GET",
 						"header": [],
+						"url": {
+							"raw": "{{url}}/api/order/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update order status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "processing",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PATCH",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
 							"raw": "{{url}}/api/order/1",
 							"host": [

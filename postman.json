@@ -1352,7 +1352,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -4305,6 +4305,89 @@
 								"ticket",
 								"3",
 								"close"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vendor rating",
+			"item": [
+				{
+					"name": "store vendor rating",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "star",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "vendor_id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"description": "nullable",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor-rating/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor-rating",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all reviews",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/vendor-rating",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor-rating"
 							]
 						}
 					},

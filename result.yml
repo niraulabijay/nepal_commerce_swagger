@@ -52,6 +52,7 @@ tags:
   - name: cart
   - name: order
   - name: Ticket
+  - name: vendor rating
 paths:
   /api/wishlist:
     post:
@@ -2125,6 +2126,45 @@ paths:
       tags:
         - Ticket
       summary: close
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor-rating/store:
+    post:
+      tags:
+        - vendor rating
+      summary: store vendor rating
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                star:
+                  type: integer
+                  example: '4'
+                vendor_id:
+                  type: integer
+                  example: '6'
+                description:
+                  type: string
+                  description: nullable
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor-rating:
+    get:
+      tags:
+        - vendor rating
+      summary: get all reviews
       security:
         - bearerAuth: []
       responses:

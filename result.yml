@@ -710,6 +710,7 @@ paths:
           schema:
             type: string
           description: nullable
+          example: category-4
         - name: limit
           in: query
           schema:

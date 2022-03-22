@@ -1219,7 +1219,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?search_word=&category=&limit=&price_range=&rating=&recent=&highest_rated=&most_order=",
+							"raw": "{{url}}/api/product/filter?search_word=&category=category-4&limit=&price_range=&rating=&recent=&highest_rated=&most_order=",
 							"host": [
 								"{{url}}"
 							],
@@ -1236,7 +1236,7 @@
 								},
 								{
 									"key": "category",
-									"value": "",
+									"value": "category-4",
 									"description": "nullable"
 								},
 								{

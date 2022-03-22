@@ -16,7 +16,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -54,7 +54,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -268,7 +268,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -297,7 +297,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -332,7 +332,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -431,7 +431,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -614,146 +614,6 @@
 		{
 			"name": "Product",
 			"item": [
-				{
-					"name": "review",
-					"item": [
-						{
-							"name": "store review(user)",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "star",
-											"value": "2",
-											"type": "text"
-										},
-										{
-											"key": "description",
-											"value": "pehele istamal karo phir biswas karo",
-											"type": "text"
-										},
-										{
-											"key": "product_id",
-											"value": "3",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/product/review",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"product",
-										"review"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "store review reply(vendor)",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "reply",
-											"value": "ok",
-											"type": "text"
-										},
-										{
-											"key": "product_review_id",
-											"value": "6",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/product/reply",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"product",
-										"reply"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "get review",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "product_id",
-											"value": "1",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/product/review",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"product",
-										"review"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
 				{
 					"name": "vendor",
 					"item": [
@@ -1216,7 +1076,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1225,7 +1085,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku1\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 4,\n                    \"value_id\": 14\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 5,\n                    \"value_id\": 18\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 4,\n                    \"value_id\": 15\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 5,\n                    \"value_id\": 19\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
+							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku1\",\n            \"stock\": 51,\n            \"base_price\": 101,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 1,\n                    \"value_id\": 1\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 2,\n                    \"value_id\": 5\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2\",\n            \"stock\": 101,\n            \"base_price\": 201,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 1,\n                    \"value_id\": 2\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 2,\n                    \"value_id\": 6\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1359,7 +1219,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?rating=&highest_rated&most_order",
+							"raw": "{{url}}/api/product/filter?search_word=&category=&limit=&price_range=&rating=&recent=&highest_rated=&most_order=",
 							"host": [
 								"{{url}}"
 							],
@@ -1372,26 +1232,22 @@
 								{
 									"key": "search_word",
 									"value": "",
-									"description": "nullable",
-									"disabled": true
+									"description": "nullable"
 								},
 								{
 									"key": "category",
 									"value": "",
-									"description": "nullable",
-									"disabled": true
+									"description": "nullable"
 								},
 								{
 									"key": "limit",
 									"value": "",
-									"description": "nulllable",
-									"disabled": true
+									"description": "nulllable"
 								},
 								{
 									"key": "price_range",
 									"value": "",
-									"description": "format: 100-800  (nullable) ",
-									"disabled": true
+									"description": "format: 100-800  (nullable) "
 								},
 								{
 									"key": "rating",
@@ -1401,17 +1257,16 @@
 								{
 									"key": "recent",
 									"value": "",
-									"description": "boolean, nullable",
-									"disabled": true
+									"description": "boolean, nullable"
 								},
 								{
 									"key": "highest_rated",
-									"value": null,
+									"value": "",
 									"description": "boolean, nullable"
 								},
 								{
 									"key": "most_order",
-									"value": null,
+									"value": "",
 									"description": "boolean, nullable"
 								}
 							]
@@ -1479,6 +1334,219 @@
 								"api",
 								"product",
 								"is-combo-unique"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "review",
+			"item": [
+				{
+					"name": "store review(user)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "star",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "pehele istamal karo phir biswas karo",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/review",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store review reply(vendor)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "reply",
+									"value": "ok",
+									"type": "text"
+								},
+								{
+									"key": "product_review_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/reply",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"reply"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get review by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/review/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"review",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get review by product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/review",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buyers all reviews",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/product/buyerReview?limit=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"buyerReview"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "",
+									"description": "pagination limit, nullable"
+								}
 							]
 						}
 					},
@@ -3844,6 +3912,16 @@
 				{
 					"name": "get all order (vendor)",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {

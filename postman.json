@@ -1374,7 +1374,7 @@
 								},
 								{
 									"key": "product_id",
-									"value": "3",
+									"value": "1",
 									"type": "text"
 								}
 							]
@@ -1608,7 +1608,14 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -1623,14 +1630,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/banner/6/promotional-banner",
+							"raw": "{{url}}/api/banner/promotional-banner",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"banner",
-								"6",
 								"promotional-banner"
 							]
 						}
@@ -1644,7 +1650,14 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -1659,14 +1672,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/banner/6/vendor",
+							"raw": "{{url}}/api/banner/vendor",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"banner",
-								"6",
 								"vendor"
 							]
 						}
@@ -3806,7 +3818,7 @@
 								},
 								{
 									"key": "product_combination_id",
-									"value": "",
+									"value": "1",
 									"type": "text"
 								}
 							]
@@ -3888,8 +3900,8 @@
 									"type": "text"
 								},
 								{
-									"key": "payment_type",
-									"value": "cash_on_delivery",
+									"key": "user_address_id",
+									"value": "1",
 									"description": " ",
 									"type": "text"
 								}
@@ -3910,7 +3922,7 @@
 					"response": []
 				},
 				{
-					"name": "get all order (vendor)",
+					"name": "get order filter",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -3925,25 +3937,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/order",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"order"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get order filter",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/order/filter?search_value&status=asd&limit=10",
+							"raw": "{{url}}/api/order/filter?order_number&status=placed&limit=10",
 							"host": [
 								"{{url}}"
 							],
@@ -3954,13 +3948,13 @@
 							],
 							"query": [
 								{
-									"key": "search_value",
+									"key": "order_number",
 									"value": null,
 									"description": "nullable"
 								},
 								{
 									"key": "status",
-									"value": "asd"
+									"value": "placed"
 								},
 								{
 									"key": "limit",
@@ -3973,7 +3967,7 @@
 					"response": []
 				},
 				{
-					"name": "get order status",
+					"name": "get order status (user)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -3987,25 +3981,6 @@
 								"order",
 								"status",
 								"000000001"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get order by id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/order/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"order",
-								"1"
 							]
 						}
 					},
@@ -4050,48 +4025,6 @@
 								"api",
 								"order",
 								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get vendor order",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{vendor_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "limit",
-									"value": "",
-									"description": "nullable",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/order",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"order"
 							]
 						}
 					},

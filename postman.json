@@ -4088,6 +4088,35 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "get all order list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{vendor_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/order/status-lists",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"status-lists"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},

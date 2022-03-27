@@ -3974,7 +3974,8 @@
 										},
 										{
 											"key": "status",
-											"value": "placed"
+											"value": "placed",
+											"description": "nullable"
 										},
 										{
 											"key": "limit",
@@ -3988,6 +3989,9 @@
 						},
 						{
 							"name": "get all order status list",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -4001,15 +4005,20 @@
 								},
 								"method": "GET",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
-									"raw": "{{url}}/api/order/status-lists",
+									"raw": "{{url}}/api/order/status/list",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"order",
-										"status-lists"
+										"status",
+										"list"
 									]
 								}
 							},
@@ -4206,9 +4215,30 @@
 						{
 							"name": "get all order",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
-								"url": null
+								"url": {
+									"raw": "{{url}}/api/order/get-order/list",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"get-order",
+										"list"
+									]
+								}
 							},
 							"response": []
 						},
@@ -4228,14 +4258,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/api/order/customer-order-status/000000001",
+									"raw": "{{url}}/api/order/customer/order-status/000000001",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"order",
-										"customer-order-status",
+										"customer",
+										"order-status",
 										"000000001"
 									]
 								}

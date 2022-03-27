@@ -3987,6 +3987,35 @@
 							"response": []
 						},
 						{
+							"name": "get all order status list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{vendor_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/order/status-lists",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"status-lists"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "get order status",
 							"request": {
 								"auth": {
@@ -4088,16 +4117,21 @@
 								}
 							},
 							"response": []
-						},
+						}
+					]
+				},
+				{
+					"name": "customer",
+					"item": [
 						{
-							"name": "get all order list",
+							"name": "get all order status list",
 							"request": {
 								"auth": {
 									"type": "bearer",
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{vendor_token}}",
+											"value": "{{customer_token}}",
 											"type": "string"
 										}
 									]
@@ -4105,24 +4139,21 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/api/order/status-lists",
+									"raw": "{{url}}/api/order/customer/status/list",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"order",
-										"status-lists"
+										"customer",
+										"status",
+										"list"
 									]
 								}
 							},
 							"response": []
-						}
-					]
-				},
-				{
-					"name": "customer",
-					"item": [
+						},
 						{
 							"name": "checkout",
 							"request": {
@@ -4173,7 +4204,16 @@
 							"response": []
 						},
 						{
-							"name": "get order status",
+							"name": "get all order",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "get order status by order number",
 							"request": {
 								"auth": {
 									"type": "bearer",

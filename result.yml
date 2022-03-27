@@ -17,7 +17,6 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
-  - url: localhost://
 components:
   securitySchemes:
     bearerAuth:
@@ -51,8 +50,12 @@ tags:
   - name: payment
   - name: cart
   - name: order
+  - name: order > vendor
+  - name: order > customer
   - name: Ticket
   - name: vendor rating
+  - name: Payout
+  - name: admin
 paths:
   /api/wishlist:
     post:
@@ -267,12 +270,6 @@ paths:
       summary: homepage
       security:
         - bearerAuth: []
-      parameters:
-        - name: product_limit
-          in: query
-          schema:
-            type: integer
-          example: '5'
       responses:
         '200':
           description: Successful response
@@ -441,12 +438,12 @@ paths:
             schema:
               type: object
               example:
-                title: title3
-                category_id: 1
-                video_url: video_url3
-                description: description3
-                seo_title: seo_title3
-                seo_description: seo_description3
+                title: product 11
+                category_id: 2
+                video_url: video_url11
+                description: description11
+                seo_title: seo_title11
+                seo_description: seo_description11
                 seo_keyword:
                   - keyword1
                   - keyword2
@@ -804,17 +801,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-    get:
-      tags:
-        - review
-      summary: get review by product
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/product/reply:
     post:
       tags:
@@ -851,19 +837,69 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/buyerReview:
+  /api/product/filter/review/title1:
     get:
       tags:
         - review
-      summary: buyers all reviews
+      summary: review filter
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: nullable
+          example: '10'
+        - name: star
+          in: query
+          schema:
+            type: string
+          description: nullable
+        - name: highest_rated
+          in: query
+          schema:
+            type: string
+          description: boolean, nullable
+        - name: recent
+          in: query
+          schema:
+            type: string
+          description: bollean, nullable
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/findAllReview:
+    get:
+      tags:
+        - review
+      summary: get all reviews (vendor)
       security:
         - bearerAuth: []
       parameters:
         - name: limit
           in: query
           schema:
+            type: integer
+          description: nullable
+          example: '10'
+        - name: star
+          in: query
+          schema:
             type: string
-          description: pagination limit, nullable
+          description: nullable
+        - name: highest_rated
+          in: query
+          schema:
+            type: string
+          description: boolean, nullable
+        - name: recent
+          in: query
+          schema:
+            type: string
+          description: boolean, nullable
       responses:
         '200':
           description: Successful response
@@ -893,7 +929,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/banner/promotional-banner:
+  /api/banner/{vendor_id}/promotional_banner:
     get:
       tags:
         - Banner
@@ -906,12 +942,18 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: vendor_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '6'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/banner/vendor:
+  /api/banner/{vendor_id}/vendor:
     get:
       tags:
         - Banner
@@ -924,6 +966,12 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: vendor_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '6'
       responses:
         '200':
           description: Successful response
@@ -954,12 +1002,10 @@ paths:
               properties:
                 to_id:
                   type: integer
-                  example: '3'
-                type:
-                  type: string
+                  example: '10'
                 message:
                   type: string
-                  example: Tmro ni
+                  example: Hello World
       security:
         - bearerAuth: []
       responses:
@@ -967,19 +1013,26 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /000/api/message/2:
+  /api/message/{to_id}:
     get:
       tags:
         - Message
       summary: get
       security:
         - bearerAuth: []
+      parameters:
+        - name: to_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '10'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /000/api/message/chat-list:
+  /api/message/chat-list:
     get:
       tags:
         - Message
@@ -991,7 +1044,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/message/6/read:
+  /api/message/{message_id}/read:
     get:
       tags:
         - Message
@@ -1003,6 +1056,12 @@ paths:
           in: header
           schema:
             type: string
+        - name: message_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -1021,7 +1080,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '11'
+          example: '9'
       responses:
         '200':
           description: Successful response
@@ -1936,27 +1995,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/store:
-    post:
+  /api/cart/1:
+    delete:
       tags:
-        - order
-      summary: checkout
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                sub_total:
-                  type: integer
-                  example: '123'
-                grand_total:
-                  type: integer
-                  example: '123'
-                user_address_id:
-                  type: integer
-                  description: ' '
-                  example: '1'
+        - cart
+      summary: delete cart item
       security:
         - bearerAuth: []
       responses:
@@ -1967,7 +2010,7 @@ paths:
   /api/order/filter:
     get:
       tags:
-        - order
+        - order > vendor
       summary: get order filter
       security:
         - bearerAuth: []
@@ -1993,11 +2036,13 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/status/000000001:
+  /api/order/order-status/000000001:
     get:
       tags:
-        - order
-      summary: get order status (user)
+        - order > vendor
+      summary: get order status
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -2006,7 +2051,7 @@ paths:
   /api/order/1:
     post:
       tags:
-        - order
+        - order > vendor
       summary: update order status
       requestBody:
         content:
@@ -2020,6 +2065,68 @@ paths:
                 _method:
                   type: string
                   example: PATCH
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - order > vendor
+      summary: get order by id
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/store:
+    post:
+      tags:
+        - order > customer
+      summary: checkout
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                sub_total:
+                  type: integer
+                  example: '123'
+                grand_total:
+                  type: integer
+                  example: '123'
+                user_address_id:
+                  type: integer
+                  example: '1'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/customer-order-status/000000001:
+    get:
+      tags:
+        - order > customer
+      summary: get order status
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/get-order/000000001:
+    get:
+      tags:
+        - order > customer
+      summary: get order by order number
       security:
         - bearerAuth: []
       responses:
@@ -2148,6 +2255,43 @@ paths:
       tags:
         - vendor rating
       summary: get all reviews
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/payout/{vendor_id}/dates:
+    get:
+      tags:
+        - Payout
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: vendor_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '6'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/user/changeCertified:
+    post:
+      tags:
+        - admin
+      summary: change certified
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
       security:
         - bearerAuth: []
       responses:

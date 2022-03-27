@@ -305,7 +305,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/vendor/user/home-page?product_limit=5",
+							"raw": "{{url}}/vendor/user/home-page",
 							"host": [
 								"{{url}}"
 							],
@@ -313,12 +313,6 @@
 								"vendor",
 								"user",
 								"home-page"
-							],
-							"query": [
-								{
-									"key": "product_limit",
-									"value": "5"
-								}
 							]
 						}
 					},
@@ -808,7 +802,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"title3\",\n    \"category_id\": 1,\n    \"video_url\": \"video_url3\",\n    \"description\": \"description3\",\n    \"seo_title\": \"seo_title3\",\n    \"seo_description\": \"seo_description3\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"product 11\",\n    \"category_id\": 2,\n    \"video_url\": \"video_url11\",\n    \"description\": \"description11\",\n    \"seo_title\": \"seo_title11\",\n    \"seo_description\": \"seo_description11\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1118,7 +1112,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1475,49 +1469,60 @@
 					"response": []
 				},
 				{
-					"name": "get review by product",
+					"name": "review filter",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{vendor_token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "product_id",
-									"value": "1",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/product/review",
+							"raw": "{{url}}/api/product/filter/review/title1?limit=10&star=&highest_rated=&recent=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"product",
-								"review"
+								"filter",
+								"review",
+								"title1"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "nullable"
+								},
+								{
+									"key": "star",
+									"value": "",
+									"description": "nullable"
+								},
+								{
+									"key": "highest_rated",
+									"value": "",
+									"description": "boolean, nullable"
+								},
+								{
+									"key": "recent",
+									"value": "",
+									"description": "bollean, nullable"
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "buyers all reviews",
+					"name": "get all reviews (vendor)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1532,20 +1537,35 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/buyerReview?limit=",
+							"raw": "{{url}}/api/product/findAllReview?limit=10&star=&highest_rated=&recent=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"product",
-								"buyerReview"
+								"findAllReview"
 							],
 							"query": [
 								{
 									"key": "limit",
+									"value": "10",
+									"description": "nullable"
+								},
+								{
+									"key": "star",
 									"value": "",
-									"description": "pagination limit, nullable"
+									"description": "nullable"
+								},
+								{
+									"key": "highest_rated",
+									"value": "",
+									"description": "boolean, nullable"
+								},
+								{
+									"key": "recent",
+									"value": "",
+									"description": "boolean, nullable"
 								}
 							]
 						}
@@ -1583,7 +1603,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Pictures/Brock Lesnar Sparta Kicks Elimination Chamber Glass.mp4_snapshot_00.18_[2022.02.20_20.58.16].jpg"
+									"src": "/C:/Users/Leon Schiffer/Downloads/108-1087833_signature-black-no-background-300dpi-portable-network-graphics.png"
 								}
 							]
 						},
@@ -1630,14 +1650,21 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/banner/promotional-banner",
+							"raw": "{{url}}/api/banner/:vendor_id/promotional_banner",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"banner",
-								"promotional-banner"
+								":vendor_id",
+								"promotional_banner"
+							],
+							"variable": [
+								{
+									"key": "vendor_id",
+									"value": "6"
+								}
 							]
 						}
 					},
@@ -1672,14 +1699,21 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/banner/vendor",
+							"raw": "{{url}}/api/banner/:vendor_id/vendor",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"banner",
+								":vendor_id",
 								"vendor"
+							],
+							"variable": [
+								{
+									"key": "vendor_id",
+									"value": "6"
+								}
 							]
 						}
 					},
@@ -1748,7 +1782,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1760,18 +1794,12 @@
 							"formdata": [
 								{
 									"key": "to_id",
-									"value": "3",
+									"value": "10",
 									"type": "text"
 								},
 								{
-									"key": "type",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
 									"key": "message",
-									"value": "Tmro ni",
+									"value": "Hello World",
 									"type": "text"
 								}
 							]
@@ -1800,7 +1828,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1812,15 +1840,20 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8000/api/message/2",
+							"raw": "{{url}}/api/message/:to_id",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"message",
-								"2"
+								":to_id"
+							],
+							"variable": [
+								{
+									"key": "to_id",
+									"value": "10"
+								}
 							]
 						}
 					},
@@ -1837,7 +1870,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1849,11 +1882,10 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8000/api/message/chat-list",
+							"raw": "{{url}}/api/message/chat-list",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"message",
@@ -1874,7 +1906,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1892,15 +1924,21 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/message/6/read",
+							"raw": "{{url}}/api/message/:message_id/read",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"message",
-								"6",
+								":message_id",
 								"read"
+							],
+							"variable": [
+								{
+									"key": "message_id",
+									"value": "4"
+								}
 							]
 						}
 					},
@@ -1917,7 +1955,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1942,7 +1980,7 @@
 							"variable": [
 								{
 									"key": "message_id",
-									"value": "11"
+									"value": "9"
 								}
 							]
 						}
@@ -3865,14 +3903,9 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "order",
-			"item": [
+				},
 				{
-					"name": "checkout",
+					"name": "delete cart item",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -3884,151 +3917,293 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "sub_total",
-									"value": "123",
-									"type": "text"
-								},
-								{
-									"key": "grand_total",
-									"value": "123",
-									"type": "text"
-								},
-								{
-									"key": "user_address_id",
-									"value": "1",
-									"description": " ",
-									"type": "text"
-								}
-							]
-						},
 						"url": {
-							"raw": "{{url}}/api/order/store",
+							"raw": "{{url}}/api/cart/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"order",
-								"store"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get order filter",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{vendor_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/order/filter?order_number&status=placed&limit=10",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"order",
-								"filter"
-							],
-							"query": [
-								{
-									"key": "order_number",
-									"value": null,
-									"description": "nullable"
-								},
-								{
-									"key": "status",
-									"value": "placed"
-								},
-								{
-									"key": "limit",
-									"value": "10",
-									"description": "nullable"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get order status (user)",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/order/status/000000001",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"order",
-								"status",
-								"000000001"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update order status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{vendor_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "processing",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "PATCH",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/order/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"order",
+								"cart",
 								"1"
 							]
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "vendor",
+					"item": [
+						{
+							"name": "get order filter",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{vendor_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/order/filter?order_number&status=placed&limit=10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"filter"
+									],
+									"query": [
+										{
+											"key": "order_number",
+											"value": null,
+											"description": "nullable"
+										},
+										{
+											"key": "status",
+											"value": "placed"
+										},
+										{
+											"key": "limit",
+											"value": "10",
+											"description": "nullable"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get order status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{vendor_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/order/order-status/000000001",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"order-status",
+										"000000001"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update order status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{vendor_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "processing",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PATCH",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/order/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get order by id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{vendor_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/order/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "customer",
+					"item": [
+						{
+							"name": "checkout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sub_total",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "grand_total",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "user_address_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/order/store",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"store"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get order status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/order/customer-order-status/000000001",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"customer-order-status",
+										"000000001"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get order by order number",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/order/get-order/000000001",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"get-order",
+										"000000001"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -4327,6 +4502,155 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Payout",
+			"item": [
+				{
+					"name": "get payout dates",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/payout/:vendor_id/dates",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payout",
+								":vendor_id",
+								"dates"
+							],
+							"variable": [
+								{
+									"key": "vendor_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/payout/:vendor_id/dates",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payout",
+								":vendor_id",
+								"dates"
+							],
+							"variable": [
+								{
+									"key": "vendor_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "change certified",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/admin/user/changeCertified",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"user",
+								"changeCertified"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

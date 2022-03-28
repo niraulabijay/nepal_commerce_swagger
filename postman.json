@@ -1213,7 +1213,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?search_word=t",
+							"raw": "{{url}}/api/product/filter?search_word=&category=category-1",
 							"host": [
 								"{{url}}"
 							],
@@ -1225,7 +1225,11 @@
 							"query": [
 								{
 									"key": "search_word",
-									"value": "t"
+									"value": ""
+								},
+								{
+									"key": "category",
+									"value": "category-1"
 								}
 							]
 						}
@@ -1245,7 +1249,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/product/single/title3",
+							"raw": "{{url}}/api/product/single/title1",
 							"host": [
 								"{{url}}"
 							],
@@ -1253,7 +1257,7 @@
 								"api",
 								"product",
 								"single",
-								"title3"
+								"title1"
 							]
 						}
 					},
@@ -1542,7 +1546,7 @@
 			"name": "Banner",
 			"item": [
 				{
-					"name": "store",
+					"name": "store/update",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1567,7 +1571,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Downloads/108-1087833_signature-black-no-background-300dpi-portable-network-graphics.png"
+									"src": "/C:/Users/Leon Schiffer/Downloads/274046127_10159290837208283_853953639614142358_n.jpg"
 								}
 							]
 						},
@@ -1614,20 +1618,24 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/banner/:vendor_id/promotional_banner",
+							"raw": "{{url}}/api/banner/:vendor_slug/:key",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"banner",
-								":vendor_id",
-								"promotional_banner"
+								":vendor_slug",
+								":key"
 							],
 							"variable": [
 								{
-									"key": "vendor_id",
-									"value": "6"
+									"key": "vendor_slug",
+									"value": "vendor-shop"
+								},
+								{
+									"key": "key",
+									"value": "main-banner"
 								}
 							]
 						}
@@ -1663,21 +1671,63 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/banner/:vendor_id/vendor",
+							"raw": "{{url}}/api/banner/:vendor_slug/vendor",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"banner",
-								":vendor_id",
+								":vendor_slug",
 								"vendor"
 							],
 							"variable": [
 								{
-									"key": "vendor_id",
-									"value": "6"
+									"key": "vendor_slug",
+									"value": "vendor-shop"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index from token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor/banner",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor",
+								"banner"
 							]
 						}
 					},
@@ -1719,7 +1769,7 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor/banner/promotional-banner",
+							"raw": "{{url}}/api/vendor/banner/:key",
 							"host": [
 								"{{url}}"
 							],
@@ -1727,7 +1777,13 @@
 								"api",
 								"vendor",
 								"banner",
-								"promotional-banner"
+								":key"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": "main-banner"
+								}
 							]
 						}
 					},
@@ -3921,7 +3977,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/api/order/filter?order_number&status=placed&limit=10",
+									"raw": "{{url}}/api/order/filter?status&order_number&status=processing&limit=10",
 									"host": [
 										"{{url}}"
 									],
@@ -3932,13 +3988,17 @@
 									],
 									"query": [
 										{
+											"key": "status",
+											"value": null
+										},
+										{
 											"key": "order_number",
 											"value": null,
 											"description": "nullable"
 										},
 										{
 											"key": "status",
-											"value": "placed",
+											"value": "processing",
 											"description": "nullable"
 										},
 										{
@@ -4063,7 +4123,7 @@
 							"response": []
 						},
 						{
-							"name": "get order by id",
+							"name": "get order by order number",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -4078,14 +4138,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/api/order/1",
+									"raw": "{{url}}/api/order/000000001",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"order",
-										"1"
+										"000000001"
 									]
 								}
 							},
@@ -4096,6 +4156,61 @@
 				{
 					"name": "customer",
 					"item": [
+						{
+							"name": "get order filter",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/order/customer/filter?status=&order_number=000000001&id=&limit=10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"customer",
+										"filter"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": ""
+										},
+										{
+											"key": "order_number",
+											"value": "000000001"
+										},
+										{
+											"key": "id",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
 						{
 							"name": "get all order status list",
 							"request": {
@@ -4171,36 +4286,6 @@
 										"api",
 										"order",
 										"store"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "get all order",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{customer_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/api/order/get-order/list",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"order",
-										"get-order",
-										"list"
 									]
 								}
 							},
@@ -4662,14 +4747,11 @@
 			"item": [
 				{
 					"name": "certifiy vendor",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "noauth"
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "formdata",

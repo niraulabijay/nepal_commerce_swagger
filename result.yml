@@ -701,13 +701,17 @@ paths:
           in: query
           schema:
             type: string
-          example: t
+        - name: category
+          in: query
+          schema:
+            type: string
+          example: category-1
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/product/single/title3:
+  /api/product/single/title1:
     get:
       tags:
         - Product
@@ -873,7 +877,7 @@ paths:
     post:
       tags:
         - Banner
-      summary: store
+      summary: store/update
       requestBody:
         content:
           multipart/form-data:
@@ -893,7 +897,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/banner/{vendor_id}/promotional_banner:
+    get:
+      tags:
+        - Banner
+      summary: index from token
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/banner/{vendor_slug}/{key}:
     get:
       tags:
         - Banner
@@ -906,18 +927,24 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: vendor_id
+        - name: vendor_slug
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '6'
+          example: vendor-shop
+        - name: key
+          in: path
+          schema:
+            type: string
+          required: true
+          example: main-banner
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/banner/{vendor_id}/vendor:
+  /api/banner/{vendor_slug}/vendor:
     get:
       tags:
         - Banner
@@ -930,24 +957,31 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: vendor_id
+        - name: vendor_slug
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '6'
+          example: vendor-shop
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/vendor/banner/promotional-banner:
+  /api/vendor/banner/{key}:
     delete:
       tags:
         - Banner
       summary: delete
       security:
         - bearerAuth: []
+      parameters:
+        - name: key
+          in: path
+          schema:
+            type: string
+          required: true
+          example: main-banner
       responses:
         '200':
           description: Successful response
@@ -1979,6 +2013,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: nullable
         - name: order_number
           in: query
           schema:
@@ -1989,7 +2028,7 @@ paths:
           schema:
             type: string
           description: nullable
-          example: placed
+          example: processing
         - name: limit
           in: query
           schema:
@@ -2049,12 +2088,44 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/order/000000001:
     get:
       tags:
         - order > vendor
-      summary: get order by id
+      summary: get order by order number
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/customer/filter:
+    get:
+      tags:
+        - order > customer
+      summary: get order filter
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: order_number
+          in: query
+          schema:
+            type: integer
+          example: '000000001'
+        - name: id
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
       responses:
         '200':
           description: Successful response
@@ -2092,18 +2163,6 @@ paths:
                 user_address_id:
                   type: integer
                   example: '1'
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/order/get-order/list:
-    get:
-      tags:
-        - order > customer
-      summary: get all order
       security:
         - bearerAuth: []
       responses:
@@ -2302,10 +2361,19 @@ paths:
           content:
             application/json: {}
   /admin/user/update-certified:
-    get:
+    post:
       tags:
         - admin
       summary: certifiy vendor
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                vendor_id:
+                  type: integer
+                  example: '6'
       security:
         - noauthAuth: []
       responses:

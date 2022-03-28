@@ -701,43 +701,7 @@ paths:
           in: query
           schema:
             type: string
-          description: nullable
-        - name: category
-          in: query
-          schema:
-            type: string
-          description: nullable
-          example: category-4
-        - name: limit
-          in: query
-          schema:
-            type: string
-          description: nulllable
-        - name: price_range
-          in: query
-          schema:
-            type: string
-          description: 'format: 100-800  (nullable) '
-        - name: rating
-          in: query
-          schema:
-            type: string
-          description: nullable
-        - name: recent
-          in: query
-          schema:
-            type: string
-          description: boolean, nullable
-        - name: highest_rated
-          in: query
-          schema:
-            type: string
-          description: boolean, nullable
-        - name: most_order
-          in: query
-          schema:
-            type: string
-          description: boolean, nullable
+          example: t
       responses:
         '200':
           description: Successful response
@@ -2303,7 +2267,7 @@ paths:
     get:
       tags:
         - Payout
-      summary: show
+      summary: get payout dates
       security:
         - bearerAuth: []
       parameters:
@@ -2318,19 +2282,32 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /admin/user/changeCertified:
-    post:
+  /api/payout/{payout_id}:
+    get:
       tags:
-        - admin
-      summary: change certified
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties: {}
+        - Payout
+      summary: show
       security:
         - bearerAuth: []
+      parameters:
+        - name: payout_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/user/update-certified:
+    get:
+      tags:
+        - admin
+      summary: certifiy vendor
+      security:
+        - noauthAuth: []
       responses:
         '200':
           description: Successful response

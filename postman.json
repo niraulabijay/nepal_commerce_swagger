@@ -1213,7 +1213,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?search_word=&category=category-4&limit=&price_range=&rating=&recent=&highest_rated=&most_order=",
+							"raw": "{{url}}/api/product/filter?search_word=t",
 							"host": [
 								"{{url}}"
 							],
@@ -1225,43 +1225,7 @@
 							"query": [
 								{
 									"key": "search_word",
-									"value": "",
-									"description": "nullable"
-								},
-								{
-									"key": "category",
-									"value": "category-4",
-									"description": "nullable"
-								},
-								{
-									"key": "limit",
-									"value": "",
-									"description": "nulllable"
-								},
-								{
-									"key": "price_range",
-									"value": "",
-									"description": "format: 100-800  (nullable) "
-								},
-								{
-									"key": "rating",
-									"value": "",
-									"description": "nullable"
-								},
-								{
-									"key": "recent",
-									"value": "",
-									"description": "boolean, nullable"
-								},
-								{
-									"key": "highest_rated",
-									"value": "",
-									"description": "boolean, nullable"
-								},
-								{
-									"key": "most_order",
-									"value": "",
-									"description": "boolean, nullable"
+									"value": "t"
 								}
 							]
 						}
@@ -4672,20 +4636,19 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/payout/:vendor_id/dates",
+							"raw": "{{url}}/api/payout/:payout_id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"payout",
-								":vendor_id",
-								"dates"
+								":payout_id"
 							],
 							"variable": [
 								{
-									"key": "vendor_id",
-									"value": "6"
+									"key": "payout_id",
+									"value": "2"
 								}
 							]
 						}
@@ -4698,33 +4661,35 @@
 			"name": "admin",
 			"item": [
 				{
-					"name": "change certified",
+					"name": "certifiy vendor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{vendor_token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": []
+							"formdata": [
+								{
+									"key": "vendor_id",
+									"value": "6",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
-							"raw": "{{url}}/admin/user/changeCertified",
+							"raw": "{{url}}/admin/user/update-certified",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"admin",
 								"user",
-								"changeCertified"
+								"update-certified"
 							]
 						}
 					},

@@ -54,6 +54,8 @@ tags:
   - name: order > customer
   - name: Ticket
   - name: vendor rating
+  - name: vendor rating > customer
+  - name: vendor rating > vendor
   - name: Payout
   - name: admin
 paths:
@@ -270,6 +272,12 @@ paths:
       summary: homepage
       security:
         - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
@@ -518,6 +526,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/product/product/2:
     get:
       tags:
         - Product
@@ -701,11 +710,38 @@ paths:
           in: query
           schema:
             type: string
+          description: nullable
         - name: category
           in: query
           schema:
             type: string
-          example: category-1
+          description: nullable
+          example: category-4
+        - name: recent
+          in: query
+          schema:
+            type: string
+          description: boolean, nullable
+        - name: price_range
+          in: query
+          schema:
+            type: string
+          description: 'format: 100-1000, nullable'
+        - name: rating
+          in: query
+          schema:
+            type: string
+          description: boolean, nullable
+        - name: most_order
+          in: query
+          schema:
+            type: string
+          description: boolean, nullable
+        - name: highest_rated
+          in: query
+          schema:
+            type: string
+          description: boolean, nullable
       responses:
         '200':
           description: Successful response
@@ -1141,7 +1177,7 @@ paths:
               properties:
                 package_id:
                   type: integer
-                  example: '3'
+                  example: '1'
       security:
         - bearerAuth: []
       responses:
@@ -1256,7 +1292,7 @@ paths:
                   example: Where is your store located?!
                 product_id:
                   type: integer
-                  example: '3'
+                  example: '1'
       security:
         - bearerAuth: []
       responses:
@@ -2028,7 +2064,6 @@ paths:
           schema:
             type: string
           description: nullable
-          example: processing
         - name: limit
           in: query
           schema:
@@ -2045,18 +2080,6 @@ paths:
       tags:
         - order > vendor
       summary: get all order status list
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/order/order-status/000000001:
-    get:
-      tags:
-        - order > vendor
-      summary: get order status
       security:
         - bearerAuth: []
       responses:
@@ -2088,11 +2111,23 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/000000001:
+  /api/order/000000007:
     get:
       tags:
         - order > vendor
       summary: get order by order number
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/order-status/000000001:
+    get:
+      tags:
+        - order > vendor
+      summary: get order status
       security:
         - bearerAuth: []
       responses:
@@ -2115,8 +2150,7 @@ paths:
         - name: order_number
           in: query
           schema:
-            type: integer
-          example: '000000001'
+            type: string
         - name: id
           in: query
           schema:
@@ -2170,11 +2204,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/customer/order-status/000000001:
+  /api/order/get-order/000000001:
     get:
       tags:
         - order > customer
-      summary: get order status by order number
+      summary: get order by order number
       security:
         - bearerAuth: []
       responses:
@@ -2182,11 +2216,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/get-order/000000001:
+  /api/order/customer/order-status/000000001:
     get:
       tags:
         - order > customer
-      summary: get order by order number
+      summary: get order status by order number
       security:
         - bearerAuth: []
       responses:
@@ -2286,7 +2320,7 @@ paths:
   /api/vendor-rating/store:
     post:
       tags:
-        - vendor rating
+        - vendor rating > customer
       summary: store vendor rating
       requestBody:
         content:
@@ -2297,12 +2331,15 @@ paths:
                 star:
                   type: integer
                   example: '4'
+                type:
+                  type: string
+                  example: delivery
                 vendor_id:
                   type: integer
                   example: '6'
-                description:
-                  type: string
-                  description: nullable
+                order_id:
+                  type: integer
+                  example: '1'
       security:
         - bearerAuth: []
       responses:
@@ -2313,7 +2350,7 @@ paths:
   /api/vendor-rating:
     get:
       tags:
-        - vendor rating
+        - vendor rating > vendor
       summary: get all reviews
       security:
         - bearerAuth: []

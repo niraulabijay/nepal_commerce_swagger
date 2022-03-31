@@ -1181,7 +1181,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -1195,11 +1195,16 @@
 									"key": "status",
 									"value": "Published",
 									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "4",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/product/change-status/1",
+							"raw": "{{url}}/api/product/change-status/",
 							"host": [
 								"{{url}}"
 							],
@@ -1207,7 +1212,7 @@
 								"api",
 								"product",
 								"change-status",
-								"1"
+								""
 							]
 						}
 					},
@@ -1219,7 +1224,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?search_word=&category=category-4&recent&price_range&rating&most_order&highest_rated",
+							"raw": "{{url}}/api/product/filter?search_word=&category=category-4&recent=1&price_range=0-600&rating&most_order&highest_rated",
 							"host": [
 								"{{url}}"
 							],
@@ -1241,12 +1246,12 @@
 								},
 								{
 									"key": "recent",
-									"value": null,
+									"value": "1",
 									"description": "boolean, nullable"
 								},
 								{
 									"key": "price_range",
-									"value": null,
+									"value": "0-600",
 									"description": "format: 100-1000, nullable"
 								},
 								{
@@ -4628,7 +4633,7 @@
 									"formdata": [
 										{
 											"key": "star",
-											"value": "4",
+											"value": "3",
 											"type": "text"
 										},
 										{
@@ -4643,7 +4648,7 @@
 										},
 										{
 											"key": "order_id",
-											"value": "2",
+											"value": "4",
 											"type": "text"
 										}
 									]

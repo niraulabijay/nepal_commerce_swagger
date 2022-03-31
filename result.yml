@@ -2106,9 +2106,6 @@ paths:
                 status:
                   type: string
                   example: processing
-                _method:
-                  type: string
-                  example: PATCH
       security:
         - bearerAuth: []
       responses:

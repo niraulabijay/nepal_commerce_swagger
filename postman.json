@@ -4108,11 +4108,6 @@
 											"key": "status",
 											"value": "processing",
 											"type": "text"
-										},
-										{
-											"key": "_method",
-											"value": "PATCH",
-											"type": "text"
 										}
 									]
 								},

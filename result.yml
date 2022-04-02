@@ -35,6 +35,8 @@ tags:
   - name: Product
   - name: Product > vendor
   - name: review
+  - name: review > buyer
+  - name: review > vendor
   - name: Banner
   - name: Message
   - name: BlockedChat
@@ -526,7 +528,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/product/2:
+  /api/product/product/4:
     get:
       tags:
         - Product
@@ -575,7 +577,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -695,7 +697,7 @@ paths:
                   example: Published
                 product_id:
                   type: integer
-                  example: '4'
+                  example: '2'
       security:
         - bearerAuth: []
       responses:
@@ -752,7 +754,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/single/title1:
+  /api/product/single/product-11-1:
     get:
       tags:
         - Product
@@ -787,7 +789,7 @@ paths:
   /api/product/review:
     post:
       tags:
-        - review
+        - review > buyer
       summary: store review(user)
       requestBody:
         content:
@@ -802,9 +804,66 @@ paths:
                   example: pehele istamal karo phir biswas karo
                 product_id:
                   type: integer
-                  example: '1'
+                  example: '3'
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/all-customer-review:
+    get:
+      tags:
+        - review > buyer
+      summary: get all review buyer
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: nullable
+          example: '10'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          description: nullable
+          example: '2022-01-01'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          description: nullable
+          example: '2022-09-01'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/to-review:
+    get:
+      tags:
+        - review > buyer
+      summary: to review
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+        - name: to_date
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -813,7 +872,7 @@ paths:
   /api/product/reply:
     post:
       tags:
-        - review
+        - review > vendor
       summary: store review reply(vendor)
       requestBody:
         content:
@@ -826,7 +885,7 @@ paths:
                   example: ok
                 product_review_id:
                   type: integer
-                  example: '1'
+                  example: '6'
       security:
         - bearerAuth: []
       responses:
@@ -834,13 +893,47 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/review/1:
+  /api/product/review/6:
     get:
       tags:
-        - review
+        - review > vendor
       summary: get review by id
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/findAllReview:
+    get:
+      tags:
+        - review > vendor
+      summary: get all reviews (vendor)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: nullable
+          example: '10'
+        - name: star
+          in: query
+          schema:
+            type: string
+          description: nullable
+        - name: highest_rated
+          in: query
+          schema:
+            type: string
+          description: boolean, nullable
+        - name: recent
+          in: query
+          schema:
+            type: string
+          description: boolean, nullable
       responses:
         '200':
           description: Successful response
@@ -875,40 +968,6 @@ paths:
           schema:
             type: string
           description: bollean, nullable
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/product/findAllReview:
-    get:
-      tags:
-        - review
-      summary: get all reviews (vendor)
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          description: nullable
-          example: '10'
-        - name: star
-          in: query
-          schema:
-            type: string
-          description: nullable
-        - name: highest_rated
-          in: query
-          schema:
-            type: string
-          description: boolean, nullable
-        - name: recent
-          in: query
-          schema:
-            type: string
-          description: boolean, nullable
       responses:
         '200':
           description: Successful response
@@ -1596,6 +1655,31 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/vendor-shipping/{vendor_id}/{district_id}/district:
+    get:
+      tags:
+        - VendorShipping
+      summary: district shipping price
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: vendor_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '6'
+        - name: district_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vendor-shipping/{vendor_shipping_id}:
     get:
       tags:
@@ -2009,13 +2093,13 @@ paths:
               properties:
                 product_id:
                   type: integer
-                  example: '3'
+                  example: '4'
                 quantity:
                   type: integer
                   example: '1'
                 product_combination_id:
                   type: integer
-                  example: '1'
+                  example: '3'
       security:
         - bearerAuth: []
       responses:
@@ -2092,7 +2176,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/1:
+  /api/order/update-status/5:
     post:
       tags:
         - order > vendor
@@ -2105,7 +2189,7 @@ paths:
               properties:
                 status:
                   type: string
-                  example: processing
+                  example: delivered
       security:
         - bearerAuth: []
       responses:
@@ -2113,7 +2197,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/000000007:
+  /api/order/000000001:
     get:
       tags:
         - order > vendor

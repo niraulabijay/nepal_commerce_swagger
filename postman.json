@@ -1224,7 +1224,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?search_word=&category=category-4&recent=1&price_range=0-600&rating&most_order&highest_rated",
+							"raw": "{{url}}/api/product/filter?search_word=t&category=&recent=1&price_range=&rating&most_order&highest_rated",
 							"host": [
 								"{{url}}"
 							],
@@ -1236,38 +1236,31 @@
 							"query": [
 								{
 									"key": "search_word",
-									"value": "",
-									"description": "nullable"
+									"value": "t"
 								},
 								{
 									"key": "category",
-									"value": "category-4",
-									"description": "nullable"
+									"value": ""
 								},
 								{
 									"key": "recent",
-									"value": "1",
-									"description": "boolean, nullable"
+									"value": "1"
 								},
 								{
 									"key": "price_range",
-									"value": "0-600",
-									"description": "format: 100-1000, nullable"
+									"value": ""
 								},
 								{
 									"key": "rating",
-									"value": null,
-									"description": "boolean, nullable"
+									"value": null
 								},
 								{
 									"key": "most_order",
-									"value": null,
-									"description": "boolean, nullable"
+									"value": null
 								},
 								{
 									"key": "highest_rated",
-									"value": null,
-									"description": "boolean, nullable"
+									"value": null
 								}
 							]
 						}
@@ -1287,7 +1280,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/product/single/product-11-1",
+							"raw": "{{url}}/api/product/single/:slug",
 							"host": [
 								"{{url}}"
 							],
@@ -1295,7 +1288,13 @@
 								"api",
 								"product",
 								"single",
-								"product-11-1"
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "title1"
+								}
 							]
 						}
 					},
@@ -1458,7 +1457,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/api/product/to-review?limit=10&from_date=&to_date=",
+									"raw": "{{url}}/api/product/to-review?limit=10&from_date=2022-01-01&to_date=2022-09-10",
 									"host": [
 										"{{url}}"
 									],
@@ -1474,11 +1473,11 @@
 										},
 										{
 											"key": "from_date",
-											"value": ""
+											"value": "2022-01-01"
 										},
 										{
 											"key": "to_date",
-											"value": ""
+											"value": "2022-09-10"
 										}
 									]
 								}
@@ -1957,6 +1956,11 @@
 								{
 									"key": "message",
 									"value": "Hello World",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "2",
 									"type": "text"
 								}
 							]
@@ -4784,7 +4788,7 @@
 										},
 										{
 											"key": "order_id",
-											"value": "4",
+											"value": "5",
 											"type": "text"
 										}
 									]
@@ -4837,6 +4841,32 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "get vendor rating",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/vendor-rating/all?vendor_id=6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor-rating",
+								"all"
+							],
+							"query": [
+								{
+									"key": "vendor_id",
+									"value": "6",
+									"description": "required"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

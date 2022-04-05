@@ -808,7 +808,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product 11\",\n    \"category_id\": 2,\n    \"video_url\": \"video_url11\",\n    \"description\": \"description11\",\n    \"seo_title\": \"seo_title11\",\n    \"seo_description\": \"seo_description11\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"product 11\",\n    \"category_id\": 2,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video-url-11\",\n    \"description\": \"description-11\",\n    \"seo_title\": \"seo_title11\",\n    \"seo_description\": \"seo_description11\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -846,7 +846,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product3edit\",\n    \"category_id\": \"4\",\n    \"video_url\": \"video_url3edit\",\n    \"description\": \"description3edit\",\n    \"seo_title\": \"seo_title3edit\",\n    \"seo_description\": \"seo_description3edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"base_price\": \"333\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"product3edit\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"3\",\n    \"sub_sub_category_id\": \"4\",\n    \"video_url\": \"video_url3edit\",\n    \"description\": \"description3edit\",\n    \"seo_title\": \"seo_title3edit\",\n    \"seo_description\": \"seo_description3edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"base_price\": \"333\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -854,7 +854,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product/product/3",
+							"raw": "{{url}}/api/product/product/7",
 							"host": [
 								"{{url}}"
 							],
@@ -862,7 +862,7 @@
 								"api",
 								"product",
 								"product",
-								"3"
+								"7"
 							]
 						}
 					},
@@ -884,7 +884,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/product",
+							"raw": "{{url}}/api/product/product?search_word=&category=&recent=&price_range=&rating&most_order&highest_rated&limit=10&status=draft",
 							"host": [
 								"{{url}}"
 							],
@@ -892,6 +892,44 @@
 								"api",
 								"product",
 								"product"
+							],
+							"query": [
+								{
+									"key": "search_word",
+									"value": ""
+								},
+								{
+									"key": "category",
+									"value": ""
+								},
+								{
+									"key": "recent",
+									"value": ""
+								},
+								{
+									"key": "price_range",
+									"value": ""
+								},
+								{
+									"key": "rating",
+									"value": null
+								},
+								{
+									"key": "most_order",
+									"value": null
+								},
+								{
+									"key": "highest_rated",
+									"value": null
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "status",
+									"value": "draft"
+								}
 							]
 						}
 					},
@@ -920,7 +958,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/product/product/4",
+							"raw": "{{url}}/api/product/product/7",
 							"host": [
 								"{{url}}"
 							],
@@ -928,7 +966,7 @@
 								"api",
 								"product",
 								"product",
-								"4"
+								"7"
 							]
 						}
 					},
@@ -1093,7 +1131,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product/store-combination/3",
+							"raw": "{{url}}/api/product/store-combination/8",
 							"host": [
 								"{{url}}"
 							],
@@ -1101,7 +1139,7 @@
 								"api",
 								"product",
 								"store-combination",
-								"3"
+								"8"
 							]
 						}
 					},
@@ -1224,7 +1262,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?search_word=t&category=&recent=1&price_range=&rating&most_order&highest_rated",
+							"raw": "{{url}}/api/product/filter?search_word=t&category=&recent=1&price_range=&rating&most_order&highest_rated&limit=10",
 							"host": [
 								"{{url}}"
 							],
@@ -1261,6 +1299,10 @@
 								{
 									"key": "highest_rated",
 									"value": null
+								},
+								{
+									"key": "limit",
+									"value": "10"
 								}
 							]
 						}
@@ -4159,7 +4201,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/api/order/filter?status&order_number&status=&limit=10",
+									"raw": "{{url}}/api/order/filter?status&order_number&status=&limit=10&from_date=2022-01-01&to_date=2022-10-01&id=",
 									"host": [
 										"{{url}}"
 									],
@@ -4187,6 +4229,20 @@
 											"key": "limit",
 											"value": "10",
 											"description": "nullable"
+										},
+										{
+											"key": "from_date",
+											"value": "2022-01-01",
+											"description": "nullable"
+										},
+										{
+											"key": "to_date",
+											"value": "2022-10-01",
+											"description": "nullable"
+										},
+										{
+											"key": "id",
+											"value": ""
 										}
 									]
 								}
@@ -4256,7 +4312,7 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/order/update-status/5",
+									"raw": "{{url}}/api/order/update-status/2",
 									"host": [
 										"{{url}}"
 									],
@@ -4264,7 +4320,7 @@
 										"api",
 										"order",
 										"update-status",
-										"5"
+										"2"
 									]
 								}
 							},
@@ -4357,7 +4413,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/order/customer/filter?status=&order_number=&id=&limit=10",
+									"raw": "{{url}}/api/order/customer/filter?status=&order_number=&id=&limit=10&from_date=2022-01-01&to_date=2022-12-01",
 									"host": [
 										"{{url}}"
 									],
@@ -4370,19 +4426,33 @@
 									"query": [
 										{
 											"key": "status",
-											"value": ""
+											"value": "",
+											"description": "nullable"
 										},
 										{
 											"key": "order_number",
-											"value": ""
+											"value": "",
+											"description": "nullable"
 										},
 										{
 											"key": "id",
-											"value": ""
+											"value": "",
+											"description": "nullable"
 										},
 										{
 											"key": "limit",
-											"value": "10"
+											"value": "10",
+											"description": "nullable"
+										},
+										{
+											"key": "from_date",
+											"value": "2022-01-01",
+											"description": "nullable"
+										},
+										{
+											"key": "to_date",
+											"value": "2022-12-01",
+											"description": "nullable"
 										}
 									]
 								}
@@ -4990,6 +5060,204 @@
 								"admin",
 								"user",
 								"update-certified"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Site Settings",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/site-setting",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"site-setting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/site-setting/:key",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"site-setting",
+								":key"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": "hello"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"site_settings\":[\r\n        {\r\n            \"key\":\"hello\",\r\n            \"value\":\"world\"\r\n        },\r\n        {\r\n            \"key\":\"foo\",\r\n            \"value\":\"bar\"\r\n        },\r\n        {\r\n            \"key\":\"hey\",\r\n            \"value\":\"there\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/site-setting",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"site-setting"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Slider",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/slider",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"slider"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/slider/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"slider",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "banner_id",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "banner[key]",
+									"value": "asdfg",
+									"type": "text"
+								},
+								{
+									"key": "banner[image]",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/275286870_1139439920135839_3556744240985979091_n.jpg"
+								},
+								{
+									"key": "banner[link]",
+									"value": "www.google.comsd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/slider",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"slider"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/slider/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"slider",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
 							]
 						}
 					},

@@ -60,6 +60,8 @@ tags:
   - name: vendor rating > vendor
   - name: Payout
   - name: admin
+  - name: Site Settings
+  - name: Slider
 paths:
   /api/wishlist:
     post:
@@ -450,8 +452,10 @@ paths:
               example:
                 title: product 11
                 category_id: 2
-                video_url: video_url11
-                description: description11
+                sub_category_id: ''
+                sub_sub_category_id: ''
+                video_url: video-url-11
+                description: description-11
                 seo_title: seo_title11
                 seo_description: seo_description11
                 seo_keyword:
@@ -481,12 +485,51 @@ paths:
       summary: getAllProducts
       security:
         - bearerAuth: []
+      parameters:
+        - name: search_word
+          in: query
+          schema:
+            type: string
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: recent
+          in: query
+          schema:
+            type: string
+        - name: price_range
+          in: query
+          schema:
+            type: string
+        - name: rating
+          in: query
+          schema:
+            type: string
+        - name: most_order
+          in: query
+          schema:
+            type: string
+        - name: highest_rated
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: status
+          in: query
+          schema:
+            type: string
+          example: draft
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/product/product/3:
+  /api/product/product/7:
     patch:
       tags:
         - Product
@@ -498,7 +541,9 @@ paths:
               type: object
               example:
                 title: product3edit
-                category_id: '4'
+                category_id: 1
+                sub_category_id: '3'
+                sub_sub_category_id: '4'
                 video_url: video_url3edit
                 description: description3edit
                 seo_title: seo_title3edit
@@ -528,7 +573,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/product/4:
     get:
       tags:
         - Product
@@ -607,7 +651,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/store-combination/3:
+  /api/product/store-combination/8:
     post:
       tags:
         - Product
@@ -741,6 +785,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
       responses:
         '200':
           description: Successful response
@@ -2163,6 +2212,22 @@ paths:
             type: integer
           description: nullable
           example: '10'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          description: nullable
+          example: '2022-01-01'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          description: nullable
+          example: '2022-10-01'
+        - name: id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -2180,7 +2245,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/update-status/5:
+  /api/order/update-status/2:
     post:
       tags:
         - order > vendor
@@ -2237,19 +2302,35 @@ paths:
           in: query
           schema:
             type: string
+          description: nullable
         - name: order_number
           in: query
           schema:
             type: string
+          description: nullable
         - name: id
           in: query
           schema:
             type: string
+          description: nullable
         - name: limit
           in: query
           schema:
             type: integer
+          description: nullable
           example: '10'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          description: nullable
+          example: '2022-01-01'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          description: nullable
+          example: '2022-12-01'
       responses:
         '200':
           description: Successful response
@@ -2520,6 +2601,131 @@ paths:
                   example: '6'
       security:
         - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-setting:
+    get:
+      tags:
+        - Site Settings
+      summary: index
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Site Settings
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                site_settings:
+                  - key: hello
+                    value: world
+                  - key: foo
+                    value: bar
+                  - key: hey
+                    value: there
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-setting/{key}:
+    get:
+      tags:
+        - Site Settings
+      summary: show
+      parameters:
+        - name: key
+          in: path
+          schema:
+            type: string
+          required: true
+          example: hello
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/slider:
+    get:
+      tags:
+        - Slider
+      summary: index
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Slider
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                banner_id:
+                  type: integer
+                  example: '0'
+                banner[key]:
+                  type: string
+                  example: asdfg
+                banner[image]:
+                  type: string
+                  format: binary
+                banner[link]:
+                  type: string
+                  example: www.google.comsd
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/slider/{id}:
+    get:
+      tags:
+        - Slider
+      summary: show
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Slider
+      summary: delete
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
       responses:
         '200':
           description: Successful response

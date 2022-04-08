@@ -76,7 +76,10 @@ paths:
               properties:
                 product_id:
                   type: integer
-                  example: '3'
+                  example: '4'
+                product_combination_id:
+                  type: integer
+                  example: '4'
       security:
         - bearerAuth: []
       responses:
@@ -100,6 +103,8 @@ paths:
       tags:
         - wishlist
       summary: remove wishlist
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -195,10 +200,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: vendor@gmail.com
+                  example: bipin@gmail.com
                 password:
                   type: string
-                  example: P@ssw0rd
+                  example: Nepalcommerce!23
       responses:
         '200':
           description: Successful response
@@ -382,8 +387,8 @@ paths:
               example:
                 product_id: 3
                 attribute:
-                  id: 1
-                  value: red
+                  id: 5
+                  value: XL
       security:
         - bearerAuth: []
       responses:
@@ -427,7 +432,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/product-attribute/1:
+  /api/product/product-attribute/3:
     get:
       tags:
         - Product
@@ -450,14 +455,14 @@ paths:
             schema:
               type: object
               example:
-                title: product 11
-                category_id: 2
+                title: product 1
+                category_id: 1
                 sub_category_id: ''
                 sub_sub_category_id: ''
-                video_url: video-url-11
-                description: description-11
-                seo_title: seo_title11
-                seo_description: seo_description11
+                video_url: video-url-1
+                description: description-1
+                seo_title: seo_title1
+                seo_description: seo_description1
                 seo_keyword:
                   - keyword1
                   - keyword2
@@ -523,13 +528,12 @@ paths:
           in: query
           schema:
             type: string
-          example: draft
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/product/product/7:
+  /api/product/product/3:
     patch:
       tags:
         - Product
@@ -621,7 +625,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -651,11 +655,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/store-combination/8:
+  /api/product/store-combination/3:
     post:
       tags:
         - Product
-      summary: update or create combination
+      summary: combination edit test file
       requestBody:
         content:
           application/json:
@@ -663,33 +667,33 @@ paths:
               type: object
               example:
                 combination:
-                  - id: ''
+                  - id: '1'
                     availability: 1
                     sku: sku1
-                    stock: 51
-                    base_price: 101
+                    stock: 10
+                    base_price: 100
                     selected_attribute:
-                      - id: ''
-                        attribute_id: 1
-                        value_id: 1
-                      - id: ''
-                        attribute_id: 2
-                        value_id: 5
+                      - id: '1'
+                        attribute_id: 4
+                        value_id: 13
+                      - id: '3'
+                        attribute_id: 5
+                        value_id: 15
                     quantity:
                       1-10: 101
                       11-22: 51
-                  - id: ''
+                  - id: '2'
                     availability: 1
                     sku: sku2
-                    stock: 101
-                    base_price: 201
+                    stock: 100
+                    base_price: 200
                     selected_attribute:
-                      - id: ''
-                        attribute_id: 1
-                        value_id: 2
-                      - id: ''
-                        attribute_id: 2
-                        value_id: 6
+                      - id: '2'
+                        attribute_id: 4
+                        value_id: 14
+                      - id: '4'
+                        attribute_id: 5
+                        value_id: 16
                     quantity:
                       1-10: 201
                       11-22: 151
@@ -741,7 +745,7 @@ paths:
                   example: Published
                 product_id:
                   type: integer
-                  example: '2'
+                  example: '3'
       security:
         - bearerAuth: []
       responses:
@@ -764,31 +768,39 @@ paths:
           in: query
           schema:
             type: string
+          description: nullable
         - name: recent
           in: query
           schema:
             type: integer
+          description: boolean
           example: '1'
         - name: price_range
           in: query
           schema:
             type: string
+          description: 10-100
         - name: rating
           in: query
           schema:
-            type: string
+            type: integer
+          description: 1, 2, 3, 4, 5
+          example: '2'
         - name: most_order
           in: query
           schema:
             type: string
+          description: boolean
         - name: highest_rated
           in: query
           schema:
             type: string
+          description: boolean
         - name: limit
           in: query
           schema:
             type: integer
+          description: nullable
           example: '10'
       responses:
         '200':
@@ -806,29 +818,7 @@ paths:
           schema:
             type: string
           required: true
-          example: title1
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/product/is-combo-unique:
-    post:
-      tags:
-        - Product
-      summary: is combination unique
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                product_id: 1
-                attribute_value_ids:
-                  - 5
-                  - 3
-      security:
-        - bearerAuth: []
+          example: summer-cool-tshirt
       responses:
         '200':
           description: Successful response
@@ -838,7 +828,7 @@ paths:
     post:
       tags:
         - review > buyer
-      summary: store review(user)
+      summary: store product review
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -852,7 +842,7 @@ paths:
                   example: pehele istamal karo phir biswas karo
                 product_id:
                   type: integer
-                  example: '3'
+                  example: '1'
       security:
         - bearerAuth: []
       responses:
@@ -864,7 +854,7 @@ paths:
     get:
       tags:
         - review > buyer
-      summary: get all review buyer
+      summary: get all review
       security:
         - bearerAuth: []
       parameters:
@@ -879,13 +869,11 @@ paths:
           schema:
             type: string
           description: nullable
-          example: '2022-01-01'
         - name: to_date
           in: query
           schema:
             type: string
           description: nullable
-          example: '2022-09-01'
       responses:
         '200':
           description: Successful response
@@ -895,7 +883,7 @@ paths:
     get:
       tags:
         - review > buyer
-      summary: to review
+      summary: to review list
       security:
         - bearerAuth: []
       parameters:
@@ -908,12 +896,22 @@ paths:
           in: query
           schema:
             type: string
-          example: '2022-01-01'
         - name: to_date
           in: query
           schema:
             type: string
-          example: '2022-09-10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/single-customer-review/1:
+    get:
+      tags:
+        - review > buyer
+      summary: get single review
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -1800,8 +1798,7 @@ paths:
                   type: string
                   example: home
                 is_primary:
-                  type: integer
-                  example: '1'
+                  type: string
       security:
         - bearerAuth: []
       responses:
@@ -2146,13 +2143,13 @@ paths:
               properties:
                 product_id:
                   type: integer
-                  example: '4'
+                  example: '3'
                 quantity:
                   type: integer
                   example: '1'
                 product_combination_id:
                   type: integer
-                  example: '3'
+                  example: '1'
       security:
         - bearerAuth: []
       responses:
@@ -2217,13 +2214,11 @@ paths:
           schema:
             type: string
           description: nullable
-          example: '2022-01-01'
         - name: to_date
           in: query
           schema:
             type: string
           description: nullable
-          example: '2022-10-01'
         - name: id
           in: query
           schema:
@@ -2245,7 +2240,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/update-status/2:
+  /api/order/update-status/3:
     post:
       tags:
         - order > vendor
@@ -2324,13 +2319,11 @@ paths:
           schema:
             type: string
           description: nullable
-          example: '2022-01-01'
         - name: to_date
           in: query
           schema:
             type: string
           description: nullable
-          example: '2022-12-01'
       responses:
         '200':
           description: Successful response
@@ -2375,7 +2368,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/get-order/000000001:
+  /api/order/get-order/000000003:
     get:
       tags:
         - order > customer
@@ -2387,7 +2380,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/customer/order-status/000000001:
+  /api/order/customer/order-status/000000003:
     get:
       tags:
         - order > customer
@@ -2495,22 +2488,19 @@ paths:
       summary: store vendor rating
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
-              properties:
-                star:
-                  type: integer
-                  example: '3'
-                type:
-                  type: string
-                  example: delivery
-                vendor_id:
-                  type: integer
-                  example: '6'
-                order_id:
-                  type: integer
-                  example: '5'
+              example:
+                vendor_id: 6
+                order_id: 4
+                rating:
+                  - type: delivery
+                    star: 4
+                  - type: quality
+                    star: 4
+                  - type: communication
+                    star: 4
       security:
         - bearerAuth: []
       responses:
@@ -2542,6 +2532,12 @@ paths:
             type: integer
           description: required
           example: '6'
+        - name: order_number
+          in: query
+          schema:
+            type: integer
+          description: nullable
+          example: '000000001'
       responses:
         '200':
           description: Successful response
@@ -2629,10 +2625,13 @@ paths:
                 site_settings:
                   - key: hello
                     value: world
+                    type: text
                   - key: foo
                     value: bar
+                    type: text
                   - key: hey
                     value: there
+                    type: text
       responses:
         '200':
           description: Successful response
@@ -2665,67 +2664,13 @@ paths:
           description: Successful response
           content:
             application/json: {}
-    post:
-      tags:
-        - Slider
-      summary: store
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                banner_id:
-                  type: integer
-                  example: '0'
-                banner[key]:
-                  type: string
-                  example: asdfg
-                banner[image]:
-                  type: string
-                  format: binary
-                banner[link]:
-                  type: string
-                  example: www.google.comsd
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/slider/{id}:
+  /api/test:
     get:
       tags:
-        - Slider
-      summary: show
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '10'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - Slider
-      summary: delete
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '8'
+        - default
+      summary: test
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response

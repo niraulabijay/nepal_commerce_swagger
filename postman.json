@@ -122,6 +122,51 @@
 			"name": "user",
 			"item": [
 				{
+					"name": "Social Login",
+					"item": [
+						{
+							"name": "google",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "provider",
+											"value": "google",
+											"type": "text"
+										},
+										{
+											"key": "access_token",
+											"value": "ya29.A0ARrdaM8Zgy4BxvILwXGW5sg8es-STlrJ0jYqT1JgW0g05xMNRZz7C5mdAlU0bgWw2gO9XuhMCIklxrX0naBUe-UjKUXnlyc00tk6x86OGr04klNayVleSiC4DJTR61ZxToFURmnAaZ1p7UkzbKspjy3nOc9p",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/sign-in/social",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sign-in",
+										"social"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "registration",
 					"request": {
 						"method": "POST",
@@ -194,6 +239,36 @@
 								"api",
 								"user",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send reset link email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user/password/email",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"password",
+								"email"
 							]
 						}
 					},
@@ -5260,45 +5335,6 @@
 							"path": [
 								"api",
 								"slider"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "forgot password",
-			"item": [
-				{
-					"name": "forgotPassword",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/forgotPassword",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"forgotPassword"
 							]
 						}
 					},

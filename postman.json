@@ -28,12 +28,7 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "4",
-									"type": "text"
-								},
-								{
-									"key": "product_combination_id",
-									"value": "4",
+									"value": "1",
 									"type": "text"
 								}
 							]
@@ -136,12 +131,12 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "customer",
+									"value": "tomnjerry",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "customer@gmail.com",
+									"value": "tomnjerry8963@gmail.com",
 									"type": "text"
 								},
 								{
@@ -453,6 +448,35 @@
 								"vendor",
 								"user",
 								"confidential"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get vendor profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vendor/user/profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"profile"
 							]
 						}
 					},
@@ -848,7 +872,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product 1\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video-url-1\",\n    \"description\": \"description-1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"product 1\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"status\":\"published\",\n    \"video_url\": \"video-url-1\",\n    \"description\": \"description-1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -886,7 +910,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product3edit\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"3\",\n    \"sub_sub_category_id\": \"4\",\n    \"video_url\": \"video_url3edit\",\n    \"description\": \"description3edit\",\n    \"seo_title\": \"seo_title3edit\",\n    \"seo_description\": \"seo_description3edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"base_price\": \"333\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"product3edit\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"3\",\n    \"sub_sub_category_id\": \"4\",\n    \"video_url\": \"video_url3edit\",\n    \"description\": \"description3edit\",\n    \"seo_title\": \"seo_title3edit\",\n    \"seo_description\": \"seo_description3edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"base_price\": \"333\",\n    \"status\":\"draft\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -894,7 +918,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product/product/3",
+							"raw": "{{url}}/api/product/product/7",
 							"host": [
 								"{{url}}"
 							],
@@ -902,7 +926,7 @@
 								"api",
 								"product",
 								"product",
-								"3"
+								"7"
 							]
 						}
 					},
@@ -1072,7 +1096,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/user--49/Pictures/dream-theater.jpg"
+									"src": "/home/user--49/Pictures/dodge.png"
 								},
 								{
 									"key": "type",
@@ -1095,7 +1119,7 @@
 							"variable": [
 								{
 									"key": "product_id",
-									"value": "3"
+									"value": "2"
 								}
 							]
 						}
@@ -1341,7 +1365,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?search_word=t&category=&recent=1&price_range=&rating=2&most_order&highest_rated&limit=10",
+							"raw": "{{url}}/api/product/filter?search_word=t&category=&recent=&price_range=&rating=&most_order&highest_rated&limit=10",
 							"host": [
 								"{{url}}"
 							],
@@ -1362,7 +1386,7 @@
 								},
 								{
 									"key": "recent",
-									"value": "1",
+									"value": "",
 									"description": "boolean"
 								},
 								{
@@ -1372,7 +1396,7 @@
 								},
 								{
 									"key": "rating",
-									"value": "2",
+									"value": "",
 									"description": "1, 2, 3, 4, 5"
 								},
 								{
@@ -1421,7 +1445,7 @@
 							"variable": [
 								{
 									"key": "slug",
-									"value": "summer-cool-tshirt"
+									"value": "product-1"
 								}
 							]
 						}
@@ -1759,7 +1783,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/product/filter/review/title1?limit=10&star=&highest_rated=&recent=",
+							"raw": "{{url}}/api/product/filter/review/product-1?limit=10&star=&highest_rated=&recent=",
 							"host": [
 								"{{url}}"
 							],
@@ -1768,7 +1792,7 @@
 								"product",
 								"filter",
 								"review",
-								"title1"
+								"product-1"
 							],
 							"query": [
 								{
@@ -2392,6 +2416,34 @@
 							"path": [
 								"api",
 								"package-subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor-package",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor-package"
 							]
 						}
 					},
@@ -4980,7 +5032,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/vendor-rating/all?vendor_id=6&order_number=000000001",
+							"raw": "{{url}}/api/vendor-rating/all?vendor_id=6&order_number=",
 							"host": [
 								"{{url}}"
 							],
@@ -4997,7 +5049,7 @@
 								},
 								{
 									"key": "order_number",
-									"value": "000000001",
+									"value": "",
 									"description": "nullable"
 								}
 							]
@@ -5140,6 +5192,16 @@
 				{
 					"name": "index",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -5173,35 +5235,8 @@
 							"variable": [
 								{
 									"key": "key",
-									"value": "hello"
+									"value": "full_address_1"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "store",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"site_settings\":[\r\n        {\r\n            \"key\":\"hello\",\r\n            \"value\":\"world\",\r\n            \"type\":\"text\"\r\n        },\r\n        {\r\n            \"key\":\"foo\",\r\n            \"value\":\"bar\",\r\n            \"type\":\"text\"\r\n        },\r\n        {\r\n            \"key\":\"hey\",\r\n            \"value\":\"there\",\r\n            \"type\":\"text\"\r\n        }\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/site-setting",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"site-setting"
 							]
 						}
 					},
@@ -5225,6 +5260,45 @@
 							"path": [
 								"api",
 								"slider"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "forgot password",
+			"item": [
+				{
+					"name": "forgotPassword",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/forgotPassword",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forgotPassword"
 							]
 						}
 					},

@@ -63,6 +63,7 @@ tags:
   - name: admin
   - name: Site Settings
   - name: Slider
+  - name: Homepage
 paths:
   /api/wishlist:
     post:
@@ -112,7 +113,7 @@ paths:
     post:
       tags:
         - user > Social Login
-      summary: google
+      summary: login
       requestBody:
         content:
           multipart/form-data:
@@ -125,7 +126,7 @@ paths:
                 access_token:
                   type: string
                   example: >-
-                    ya29.A0ARrdaM8Zgy4BxvILwXGW5sg8es-STlrJ0jYqT1JgW0g05xMNRZz7C5mdAlU0bgWw2gO9XuhMCIklxrX0naBUe-UjKUXnlyc00tk6x86OGr04klNayVleSiC4DJTR61ZxToFURmnAaZ1p7UkzbKspjy3nOc9p
+                    EAAFxTZCBjNpMBAPt9zZCNBO9vu9LsUIWcfNpx94x7eJfol0yOtg3MWIDGIRDkNKL9hA9V78XSFfZBiraiG7Gmr2ZCxnI5YR52IybDbq4lGZBuu3ZBXP2L6PjdwT2CM5V7fKDM3zrjELqf7wh1hUPHbUE24vZBNXF9vGrvBJZCJIukZBAZBAI1PwXoo
       parameters:
         - name: Accept
           in: header
@@ -200,6 +201,38 @@ paths:
                 email:
                   type: string
                   example: tomnjerry8963@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user/password/reset/{token}:
+    post:
+      tags:
+        - user
+      summary: password reset
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+      parameters:
+        - name: token
+          in: path
+          schema:
+            type: string
+          required: true
+          example: tuJPJEEHHt3f4acyrJSBCgtACRk17gSGYiDZ72fF5GIbnbBdj5CJOn4tAQ4Ybm7l
       responses:
         '200':
           description: Successful response
@@ -343,6 +376,18 @@ paths:
       tags:
         - vendor
       summary: get vendor profile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /vendor/user/dashboard-data:
+    get:
+      tags:
+        - vendor
+      summary: vendor dashboard data
       security:
         - bearerAuth: []
       responses:
@@ -2678,7 +2723,7 @@ paths:
         - Site Settings
       summary: index
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       responses:
         '200':
           description: Successful response
@@ -2706,6 +2751,78 @@ paths:
       tags:
         - Slider
       summary: index
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user/vendor/homepage:
+    get:
+      tags:
+        - Homepage
+      summary: vendor list by most order
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/category/homepage:
+    get:
+      tags:
+        - Homepage
+      summary: category list for homepage
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/homepage/latest:
+    get:
+      tags:
+        - Homepage
+      summary: get new products for homepage
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/homepage/most-ordered:
+    get:
+      tags:
+        - Homepage
+      summary: get most ordered products for homepage
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/homepage/highest-rated:
+    get:
+      tags:
+        - Homepage
+      summary: get highest rated products for homepage
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response

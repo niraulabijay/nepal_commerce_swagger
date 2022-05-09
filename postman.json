@@ -125,7 +125,7 @@
 					"name": "Social Login",
 					"item": [
 						{
-							"name": "google",
+							"name": "login",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -145,7 +145,7 @@
 										},
 										{
 											"key": "access_token",
-											"value": "ya29.A0ARrdaM8Zgy4BxvILwXGW5sg8es-STlrJ0jYqT1JgW0g05xMNRZz7C5mdAlU0bgWw2gO9XuhMCIklxrX0naBUe-UjKUXnlyc00tk6x86OGr04klNayVleSiC4DJTR61ZxToFURmnAaZ1p7UkzbKspjy3nOc9p",
+											"value": "EAAFxTZCBjNpMBAPt9zZCNBO9vu9LsUIWcfNpx94x7eJfol0yOtg3MWIDGIRDkNKL9hA9V78XSFfZBiraiG7Gmr2ZCxnI5YR52IybDbq4lGZBuu3ZBXP2L6PjdwT2CM5V7fKDM3zrjELqf7wh1hUPHbUE24vZBNXF9vGrvBJZCJIukZBAZBAI1PwXoo",
 											"type": "text"
 										}
 									]
@@ -269,6 +269,53 @@
 								"user",
 								"password",
 								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user/password/reset/:token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"password",
+								"reset",
+								":token"
+							],
+							"variable": [
+								{
+									"key": "token",
+									"value": "tuJPJEEHHt3f4acyrJSBCgtACRk17gSGYiDZ72fF5GIbnbBdj5CJOn4tAQ4Ybm7l"
+								}
 							]
 						}
 					},
@@ -552,6 +599,35 @@
 								"vendor",
 								"user",
 								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vendor dashboard data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vendor/user/dashboard-data",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"dashboard-data"
 							]
 						}
 					},
@@ -5268,14 +5344,7 @@
 					"name": "index",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{vendor_token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -5335,6 +5404,172 @@
 							"path": [
 								"api",
 								"slider"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Homepage",
+			"item": [
+				{
+					"name": "vendor list by most order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/vendor/homepage",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"vendor",
+								"homepage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category list for homepage",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/category/homepage",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"category",
+								"homepage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get new products for homepage",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/product/homepage/latest",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"homepage",
+								"latest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get most ordered products for homepage",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/product/homepage/most-ordered",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"homepage",
+								"most-ordered"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get highest rated products for homepage",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/product/homepage/highest-rated",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"homepage",
+								"highest-rated"
 							]
 						}
 					},

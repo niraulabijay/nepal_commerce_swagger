@@ -140,12 +140,12 @@
 									"formdata": [
 										{
 											"key": "provider",
-											"value": "google",
+											"value": "facebook",
 											"type": "text"
 										},
 										{
 											"key": "access_token",
-											"value": "EAAFxTZCBjNpMBAPt9zZCNBO9vu9LsUIWcfNpx94x7eJfol0yOtg3MWIDGIRDkNKL9hA9V78XSFfZBiraiG7Gmr2ZCxnI5YR52IybDbq4lGZBuu3ZBXP2L6PjdwT2CM5V7fKDM3zrjELqf7wh1hUPHbUE24vZBNXF9vGrvBJZCJIukZBAZBAI1PwXoo",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJCaXNoYWwiLCJ1aWQiOiJmYl9fNTA5MDU4NTM2NzY3NzM3MCIsInByb3ZpZGVyIjoiZmFjZWJvb2siLCJyb2xlcyI6WyJVU0VSIl0sImlhdCI6MTY1MjA3NDU3NCwiZXhwIjoxNjUyMDc4MTc0fQ.p7zs8awltlvgo9J47vHq1fOsF8_EkA88guZ2QubSQBc",
 											"type": "text"
 										}
 									]
@@ -599,35 +599,6 @@
 								"vendor",
 								"user",
 								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "vendor dashboard data",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{vendor_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/vendor/user/dashboard-data",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"vendor",
-								"user",
-								"dashboard-data"
 							]
 						}
 					},
@@ -1173,7 +1144,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/product/product/3",
+							"raw": "{{url}}/api/product/product/:product_id",
 							"host": [
 								"{{url}}"
 							],
@@ -1181,7 +1152,13 @@
 								"api",
 								"product",
 								"product",
-								"3"
+								":product_id"
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": "3"
+								}
 							]
 						}
 					},
@@ -1490,7 +1467,7 @@
 								},
 								{
 									"key": "product_id",
-									"value": "3",
+									"value": "2",
 									"type": "text"
 								}
 							]
@@ -1516,7 +1493,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?search_word=t&category=&recent=&price_range=&rating=&most_order&highest_rated&limit=10",
+							"raw": "{{url}}/api/product/filter?search_word=1&category=&recent=&price_range=&rating=&most_order&highest_rated&limit=10",
 							"host": [
 								"{{url}}"
 							],
@@ -1528,7 +1505,7 @@
 							"query": [
 								{
 									"key": "search_word",
-									"value": "t"
+									"value": "1"
 								},
 								{
 									"key": "category",
@@ -3834,7 +3811,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{vendor_token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -3846,12 +3823,12 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Vendor",
+									"value": "customer",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "vendor@gmail.com",
+									"value": "customer@gmail.com",
 									"type": "text"
 								},
 								{
@@ -3872,7 +3849,7 @@
 								{
 									"key": "profile_pic",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Pictures/Desktop Screenshot 2022.02.18 - 14.53.10.37.png"
+									"src": "/home/user--49/Pictures/images.jpeg"
 								}
 							]
 						},
@@ -3953,7 +3930,7 @@
 							"variable": [
 								{
 									"key": "user_id",
-									"value": "6"
+									"value": "2"
 								}
 							]
 						}
@@ -3968,7 +3945,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{vendor_token}}",
+									"value": "{{customer_token}}",
 									"type": "string"
 								}
 							]
@@ -4371,12 +4348,12 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "3",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "1",
+									"value": "100",
 									"type": "text"
 								},
 								{
@@ -5183,7 +5160,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/vendor-rating/all?vendor_id=6&order_number=",
+							"raw": "{{url}}/api/vendor-rating/all?vendor_id=1&order_number=",
 							"host": [
 								"{{url}}"
 							],
@@ -5195,7 +5172,7 @@
 							"query": [
 								{
 									"key": "vendor_id",
-									"value": "6",
+									"value": "1",
 									"description": "required"
 								},
 								{
@@ -5570,6 +5547,88 @@
 								"product",
 								"homepage",
 								"highest-rated"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tag",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/tag",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tag"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/tag/:tag_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tag",
+								":tag_id"
+							],
+							"variable": [
+								{
+									"key": "tag_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vendor Dashboard",
+			"item": [
+				{
+					"name": "vendor dashboard data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vendor/user/dashboard",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"dashboard"
 							]
 						}
 					},

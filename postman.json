@@ -176,22 +176,22 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "tomnjerry",
+									"value": "Bishal",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
+									"value": "leon.schiffer360@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "P@ssw0rd",
+									"value": "Asd@360",
 									"type": "text"
 								},
 								{
 									"key": "password_confirmation",
-									"value": "P@ssw0rd",
+									"value": "Asd@360",
 									"type": "text"
 								}
 							]
@@ -220,12 +220,12 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "customer@gmail.com",
+									"value": "grgbishal360@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "P@ssw0rd",
+									"value": "Asd@360",
 									"type": "text"
 								}
 							]
@@ -254,7 +254,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
+									"value": "leon.schiffer360@gmail.com",
 									"type": "text"
 								}
 							]
@@ -278,23 +278,29 @@
 					"name": "password reset",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
+									"value": "leon.schiffer360@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "P@ssw0rd",
+									"value": "Asd@360",
 									"type": "text"
 								},
 								{
 									"key": "password_confirmation",
-									"value": "P@ssw0rd",
+									"value": "Asd@360",
 									"type": "text"
 								}
 							]
@@ -314,8 +320,63 @@
 							"variable": [
 								{
 									"key": "token",
-									"value": "tuJPJEEHHt3f4acyrJSBCgtACRk17gSGYiDZ72fF5GIbnbBdj5CJOn4tAQ4Ybm7l"
+									"value": "8RPDNC6mlYzs0JeMetGRx6izpSKLK3cuxe4IEDHUyuCPVafD9rK61hxbQro74oYE"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "P@ssw0rds",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rds",
+									"type": "text"
+								},
+								{
+									"key": "old_password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user/change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"change-password"
 							]
 						}
 					},
@@ -336,13 +397,13 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "vendor",
+									"value": "tomhardy8963",
 									"contentType": "",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "vendor@gmail.com",
+									"value": "tomhardy8963@gmail.com",
 									"type": "text"
 								},
 								{
@@ -386,7 +447,7 @@
 								},
 								{
 									"key": "password",
-									"value": "P@ssw0rd",
+									"value": "P@ssw0rds",
 									"type": "text"
 								},
 								{
@@ -603,6 +664,138 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "send reset link email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vendor/user/password/email",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"password",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vendor/user/password/reset/:token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"password",
+								"reset",
+								":token"
+							],
+							"variable": [
+								{
+									"key": "token",
+									"value": "tuJPJEEHHt3f4acyrJSBCgtACRk17gSGYiDZ72fF5GIbnbBdj5CJOn4tAQ4Ybm7l"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "old_password",
+									"value": "P@ssw0rds",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vendor/user/change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -806,6 +999,16 @@
 						{
 							"name": "find vendor",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{vendor_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -994,7 +1197,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product 1\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"status\":\"published\",\n    \"video_url\": \"video-url-1\",\n    \"description\": \"description-1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"converse\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"status\":\"published\",\n    \"video_url\": \"video-url-1\",\n    \"description\": \"description-1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1399,7 +1602,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/product/get-combination/3",
+							"raw": "{{url}}/api/product/get-combination/:product_id",
 							"host": [
 								"{{url}}"
 							],
@@ -1407,7 +1610,13 @@
 								"api",
 								"product",
 								"get-combination",
-								"3"
+								":product_id"
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": "2"
+								}
 							]
 						}
 					},
@@ -1493,7 +1702,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?search_word=1&category=&recent=&price_range=&rating=&most_order&highest_rated&limit=10",
+							"raw": "{{url}}/api/product/filter?search_word=product&category=&recent=&price_range=&rating=&most_order&highest_rated&limit=10&tag=",
 							"host": [
 								"{{url}}"
 							],
@@ -1505,7 +1714,7 @@
 							"query": [
 								{
 									"key": "search_word",
-									"value": "1"
+									"value": "product"
 								},
 								{
 									"key": "category",
@@ -1541,6 +1750,11 @@
 									"key": "limit",
 									"value": "10",
 									"description": "nullable"
+								},
+								{
+									"key": "tag",
+									"value": "",
+									"description": "tag slug"
 								}
 							]
 						}
@@ -4348,17 +4562,17 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "1",
+									"value": "2",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "100",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "product_combination_id",
-									"value": "1",
+									"value": "4",
 									"type": "text"
 								}
 							]
@@ -4422,14 +4636,20 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/cart/1",
+							"raw": "{{url}}/api/cart/:cart_id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"cart",
-								"1"
+								":cart_id"
+							],
+							"variable": [
+								{
+									"key": "cart_id",
+									"value": "9"
+								}
 							]
 						}
 					},
@@ -4813,7 +5033,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/api/order/get-order/000000003",
+									"raw": "{{url}}/api/order/get-order/:order_number",
 									"host": [
 										"{{url}}"
 									],
@@ -4821,7 +5041,13 @@
 										"api",
 										"order",
 										"get-order",
-										"000000003"
+										":order_number"
+									],
+									"variable": [
+										{
+											"key": "order_number",
+											"value": "9vxKcRkM15"
+										}
 									]
 								}
 							},
@@ -4843,7 +5069,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/api/order/customer/order-status/000000003",
+									"raw": "{{url}}/api/order/customer/order-status/:order_number",
 									"host": [
 										"{{url}}"
 									],
@@ -4852,7 +5078,13 @@
 										"order",
 										"customer",
 										"order-status",
-										"000000003"
+										":order_number"
+									],
+									"variable": [
+										{
+											"key": "order_number",
+											"value": "0000006"
+										}
 									]
 								}
 							},

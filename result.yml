@@ -152,16 +152,16 @@ paths:
               properties:
                 name:
                   type: string
-                  example: tomnjerry
+                  example: Bishal
                 email:
                   type: string
-                  example: tomnjerry8963@gmail.com
+                  example: leon.schiffer360@gmail.com
                 password:
                   type: string
-                  example: P@ssw0rd
+                  example: Asd@360
                 password_confirmation:
                   type: string
-                  example: P@ssw0rd
+                  example: Asd@360
       responses:
         '200':
           description: Successful response
@@ -180,10 +180,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: customer@gmail.com
+                  example: grgbishal360@gmail.com
                 password:
                   type: string
-                  example: P@ssw0rd
+                  example: Asd@360
       responses:
         '200':
           description: Successful response
@@ -202,7 +202,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: tomnjerry8963@gmail.com
+                  example: leon.schiffer360@gmail.com
       responses:
         '200':
           description: Successful response
@@ -221,20 +221,58 @@ paths:
               properties:
                 email:
                   type: string
-                  example: tomnjerry8963@gmail.com
+                  example: leon.schiffer360@gmail.com
                 password:
                   type: string
-                  example: P@ssw0rd
+                  example: Asd@360
                 password_confirmation:
                   type: string
-                  example: P@ssw0rd
+                  example: Asd@360
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
         - name: token
           in: path
           schema:
             type: string
           required: true
-          example: tuJPJEEHHt3f4acyrJSBCgtACRk17gSGYiDZ72fF5GIbnbBdj5CJOn4tAQ4Ybm7l
+          example: 8RPDNC6mlYzs0JeMetGRx6izpSKLK3cuxe4IEDHUyuCPVafD9rK61hxbQro74oYE
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user/change-password:
+    post:
+      tags:
+        - user
+      summary: change password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: P@ssw0rds
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rds
+                old_password:
+                  type: string
+                  example: P@ssw0rd
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
@@ -253,10 +291,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: vendor
+                  example: tomhardy8963
                 email:
                   type: string
-                  example: vendor@gmail.com
+                  example: tomhardy8963@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -385,6 +423,90 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /vendor/user/password/email:
+    post:
+      tags:
+        - vendor
+      summary: send reset link email
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /vendor/user/password/reset/{token}:
+    post:
+      tags:
+        - vendor
+      summary: password reset
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+      parameters:
+        - name: token
+          in: path
+          schema:
+            type: string
+          required: true
+          example: tuJPJEEHHt3f4acyrJSBCgtACRk17gSGYiDZ72fF5GIbnbBdj5CJOn4tAQ4Ybm7l
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /vendor/user/change-password:
+    post:
+      tags:
+        - vendor
+      summary: change password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+                old_password:
+                  type: string
+                  example: P@ssw0rds
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/brand/brand:
     get:
       tags:
@@ -462,6 +584,8 @@ paths:
       tags:
         - Product > vendor
       summary: find vendor
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -548,7 +672,7 @@ paths:
             schema:
               type: object
               example:
-                title: product 1
+                title: converse
                 category_id: 1
                 sub_category_id: ''
                 sub_sub_category_id: ''
@@ -808,13 +932,20 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/get-combination/3:
+  /api/product/get-combination/{product_id}:
     get:
       tags:
         - Product
       summary: getProductCombination
       security:
         - bearerAuth: []
+      parameters:
+        - name: product_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -865,8 +996,8 @@ paths:
         - name: search_word
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: product
         - name: category
           in: query
           schema:
@@ -903,6 +1034,11 @@ paths:
             type: integer
           description: nullable
           example: '10'
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: tag slug
       responses:
         '200':
           description: Successful response
@@ -2256,13 +2392,13 @@ paths:
               properties:
                 product_id:
                   type: integer
-                  example: '1'
+                  example: '2'
                 quantity:
                   type: integer
-                  example: '100'
+                  example: '1'
                 product_combination_id:
                   type: integer
-                  example: '1'
+                  example: '4'
       security:
         - bearerAuth: []
       responses:
@@ -2281,13 +2417,20 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/cart/1:
+  /api/cart/{cart_id}:
     delete:
       tags:
         - cart
       summary: delete cart item
       security:
         - bearerAuth: []
+      parameters:
+        - name: cart_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '9'
       responses:
         '200':
           description: Successful response
@@ -2481,25 +2624,39 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/order/get-order/000000003:
+  /api/order/get-order/{order_number}:
     get:
       tags:
         - order > customer
       summary: get order by order number
       security:
         - bearerAuth: []
+      parameters:
+        - name: order_number
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 9vxKcRkM15
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/order/customer/order-status/000000003:
+  /api/order/customer/order-status/{order_number}:
     get:
       tags:
         - order > customer
       summary: get order status by order number
       security:
         - bearerAuth: []
+      parameters:
+        - name: order_number
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '0000006'
       responses:
         '200':
           description: Successful response

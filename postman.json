@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "d2a10b51-8002-4b4f-a2c8-a3a65fb27d9f",
 		"name": "Nepal Commerce",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16179347"
 	},
 	"item": [
 		{
@@ -140,12 +141,12 @@
 									"formdata": [
 										{
 											"key": "provider",
-											"value": "facebook",
+											"value": "google",
 											"type": "text"
 										},
 										{
 											"key": "access_token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJCaXNoYWwiLCJ1aWQiOiJmYl9fNTA5MDU4NTM2NzY3NzM3MCIsInByb3ZpZGVyIjoiZmFjZWJvb2siLCJyb2xlcyI6WyJVU0VSIl0sImlhdCI6MTY1MjA3NDU3NCwiZXhwIjoxNjUyMDc4MTc0fQ.p7zs8awltlvgo9J47vHq1fOsF8_EkA88guZ2QubSQBc",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJMZW9uIiwidWlkIjoiZ3BfXzEwMDgwMDIzNzkyODgxODA5MTQwNSIsInByb3ZpZGVyIjoiZ29vZ2xlIiwicm9sZXMiOlsiVVNFUiJdLCJpYXQiOjE2NTU3OTYzNDEsImV4cCI6MTY1NTc5OTk0MX0.SOJ-LR-0h1xEzYyPreaQ-nOyVdnhbJTxvsfH7OYlMVU",
 											"type": "text"
 										}
 									]
@@ -214,18 +215,24 @@
 					"name": "login",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "email",
-									"value": "grgbishal360@gmail.com",
+									"value": "leon.schiffer360@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "Asd@360",
+									"value": "Asd@3600",
 									"type": "text"
 								}
 							]
@@ -320,7 +327,7 @@
 							"variable": [
 								{
 									"key": "token",
-									"value": "8RPDNC6mlYzs0JeMetGRx6izpSKLK3cuxe4IEDHUyuCPVafD9rK61hxbQro74oYE"
+									"value": "QDzaX3pkrHGvvZEuROLwoXgLplo2RkzAvnleZlQam6O2FjNkB6haBoLvYrNXwp5p"
 								}
 							]
 						}
@@ -397,13 +404,12 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "tomhardy8963",
-									"contentType": "",
+									"value": "Tom n Jerry",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "tomhardy8963@gmail.com",
+									"value": "tomnjerry8963@gmail.com",
 									"type": "text"
 								},
 								{
@@ -447,7 +453,7 @@
 								},
 								{
 									"key": "password",
-									"value": "P@ssw0rds",
+									"value": "P@ssw0rd",
 									"type": "text"
 								},
 								{
@@ -459,6 +465,12 @@
 								{
 									"key": "password",
 									"value": "Nepalcommerce!23",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
 									"type": "text",
 									"disabled": true
 								}
@@ -563,7 +575,7 @@
 								{
 									"key": "registration_certificate",
 									"type": "file",
-									"src": "/home/user--49/Pictures/chicks.jpg"
+									"src": []
 								},
 								{
 									"key": "vat_number",
@@ -613,12 +625,12 @@
 								{
 									"key": "citizenship",
 									"type": "file",
-									"src": "/home/user--49/Pictures/dodge.png"
+									"src": []
 								},
 								{
 									"key": "cheque_photo",
 									"type": "file",
-									"src": "/home/user--49/Pictures/imperium-vorago.jpg"
+									"src": []
 								}
 							]
 						},
@@ -675,7 +687,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
+									"value": "leon.schiffer360@gmail.com",
 									"type": "text"
 								}
 							]
@@ -1197,7 +1209,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"converse\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"status\":\"published\",\n    \"video_url\": \"video-url-1\",\n    \"description\": \"description-1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"base_price\": \"444\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"converse\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video-url-1\",\n    \"description\": \"description-1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"quantity_type\": \"piece\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1235,7 +1247,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"product3edit\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"3\",\n    \"sub_sub_category_id\": \"4\",\n    \"video_url\": \"video_url3edit\",\n    \"description\": \"description3edit\",\n    \"seo_title\": \"seo_title3edit\",\n    \"seo_description\": \"seo_description3edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"base_price\": \"333\",\n    \"status\":\"draft\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"converse-edit\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"3\",\n    \"sub_sub_category_id\": \"4\",\n    \"video_url\": \"video_url3edit\",\n    \"description\": \"description3edit\",\n    \"seo_title\": \"seo_title3edit\",\n    \"seo_description\": \"seo_description3edit\",\n    \"seo_keyword\": [\"keywordedit1\", \"keywordedit2\", \"keywordedit3\", \"keywordedit4\"],\n    \"quantity_type\": \"kg\",\n    \"status\":\"draft\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1edit\",\n            \"description\": \"description 1edit\"\n        },\n        {\n            \"title\": \"title 2edit\",\n            \"description\": \"description 2edit\"\n        },\n        {\n            \"title\": \"title 3edit\",\n            \"description\": \"description 3edit\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1243,7 +1255,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product/product/7",
+							"raw": "{{url}}/api/product/product/35",
 							"host": [
 								"{{url}}"
 							],
@@ -1251,7 +1263,7 @@
 								"api",
 								"product",
 								"product",
-								"7"
+								"35"
 							]
 						}
 					},
@@ -1450,7 +1462,7 @@
 							"variable": [
 								{
 									"key": "product_id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -1518,7 +1530,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku1\",\n            \"stock\": 0,\n            \"base_price\": 101,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 4,\n                    \"value_id\": 13\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 5,\n                    \"value_id\": 15\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 101,\n                \"11-22\": 51\n            }\n        },\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"sku2\",\n            \"stock\": 0,\n            \"base_price\": 201,\n            \"selected_attribute\": [\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 4,\n                    \"value_id\": 14\n                },\n                {\n                    \"id\": \"\",\n                    \"attribute_id\": 5,\n                    \"value_id\": 16\n                }\n            ],\n            \"quantity\": {\n                \"1-10\": 201,\n                \"11-22\": 151\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
+							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"66\",\n            \"availability\": 1,\n            \"sku\": \"cement-25-011\",\n            \"stock\": 10000,\n            \"base_price\": 1500,\n            \"selected_attribute\": [\n                {\n                    \"id\": 24,\n                    \"attribute_id\": 18,\n                    \"value_id\": 24\n                },\n                {\n                    \"id\": 23,\n                    \"attribute_id\": 17,\n                    \"value_id\": 23\n                }\n            ],\n            \"quantity\": {\n                \"100-500\": 1400,\n                \"500-1000\": 1300\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1526,7 +1538,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product/store-combination/3",
+							"raw": "{{url}}/api/product/store-combination/31",
 							"host": [
 								"{{url}}"
 							],
@@ -1534,7 +1546,7 @@
 								"api",
 								"product",
 								"store-combination",
-								"3"
+								"31"
 							]
 						}
 					},
@@ -1702,7 +1714,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/product/filter?search_word=product&category=&recent=&price_range=&rating=&most_order&highest_rated&limit=10&tag=",
+							"raw": "{{url}}/api/product/filter?search_word=cement&category=&recent=&price_range=&rating=&most_order&highest_rated&limit=&tag=",
 							"host": [
 								"{{url}}"
 							],
@@ -1714,7 +1726,7 @@
 							"query": [
 								{
 									"key": "search_word",
-									"value": "product"
+									"value": "cement"
 								},
 								{
 									"key": "category",
@@ -1748,7 +1760,7 @@
 								},
 								{
 									"key": "limit",
-									"value": "10",
+									"value": "",
 									"description": "nullable"
 								},
 								{
@@ -1787,7 +1799,7 @@
 							"variable": [
 								{
 									"key": "slug",
-									"value": "product-1"
+									"value": "brick"
 								}
 							]
 						}
@@ -2187,13 +2199,13 @@
 							"formdata": [
 								{
 									"key": "key",
-									"value": "main-banner",
+									"value": "main_banner",
 									"type": "text"
 								},
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Downloads/274046127_10159290837208283_853953639614142358_n.jpg"
+									"src": "/C:/Users/Leon Schiffer/Downloads/main_banner.jpg"
 								}
 							]
 						},
@@ -2257,7 +2269,7 @@
 								},
 								{
 									"key": "key",
-									"value": "main-banner"
+									"value": "secondary-banner"
 								}
 							]
 						}
@@ -2404,7 +2416,7 @@
 							"variable": [
 								{
 									"key": "key",
-									"value": "main-banner"
+									"value": "main_banner"
 								}
 							]
 						}
@@ -2430,7 +2442,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -2584,7 +2602,7 @@
 							"variable": [
 								{
 									"key": "message_id",
-									"value": "4"
+									"value": "2"
 								}
 							]
 						}
@@ -2627,7 +2645,7 @@
 							"variable": [
 								{
 									"key": "message_id",
-									"value": "9"
+									"value": "2"
 								}
 							]
 						}
@@ -4087,49 +4105,26 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "full_name",
-									"value": "BIshal GUrung",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "123122131",
-									"type": "text"
-								},
-								{
-									"key": "district_id",
-									"value": "5",
-									"type": "text"
-								},
-								{
-									"key": "province_id",
-									"value": "4",
-									"type": "text"
-								},
-								{
-									"key": "full_address",
-									"value": "Pokhara",
-									"type": "text"
-								},
-								{
-									"key": "type",
-									"value": "home",
-									"type": "text"
-								},
-								{
-									"key": "is_primary",
-									"value": "1",
-									"type": "text"
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
 								}
 							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{url}}/api/user-profile/:user_id",
@@ -4144,7 +4139,7 @@
 							"variable": [
 								{
 									"key": "user_id",
-									"value": "2"
+									"value": "6"
 								}
 							]
 						}
@@ -4276,7 +4271,7 @@
 							"formdata": [
 								{
 									"key": "token",
-									"value": "zXsLhDQ6nCSWpxSimoFgLzVtaMzmBV3ab3ztqUrQ72dTYWd7IU",
+									"value": "LiVruHld83jNeqQhk30GtEh1OhSsxUITMr7zrYhjArNRMYuRp7",
 									"type": "text"
 								}
 							]
@@ -4307,7 +4302,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -4338,7 +4333,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{vendor_token}}",
 									"type": "string"
 								}
 							]
@@ -4562,17 +4557,17 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "2",
+									"value": "31",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "1",
+									"value": "1000",
 									"type": "text"
 								},
 								{
 									"key": "product_combination_id",
-									"value": "4",
+									"value": "66",
 									"type": "text"
 								}
 							]
@@ -4648,7 +4643,7 @@
 							"variable": [
 								{
 									"key": "cart_id",
-									"value": "9"
+									"value": "53"
 								}
 							]
 						}
@@ -5046,7 +5041,43 @@
 									"variable": [
 										{
 											"key": "order_number",
-											"value": "9vxKcRkM15"
+											"value": "19OotH8k1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cancel order by order number",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/order/cancel-order/:order_number",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"cancel-order",
+										":order_number"
+									],
+									"variable": [
+										{
+											"key": "order_number",
+											"value": "ssgDdRGTfS1"
 										}
 									]
 								}
@@ -5588,7 +5619,7 @@
 							"variable": [
 								{
 									"key": "key",
-									"value": "full_address_1"
+									"value": "company_logo"
 								}
 							]
 						}
@@ -5627,14 +5658,7 @@
 					"name": "vendor list by most order",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{vendor_token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [

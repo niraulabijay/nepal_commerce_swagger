@@ -3,7 +3,7 @@
 		"_postman_id": "d2a10b51-8002-4b4f-a2c8-a3a65fb27d9f",
 		"name": "Nepal Commerce",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16179347"
+		"_exporter_id": "19791325"
 	},
 	"item": [
 		{
@@ -448,7 +448,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "vendor@gmail.com",
+									"value": "vendor2@gmail.com",
 									"type": "text"
 								},
 								{
@@ -4323,6 +4323,34 @@
 					"response": []
 				},
 				{
+					"name": "get notification types",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/notification-type",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"notification-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "read-at",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -4557,7 +4585,7 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "31",
+									"value": "30",
 									"type": "text"
 								},
 								{
@@ -4567,7 +4595,7 @@
 								},
 								{
 									"key": "product_combination_id",
-									"value": "66",
+									"value": "65\n",
 									"type": "text"
 								}
 							]
@@ -5041,7 +5069,7 @@
 									"variable": [
 										{
 											"key": "order_number",
-											"value": "19OotH8k1"
+											"value": "LXhZsZ4t8"
 										}
 									]
 								}
@@ -5077,7 +5105,7 @@
 									"variable": [
 										{
 											"key": "order_number",
-											"value": "ssgDdRGTfS1"
+											"value": "ZJX445rX5"
 										}
 									]
 								}
@@ -5361,7 +5389,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendor_id\": 6,\n    \"order_id\": 4,\n    \"rating\": [\n        {\n            \"type\": \"delivery\",\n            \"star\": 4\n        },\n        {\n            \"type\": \"quality\",\n            \"star\": 4\n        },\n        {\n            \"type\": \"communication\",\n            \"star\": 4\n        }\n    ]\n}",
+									"raw": "{\n    \"vendor_id\": 1,\n    \"order_id\": 76,\n    \"rating\": [\n        {\n            \"type\": \"delivery\",\n            \"star\": 5\n        },\n        {\n            \"type\": \"quality\",\n            \"star\": 4\n        },\n        {\n            \"type\": \"communication\",\n            \"star\": 4\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5423,7 +5451,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/vendor-rating/all?vendor_id=1&order_number=",
+							"raw": "{{url}}/api/vendor-rating/all?vendor_id=1&order_number=76",
 							"host": [
 								"{{url}}"
 							],
@@ -5440,7 +5468,7 @@
 								},
 								{
 									"key": "order_number",
-									"value": "",
+									"value": "76",
 									"description": "nullable"
 								}
 							]

@@ -2387,6 +2387,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/notification-type:
+    get:
+      tags:
+        - Notification
+      summary: get notification types
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/notification/3b4f6754-193d-4b3a-bf34-9a7766f1c379/read:
     get:
       tags:
@@ -2743,7 +2755,11 @@ paths:
           schema:
             type: string
           required: true
+<<<<<<< HEAD
           example: tDzpw12O21
+=======
+          example: LXhZsZ4t8
+>>>>>>> 39327b073ea31eb5e17b961f585fdaf5d7537d23
       responses:
         '200':
           description: Successful response
@@ -2888,7 +2904,11 @@ paths:
               type: object
               example:
                 vendor_id: 1
+<<<<<<< HEAD
                 order_id: 78
+=======
+                order_id: 76
+>>>>>>> 39327b073ea31eb5e17b961f585fdaf5d7537d23
                 rating:
                   - type: delivery
                     star: 5
@@ -2930,6 +2950,7 @@ paths:
         - name: order_number
           in: query
           schema:
+<<<<<<< HEAD
             type: string
           description: nullable either use order_id or order_number
         - name: order_id
@@ -2937,6 +2958,11 @@ paths:
           schema:
             type: string
           description: nullable either use order_id or order_number
+=======
+            type: integer
+          description: nullable
+          example: '76'
+>>>>>>> 39327b073ea31eb5e17b961f585fdaf5d7537d23
       responses:
         '200':
           description: Successful response

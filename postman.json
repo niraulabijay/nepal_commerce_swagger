@@ -227,12 +227,12 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "leon.schiffer360@gmail.com",
+									"value": "tomnjerry8963@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "Asd@3600",
+									"value": "P@ssw0rd",
 									"type": "text"
 								}
 							]
@@ -384,6 +384,32 @@
 								"api",
 								"user",
 								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/refresh-token/:refresh_token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"refresh-token",
+								":refresh_token"
+							],
+							"variable": [
+								{
+									"key": "refresh_token",
+									"value": "def502003b1c5eab032a3577bc29caed4d9fe7a9898add256553b09b6fa97cf6b7b984758f1209a109c46ad8d27b9b03df889e5575d64bfacef4c75b28effe9a238823db44722908219127e90b3b2fc696cf51a3e8faec25dadbd78337383feb5351ff92b6d5f99f1e51a526e2a03ffeb0d9faeebe9a4c0b5fa07599887a9f34981e19b2fd1f4e0bc769d7665234b1e8c002f40d63c1ab94ba3c02278d2affbb97fe926ad5c1f4736e94b5e489aaad3e9c4d5d6c927cf6d5c1c1ef7c6be4e766094d8b781b0f38acaeae9e5846e391142e4211e76ad77fa80486be40448b30a406f0acc0219e95c0118dd8d98f4bf5aa60f8186f33e064cf59f78145b182cf8fbe9a2a6ed7a901313705bd40979f02a3039654f6b394530f1169c2c2224560cb2cfba0428775296ee52399bb9492d188e3bfd2e14bae16b7908edcfb46d061fd2b462cd33d0ae8f997911aab113bfde4e920cd40b4d9258a8fcdfb6cbea75e679474612f20"
+								}
 							]
 						}
 					},
@@ -808,6 +834,32 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "vendor refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vendor/user/refresh-token/:refresh_token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vendor",
+								"user",
+								"refresh-token",
+								":refresh_token"
+							],
+							"variable": [
+								{
+									"key": "refresh_token",
+									"value": "def502007f8bed351ddb5b138cfb68b0ba38d5f3d1fbc131acd8491a7403bb54211c8b5f28d71a4123f97c03f0334f161a8d7bcb298334d4ae8a5567cc08a0e58021e0e47a4d6929ebde2ca38d7094b238bf4244820569a2e76bea5719b110cf33bbaac9499ed1c033cc96d5cb9b518e24fa6628c40662ad2a8891fe7f277b32becb961b87df745b3a20a74dca4bd2c18d5302b9fcdd4f50b6ccb17c8f233560b258abe67d4db2ceaf8ae6d59571a7bd07e70d2721378d20b53ce5e5ebb5ada3b9fcd135135e19640ce47798b0153bb3213ac3acd5e04a8810b098e13b0311350baa5dc16182856fdafc16ca63f0a4815851d77eb49e6c2c85e071aaa8d8d2ab58f38bbfe8baa2795e161847ac41f9c2e73c85ac7c520a382c4ef023fc2ecb5382226a5c8055fbd6545a8842a0adf990aabd12acb55ec8e9bcc81cc7a990adeb448075c63bfb2dea52a1e70d10b6c312672a370097df4a411ac169da0f183a185d58d034"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1209,7 +1261,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"converse\",\n    \"category_id\": 1,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video-url-1\",\n    \"description\": \"description-1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"quantity_type\": \"piece\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"title\": \"bst jastapata\",\n    \"category_id\": 2,\n    \"sub_category_id\": \"\",\n    \"sub_sub_category_id\": \"\",\n    \"video_url\": \"video-url-1\",\n    \"description\": \"description-1\",\n    \"seo_title\": \"seo_title1\",\n    \"seo_description\": \"seo_description1\",\n    \"seo_keyword\": [\"keyword1\", \"keyword2\", \"keyword3\"],\n    \"quantity_type\": \"piece\",\n    \"tag\": [\"tag1\", \"tag2\", \"tag3\"],\n    \"specification\": [\n        {\n            \"title\": \"title 1\",\n            \"description\": \"description 1\"\n        },\n        {\n            \"title\": \"title 2\",\n            \"description\": \"description 2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1530,7 +1582,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"66\",\n            \"availability\": 1,\n            \"sku\": \"cement-25-011\",\n            \"stock\": 10000,\n            \"base_price\": 1500,\n            \"selected_attribute\": [\n                {\n                    \"id\": 24,\n                    \"attribute_id\": 18,\n                    \"value_id\": 24\n                },\n                {\n                    \"id\": 23,\n                    \"attribute_id\": 17,\n                    \"value_id\": 23\n                }\n            ],\n            \"quantity\": {\n                \"100-500\": 1400,\n                \"500-1000\": 1300\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
+							"raw": "{\n    \"combination\": [\n        {\n            \"id\": \"\",\n            \"availability\": 1,\n            \"sku\": \"jastapata-1009590\",\n            \"stock\": 10000,\n            \"base_price\": 100,\n            \"selected_attribute\": [],\n            \"quantity\": {\n                \"100-500\": 95,\n                \"500-1000\": 90\n            }\n        }\n    ],\n    \"delete_id\": []\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1538,7 +1590,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product/store-combination/31",
+							"raw": "{{url}}/api/product/store-combination/37",
 							"host": [
 								"{{url}}"
 							],
@@ -1546,7 +1598,7 @@
 								"api",
 								"product",
 								"store-combination",
-								"31"
+								"37"
 							]
 						}
 					},
@@ -3278,12 +3330,12 @@
 							"formdata": [
 								{
 									"key": "content",
-									"value": "New Baneshwor",
+									"value": "Yes",
 									"type": "text"
 								},
 								{
 									"key": "question_id",
-									"value": "9",
+									"value": "1",
 									"type": "text"
 								}
 							]
@@ -4081,7 +4133,7 @@
 								{
 									"key": "profile_pic",
 									"type": "file",
-									"src": "/home/user--49/Pictures/images.jpeg"
+									"src": []
 								}
 							]
 						},
@@ -4310,13 +4362,51 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/notification",
+							"raw": "{{url}}/api/notification?limit=&page=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"notification"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get notification types",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendor_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/notification-type",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"notification-type"
 							]
 						}
 					},
@@ -4557,7 +4647,7 @@
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "31",
+									"value": "30",
 									"type": "text"
 								},
 								{
@@ -4567,7 +4657,7 @@
 								},
 								{
 									"key": "product_combination_id",
-									"value": "66",
+									"value": "65\n",
 									"type": "text"
 								}
 							]
@@ -5041,7 +5131,7 @@
 									"variable": [
 										{
 											"key": "order_number",
-											"value": "19OotH8k1"
+											"value": "tDzpw12O21"
 										}
 									]
 								}
@@ -5077,7 +5167,7 @@
 									"variable": [
 										{
 											"key": "order_number",
-											"value": "ssgDdRGTfS1"
+											"value": "ZJX445rX5"
 										}
 									]
 								}
@@ -5361,7 +5451,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"vendor_id\": 6,\n    \"order_id\": 4,\n    \"rating\": [\n        {\n            \"type\": \"delivery\",\n            \"star\": 4\n        },\n        {\n            \"type\": \"quality\",\n            \"star\": 4\n        },\n        {\n            \"type\": \"communication\",\n            \"star\": 4\n        }\n    ]\n}",
+									"raw": "{\n    \"vendor_id\": 1,\n    \"order_id\": 78,\n    \"rating\": [\n        {\n            \"type\": \"delivery\",\n            \"star\": 5\n        },\n        {\n            \"type\": \"quality\",\n            \"star\": 4\n        },\n        {\n            \"type\": \"communication\",\n            \"star\": 4\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5423,7 +5513,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/vendor-rating/all?vendor_id=1&order_number=",
+							"raw": "{{url}}/api/vendor-rating/all?vendor_id=1&order_number=&order_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -5441,7 +5531,12 @@
 								{
 									"key": "order_number",
 									"value": "",
-									"description": "nullable"
+									"description": "nullable either use order_id or order_number"
+								},
+								{
+									"key": "order_id",
+									"value": "",
+									"description": "nullable either use order_id or order_number"
 								}
 							]
 						}

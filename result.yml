@@ -180,10 +180,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: leon.schiffer360@gmail.com
+                  example: tomnjerry8963@gmail.com
                 password:
                   type: string
-                  example: Asd@3600
+                  example: P@ssw0rd
       parameters:
         - name: Accept
           in: header
@@ -279,6 +279,26 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user/refresh-token/{refresh_token}:
+    post:
+      tags:
+        - user
+      summary: user refresh token
+      requestBody:
+        content: {}
+      parameters:
+        - name: refresh_token
+          in: path
+          schema:
+            type: string
+          required: true
+          example: >-
+            def502003b1c5eab032a3577bc29caed4d9fe7a9898add256553b09b6fa97cf6b7b984758f1209a109c46ad8d27b9b03df889e5575d64bfacef4c75b28effe9a238823db44722908219127e90b3b2fc696cf51a3e8faec25dadbd78337383feb5351ff92b6d5f99f1e51a526e2a03ffeb0d9faeebe9a4c0b5fa07599887a9f34981e19b2fd1f4e0bc769d7665234b1e8c002f40d63c1ab94ba3c02278d2affbb97fe926ad5c1f4736e94b5e489aaad3e9c4d5d6c927cf6d5c1c1ef7c6be4e766094d8b781b0f38acaeae9e5846e391142e4211e76ad77fa80486be40448b30a406f0acc0219e95c0118dd8d98f4bf5aa60f8186f33e064cf59f78145b182cf8fbe9a2a6ed7a901313705bd40979f02a3039654f6b394530f1169c2c2224560cb2cfba0428775296ee52399bb9492d188e3bfd2e14bae16b7908edcfb46d061fd2b462cd33d0ae8f997911aab113bfde4e920cd40b4d9258a8fcdfb6cbea75e679474612f20
       responses:
         '200':
           description: Successful response
@@ -513,6 +533,26 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /vendor/user/refresh-token/{refresh_token}:
+    post:
+      tags:
+        - vendor
+      summary: vendor refresh token
+      requestBody:
+        content: {}
+      parameters:
+        - name: refresh_token
+          in: path
+          schema:
+            type: string
+          required: true
+          example: >-
+            def502007f8bed351ddb5b138cfb68b0ba38d5f3d1fbc131acd8491a7403bb54211c8b5f28d71a4123f97c03f0334f161a8d7bcb298334d4ae8a5567cc08a0e58021e0e47a4d6929ebde2ca38d7094b238bf4244820569a2e76bea5719b110cf33bbaac9499ed1c033cc96d5cb9b518e24fa6628c40662ad2a8891fe7f277b32becb961b87df745b3a20a74dca4bd2c18d5302b9fcdd4f50b6ccb17c8f233560b258abe67d4db2ceaf8ae6d59571a7bd07e70d2721378d20b53ce5e5ebb5ada3b9fcd135135e19640ce47798b0153bb3213ac3acd5e04a8810b098e13b0311350baa5dc16182856fdafc16ca63f0a4815851d77eb49e6c2c85e071aaa8d8d2ab58f38bbfe8baa2795e161847ac41f9c2e73c85ac7c520a382c4ef023fc2ecb5382226a5c8055fbd6545a8842a0adf990aabd12acb55ec8e9bcc81cc7a990adeb448075c63bfb2dea52a1e70d10b6c312672a370097df4a411ac169da0f183a185d58d034
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/brand/brand:
     get:
       tags:
@@ -678,8 +718,8 @@ paths:
             schema:
               type: object
               example:
-                title: converse
-                category_id: 1
+                title: bst jastapata
+                category_id: 2
                 sub_category_id: ''
                 sub_sub_category_id: ''
                 video_url: video-url-1
@@ -887,7 +927,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/store-combination/31:
+  /api/product/store-combination/37:
     post:
       tags:
         - Product
@@ -899,21 +939,15 @@ paths:
               type: object
               example:
                 combination:
-                  - id: '66'
+                  - id: ''
                     availability: 1
-                    sku: cement-25-011
+                    sku: jastapata-1009590
                     stock: 10000
-                    base_price: 1500
-                    selected_attribute:
-                      - id: 24
-                        attribute_id: 18
-                        value_id: 24
-                      - id: 23
-                        attribute_id: 17
-                        value_id: 23
+                    base_price: 100
+                    selected_attribute: []
                     quantity:
-                      100-500: 1400
-                      500-1000: 1300
+                      100-500: 95
+                      500-1000: 90
                 delete_id: []
       security:
         - bearerAuth: []
@@ -1829,10 +1863,10 @@ paths:
               properties:
                 content:
                   type: string
-                  example: New Baneshwor
+                  example: 'Yes'
                 question_id:
                   type: integer
-                  example: '9'
+                  example: '1'
       security:
         - bearerAuth: []
       responses:
@@ -2327,6 +2361,27 @@ paths:
       summary: index
       security:
         - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/notification-type:
+    get:
+      tags:
+        - Notification
+      summary: get notification types
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -2442,13 +2497,14 @@ paths:
               properties:
                 product_id:
                   type: integer
-                  example: '31'
+                  example: '30'
                 quantity:
                   type: integer
                   example: '1000'
                 product_combination_id:
-                  type: integer
-                  example: '66'
+                  type: string
+                  example: |
+                    65
       security:
         - bearerAuth: []
       responses:
@@ -2687,7 +2743,7 @@ paths:
           schema:
             type: string
           required: true
-          example: 19OotH8k1
+          example: tDzpw12O21
       responses:
         '200':
           description: Successful response
@@ -2706,7 +2762,7 @@ paths:
           schema:
             type: string
           required: true
-          example: ssgDdRGTfS1
+          example: ZJX445rX5
       responses:
         '200':
           description: Successful response
@@ -2831,11 +2887,11 @@ paths:
             schema:
               type: object
               example:
-                vendor_id: 6
-                order_id: 4
+                vendor_id: 1
+                order_id: 78
                 rating:
                   - type: delivery
-                    star: 4
+                    star: 5
                   - type: quality
                     star: 4
                   - type: communication
@@ -2875,7 +2931,12 @@ paths:
           in: query
           schema:
             type: string
-          description: nullable
+          description: nullable either use order_id or order_number
+        - name: order_id
+          in: query
+          schema:
+            type: string
+          description: nullable either use order_id or order_number
       responses:
         '200':
           description: Successful response

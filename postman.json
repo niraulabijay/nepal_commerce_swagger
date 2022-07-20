@@ -3,7 +3,7 @@
 		"_postman_id": "d2a10b51-8002-4b4f-a2c8-a3a65fb27d9f",
 		"name": "Nepal Commerce",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19791325"
+		"_exporter_id": "16179347"
 	},
 	"item": [
 		{
@@ -474,7 +474,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "vendor2@gmail.com",
+									"value": "vendor@gmail.com",
 									"type": "text"
 								},
 								{
@@ -4413,34 +4413,6 @@
 					"response": []
 				},
 				{
-					"name": "get notification types",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{vendor_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/notification-type",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"notification-type"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "read-at",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -5159,11 +5131,7 @@
 									"variable": [
 										{
 											"key": "order_number",
-<<<<<<< HEAD
 											"value": "tDzpw12O21"
-=======
-											"value": "LXhZsZ4t8"
->>>>>>> 39327b073ea31eb5e17b961f585fdaf5d7537d23
 										}
 									]
 								}
@@ -5483,11 +5451,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-<<<<<<< HEAD
 									"raw": "{\n    \"vendor_id\": 1,\n    \"order_id\": 78,\n    \"rating\": [\n        {\n            \"type\": \"delivery\",\n            \"star\": 5\n        },\n        {\n            \"type\": \"quality\",\n            \"star\": 4\n        },\n        {\n            \"type\": \"communication\",\n            \"star\": 4\n        }\n    ]\n}",
-=======
-									"raw": "{\n    \"vendor_id\": 1,\n    \"order_id\": 76,\n    \"rating\": [\n        {\n            \"type\": \"delivery\",\n            \"star\": 5\n        },\n        {\n            \"type\": \"quality\",\n            \"star\": 4\n        },\n        {\n            \"type\": \"communication\",\n            \"star\": 4\n        }\n    ]\n}",
->>>>>>> 39327b073ea31eb5e17b961f585fdaf5d7537d23
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5549,11 +5513,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-<<<<<<< HEAD
 							"raw": "{{url}}/api/vendor-rating/all?vendor_id=1&order_number=&order_id=",
-=======
-							"raw": "{{url}}/api/vendor-rating/all?vendor_id=1&order_number=76",
->>>>>>> 39327b073ea31eb5e17b961f585fdaf5d7537d23
 							"host": [
 								"{{url}}"
 							],
@@ -5570,7 +5530,6 @@
 								},
 								{
 									"key": "order_number",
-<<<<<<< HEAD
 									"value": "",
 									"description": "nullable either use order_id or order_number"
 								},
@@ -5578,10 +5537,6 @@
 									"key": "order_id",
 									"value": "",
 									"description": "nullable either use order_id or order_number"
-=======
-									"value": "76",
-									"description": "nullable"
->>>>>>> 39327b073ea31eb5e17b961f585fdaf5d7537d23
 								}
 							]
 						}
